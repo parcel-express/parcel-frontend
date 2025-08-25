@@ -1,96 +1,113 @@
-'use client'
+'use client';
 
-import styled from 'styled-components'
-import { 
+import styled from 'styled-components';
+
+import {
   Typography,
-  Heading1, 
-  Heading2, 
-  Heading3, 
-  Heading4, 
-  Heading5, 
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
   Heading6,
   BodyLarge,
   BodyMedium,
   BodySmall,
-  Caption
-} from '../../../components'
+  Caption,
+} from '../../../components';
 
 const Container = styled.div`
   min-height: 100vh;
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-`
+`;
 
 const Section = styled.section`
   margin-bottom: 3rem;
-`
+`;
 
 const WeightGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin-top: 1rem;
-`
+`;
 
 const WeightColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-`
+`;
 
 const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`
+`;
 
 const SecondWeightGrid = styled(WeightGrid)`
   margin-top: 2rem;
-`
+`;
 
 export default function TypographyDemo() {
   return (
     <Container>
       <Heading1>Typography System</Heading1>
-      <BodyLarge color="#535862">Complete typography scale based on Figma design system</BodyLarge>
-      
+      <BodyLarge color='#535862'>Complete typography scale based on Figma design system</BodyLarge>
+
       <Section>
         <Heading2>Display Sizes</Heading2>
         <WeightGrid>
           <WeightColumn>
-            <Typography variant="display-2xl" weight="regular">Display 2xl</Typography>
+            <Typography variant='display-2xl' weight='regular'>
+              Display 2xl
+            </Typography>
             <Caption>Regular</Caption>
           </WeightColumn>
           <WeightColumn>
-            <Typography variant="display-2xl" weight="medium">Display 2xl</Typography>
+            <Typography variant='display-2xl' weight='medium'>
+              Display 2xl
+            </Typography>
             <Caption>Medium</Caption>
           </WeightColumn>
           <WeightColumn>
-            <Typography variant="display-2xl" weight="semibold">Display 2xl</Typography>
+            <Typography variant='display-2xl' weight='semibold'>
+              Display 2xl
+            </Typography>
             <Caption>Semibold</Caption>
           </WeightColumn>
           <WeightColumn>
-            <Typography variant="display-2xl" weight="bold">Display 2xl</Typography>
+            <Typography variant='display-2xl' weight='bold'>
+              Display 2xl
+            </Typography>
             <Caption>Bold</Caption>
           </WeightColumn>
         </WeightGrid>
-        
+
         <SecondWeightGrid>
           <WeightColumn>
-            <Typography variant="display-xl" weight="regular">Display xl</Typography>
+            <Typography variant='display-xl' weight='regular'>
+              Display xl
+            </Typography>
             <Caption>Regular</Caption>
           </WeightColumn>
           <WeightColumn>
-            <Typography variant="display-xl" weight="medium">Display xl</Typography>
+            <Typography variant='display-xl' weight='medium'>
+              Display xl
+            </Typography>
             <Caption>Medium</Caption>
           </WeightColumn>
           <WeightColumn>
-            <Typography variant="display-xl" weight="semibold">Display xl</Typography>
+            <Typography variant='display-xl' weight='semibold'>
+              Display xl
+            </Typography>
             <Caption>Semibold</Caption>
           </WeightColumn>
           <WeightColumn>
-            <Typography variant="display-xl" weight="bold">Display xl</Typography>
+            <Typography variant='display-xl' weight='bold'>
+              Display xl
+            </Typography>
             <Caption>Bold</Caption>
           </WeightColumn>
         </SecondWeightGrid>
@@ -121,22 +138,38 @@ export default function TypographyDemo() {
       <Section>
         <Heading3>Weight Variations</Heading3>
         <FlexColumn>
-          <Typography variant="text-lg" weight="regular">Regular Weight (400)</Typography>
-          <Typography variant="text-lg" weight="medium">Medium Weight (500)</Typography>
-          <Typography variant="text-lg" weight="semibold">Semibold Weight (600)</Typography>
-          <Typography variant="text-lg" weight="bold">Bold Weight (700)</Typography>
+          <Typography variant='text-lg' weight='regular'>
+            Regular Weight (400)
+          </Typography>
+          <Typography variant='text-lg' weight='medium'>
+            Medium Weight (500)
+          </Typography>
+          <Typography variant='text-lg' weight='semibold'>
+            Semibold Weight (600)
+          </Typography>
+          <Typography variant='text-lg' weight='bold'>
+            Bold Weight (700)
+          </Typography>
         </FlexColumn>
       </Section>
 
       <Section>
         <Heading3>Custom Colors</Heading3>
         <FlexColumn>
-          <Typography variant="text-lg" color="#181d27">Primary Text (#181d27)</Typography>
-          <Typography variant="text-lg" color="#535862">Secondary Text (#535862)</Typography>
-          <Typography variant="text-lg" color="#662d91">Brand Purple</Typography>
-          <Typography variant="text-lg" color="#302e9c">Brand Blue</Typography>
+          <Typography variant='text-lg' color='#181d27'>
+            Primary Text (#181d27)
+          </Typography>
+          <Typography variant='text-lg' color='#535862'>
+            Secondary Text (#535862)
+          </Typography>
+          <Typography variant='text-lg' color='#662d91'>
+            Brand Purple
+          </Typography>
+          <Typography variant='text-lg' color='#302e9c'>
+            Brand Blue
+          </Typography>
         </FlexColumn>
       </Section>
     </Container>
-  )
+  );
 }

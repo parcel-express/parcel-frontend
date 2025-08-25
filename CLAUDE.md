@@ -1,6 +1,7 @@
 # Parcel Express Frontend
 
-This is a Next.js 15 project with multilingual support using next-intl and styled-components for styling.
+This is a Next.js 15 project with multilingual support using next-intl and
+styled-components for styling.
 
 ## Features
 
@@ -55,9 +56,10 @@ messages/                   # Translation files
 
 1. Run the development server: `npm run dev`
 2. Open [http://localhost:3000](http://localhost:3000)
-3. The app automatically detects browser language or you can access specific locales:
+3. The app automatically detects browser language or you can access specific
+   locales:
    - `/en` for English
-   - `/ka` for Georgian  
+   - `/ka` for Georgian
    - `/ru` for Russian
 
 ## Internationalization
@@ -70,39 +72,46 @@ Translations are stored in the `messages/` directory. To add new translations:
 
 ## Styling
 
-This project uses styled-components for styling. The `StyledComponentsRegistry` component ensures proper SSR support.
+This project uses styled-components for styling. The `StyledComponentsRegistry`
+component ensures proper SSR support.
 
 ## Design System Components
 
-This project uses a design system based on Figma designs. **ALWAYS use these components instead of creating custom styled components.**
+This project uses a design system based on Figma designs. **ALWAYS use these
+components instead of creating custom styled components.**
 
 ### Button Component
 
 Located at `src/components/Button.tsx`. Import from `src/components`.
 
 **Available variants:**
+
 - `default` - Transparent background with white border (for dark backgrounds)
 - `primary` - Gradient background (main call-to-action)
-- `secondary` - White background with gray border  
+- `secondary` - White background with gray border
 - `tertiary` - Light gray background
 - `disabled` - Disabled state (auto-applied when `disabled` prop is true)
 
 **Available sizes:**
+
 - `xs` - 8px padding, 14px font, 20px icons, 8px border radius
-- `sm` - 10px padding, 14px font, 20px icons, 8px border radius  
+- `sm` - 10px padding, 14px font, 20px icons, 8px border radius
 - `md` - 10px padding, 16px font, 20px icons, 8px border radius
 - `lg` - 12px padding, 16px font, 20px icons, 8px border radius
 - `xl` - 16px padding, 18px font, 24px icons, 10px border radius
 
 **Interactive Effects:**
+
 - **Hover**: Subtle lift animation with enhanced shadows
 - **Click/Active**: Scale down effect (0.96-0.98 scale) with faster transition
-- **Ripple Effect**: Expanding circle animation on click for tactile feedback  
+- **Ripple Effect**: Expanding circle animation on click for tactile feedback
 - **Enhanced Shadows**: Dynamic shadow changes based on interaction state
 - **Smooth Transitions**: Cubic-bezier easing for natural movement
-- **Primary Button**: Special enhanced effects with deeper shadows and larger hover lift
+- **Primary Button**: Special enhanced effects with deeper shadows and larger
+  hover lift
 
 **Usage Examples:**
+
 ```tsx
 import { Button } from '../components';
 
@@ -135,6 +144,7 @@ import { Button } from '../components';
 Located at `src/components/Typography.tsx`. Import from `src/components`.
 
 **Available variants:**
+
 - `display-2xl` - 72px/90px, -2% letter spacing
 - `display-xl` - 60px/72px, -2% letter spacing
 - `display-lg` - 48px/60px, -2% letter spacing
@@ -148,23 +158,26 @@ Located at `src/components/Typography.tsx`. Import from `src/components`.
 - `text-xs` - 12px/18px
 
 **Available weights:**
+
 - `regular` - 400
 - `medium` - 500
 - `semibold` - 600
 - `bold` - 700
 
 **Semantic Components** (preferred for common use cases):
+
 - `Heading1` through `Heading6` - Pre-configured headings
 - `BodyLarge`, `BodyMedium`, `BodySmall` - Body text
 - `Caption` - Small text for labels
 
 **Usage Examples:**
+
 ```tsx
-import { 
-  Typography, 
-  Heading1, 
-  BodyMedium, 
-  Caption 
+import {
+  Typography,
+  Heading1,
+  BodyMedium,
+  Caption
 } from '../components';
 
 // Basic usage
@@ -189,6 +202,7 @@ import {
 ```
 
 **Design System Colors:**
+
 - Primary text: `#181d27`
 - Secondary text: `#535862`
 - Brand purple: `#662d91`
@@ -196,8 +210,11 @@ import {
 
 ## TypeScript
 
-The project is fully typed with TypeScript. Configuration can be found in `tsconfig.json`.
+The project is fully typed with TypeScript. Configuration can be found in
+`tsconfig.json`.
 
 ## Font System
 
-The project uses **Inter font** loaded via Google Fonts with weights 400, 500, 600, 700. Font is configured in `src/app/[locale]/layout.tsx` and available globally via CSS variable `--font-inter`.
+The project uses **Inter font** loaded via Google Fonts with weights 400, 500,
+600, 700. Font is configured in `src/app/[locale]/layout.tsx` and available
+globally via CSS variable `--font-inter`.
