@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "title": "Добро пожаловать в Parcel Express",
+    "description": "Ваш надежный сервис доставки посылок"
+  },
+  "Navigation": {
+    "home": "Главная",
+    "about": "О нас",
+    "services": "Услуги",
+    "contact": "Контакты"
+  }
+}

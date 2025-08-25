@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "title": "Welcome to Parcel Express",
+    "description": "Your reliable package delivery service"
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  }
+}
