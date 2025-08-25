@@ -1,0 +1,79 @@
+[build]
+  publish = ".next"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--prefix=/opt/buildhome/node_modules"
+  NODE_ENV = "production"
+
+# Build settings for Next.js static export
+[context.production]
+  command = "npm run build"
+
+[context.deploy-preview]
+  command = "npm run build"
+
+[context.branch-deploy]
+  command = "npm run build"
+
+# Headers for better security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; script-src 'self' 'unsafe-eval'; img-src 'self' data: https:;"
+
+# Cache static assets
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirect rules for i18n
+[[redirects]]
+  from = "/"
+  to = "/en"
+  status = 302
+  force = false
+  conditions = {Language = ["en"]}
+
+[[redirects]]
+  from = "/"
+  to = "/ka"
+  status = 302
+  force = false
+  conditions = {Language = ["ka"]}
+
+[[redirects]]
+  from = "/"
+  to = "/ru"
+  status = 302
+  force = false
+  conditions = {Language = ["ru"]}
+
+# Fallback for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Build plugins for optimization
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Environment variables (these should be set in Netlify dashboard)
+# NEXT_PUBLIC_SITE_URL = "https://your-site.netlify.app"
