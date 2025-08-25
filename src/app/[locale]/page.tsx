@@ -1,7 +1,8 @@
-'use client';
+'use client'
 
-import {useTranslations} from 'next-intl';
-import styled from 'styled-components';
+import { useTranslations } from 'next-intl'
+import styled from 'styled-components'
+import { Button, Heading1, BodyLarge } from '../../components'
 
 const Container = styled.div`
   min-height: 100vh;
@@ -10,57 +11,48 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 2rem;
-`;
+`
 
-const Title = styled.h1`
-  font-size: 3rem;
-  font-weight: bold;
+const Title = styled(Heading1)`
   margin-bottom: 1rem;
   text-align: center;
-  color: #333;
-`;
+`
 
-const Description = styled.p`
-  font-size: 1.5rem;
+const Description = styled(BodyLarge)`
   text-align: center;
-  color: #666;
+  color: #535862;
   margin-bottom: 2rem;
-`;
+`
 
 const Navigation = styled.nav`
   display: flex;
   gap: 2rem;
   margin-top: 2rem;
-`;
-
-const NavLink = styled.a`
-  padding: 0.75rem 1.5rem;
-  background-color: #0070f3;
-  color: white;
-  text-decoration: none;
-  border-radius: 0.5rem;
-  transition: background-color 0.2s;
-  
-  &:hover {
-    background-color: #0051a2;
-  }
-`;
+`
 
 export default function Home() {
-  const t = useTranslations('HomePage');
-  const navT = useTranslations('Navigation');
-  
+  const t = useTranslations('HomePage')
+  const navT = useTranslations('Navigation')
+
   return (
     <Container>
       <Title>{t('title')}</Title>
       <Description>{t('description')}</Description>
-      
+
       <Navigation>
-        <NavLink href="#">{navT('home')}</NavLink>
-        <NavLink href="#">{navT('about')}</NavLink>
-        <NavLink href="#">{navT('services')}</NavLink>
-        <NavLink href="#">{navT('contact')}</NavLink>
+        <Button variant="primary" size="md">
+          {navT('home')}
+        </Button>
+        <Button variant="secondary" size="md">
+          {navT('about')}
+        </Button>
+        <Button variant="tertiary" size="md">
+          {navT('services')}
+        </Button>
+        <Button variant="disabled" size="md" disabled>
+          {navT('contact')}
+        </Button>
       </Navigation>
     </Container>
-  );
+  )
 }
