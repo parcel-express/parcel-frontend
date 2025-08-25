@@ -4,8 +4,6 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NPM_FLAGS = "--prefix=/opt/buildhome/node_modules"
-  NODE_ENV = "production"
 
 # Build settings for Next.js static export
 [context.production]
@@ -65,11 +63,11 @@
   force = false
   conditions = {Language = ["ru"]}
 
-# Fallback for client-side routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Fallback for Next.js routing (handled by Next.js plugin)
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
 
 # Build plugins for optimization
 [[plugins]]
