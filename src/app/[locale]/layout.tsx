@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
-import {routing} from '../../i18n/routing';
+import {routing, type Locale} from '../../i18n/routing';
 import {notFound} from 'next/navigation';
 import StyledComponentsRegistry from '../components/StyledComponentsRegistry';
 
@@ -35,7 +35,7 @@ export default async function LocaleLayout({
 }>) {
   const {locale} = await params;
   
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
   
