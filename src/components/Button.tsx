@@ -21,7 +21,7 @@ const sizeStyles = {
     padding: 8px 12px;
     font-size: 14px;
     line-height: 20px;
-    border-radius: 8px;
+    border-radius: 14px;
     gap: 4px;
 
     .icon {
@@ -33,7 +33,7 @@ const sizeStyles = {
     padding: 10px 14px;
     font-size: 14px;
     line-height: 20px;
-    border-radius: 8px;
+    border-radius: 14px;
     gap: 4px;
 
     .icon {
@@ -42,10 +42,10 @@ const sizeStyles = {
     }
   `,
   md: css`
-    padding: 10px 16px;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 8px;
+    padding: 17px 43px;
+    font-size: 14px;
+    line-height: 100%;
+    border-radius: 14px;
     gap: 6px;
 
     .icon {
@@ -57,7 +57,7 @@ const sizeStyles = {
     padding: 12px 18px;
     font-size: 16px;
     line-height: 24px;
-    border-radius: 8px;
+    border-radius: 14px;
     gap: 6px;
 
     .icon {
@@ -69,7 +69,7 @@ const sizeStyles = {
     padding: 16px 22px;
     font-size: 18px;
     line-height: 28px;
-    border-radius: 10px;
+    border-radius: 14px;
     gap: 8px;
 
     .icon {
@@ -145,12 +145,8 @@ const variantStyles = {
   `,
   secondary: css`
     background: #ffffff;
-    color: #414651;
+    color: #000000;
     border: 1px solid #d5d7da;
-    box-shadow:
-      0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-      0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-      0px 1px 2px 0px rgba(10, 13, 18, 0.05);
 
     &:hover {
       background: #f9fafb;
@@ -340,7 +336,6 @@ const TextWrapper = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 2px;
   flex-shrink: 0;
 `;
 

@@ -8,6 +8,7 @@ type Props = {
 const StyledContainer = styled.div`
   max-width: 1440px;
   margin: 0 auto;
+  overflow: visible;
   padding: 0 60px;
   @media (max-width: 1080px) {
     max-width: 100%;
