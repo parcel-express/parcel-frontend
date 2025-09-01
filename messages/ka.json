@@ -1,4 +1,8 @@
 {
+  "Header": {
+    "login": "შესვლა",
+    "language": "geo"
+  },
   "Navigation": {
     "home": "მთავარი",
     "order": "შეკვეთის გაგზავნა",
