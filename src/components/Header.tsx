@@ -153,9 +153,11 @@ const MobileMenuFooter = styled.div`
 const Header = () => {
   const t = useTranslations('Navigation');
   const tHeader = useTranslations('Header');
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const desktopDropdownRef = useRef<HTMLDivElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] || 'ka';
@@ -172,8 +174,14 @@ const Header = () => {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setDropdownOpen(false);
+      if (
+        desktopDropdownRef.current &&
+        !desktopDropdownRef.current.contains(event.target as Node)
+      ) {
+        setDesktopDropdownOpen(false);
+      }
+      if (mobileDropdownRef.current && !mobileDropdownRef.current.contains(event.target as Node)) {
+        setMobileDropdownOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -182,7 +190,7 @@ const Header = () => {
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (mobileMenuOpen) {
+    if (mobileDropdownOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -232,16 +240,16 @@ const Header = () => {
                 <Button size='md' type='button' variant='primary'>
                   {tHeader('login')}
                 </Button>
-                <DropdownWrapper ref={dropdownRef}>
+                <DropdownWrapper ref={desktopDropdownRef}>
                   <DropdownButton
                     size='xs'
                     type='button'
                     variant='secondary'
-                    onClick={() => setDropdownOpen(open => !open)}
+                    onClick={() => setDesktopDropdownOpen(open => !open)}
                   >
                     {localeLabels[currentLocale] || 'GEO'}
                   </DropdownButton>
-                  {dropdownOpen && (
+                  {desktopDropdownOpen && (
                     <DropdownMenu>
                       {Object.entries(localeLabels)
                         .filter(([locale]) => locale !== currentLocale)
@@ -249,7 +257,7 @@ const Header = () => {
                           <DropdownItem
                             key={locale}
                             onClick={() => {
-                              setDropdownOpen(false);
+                              setDesktopDropdownOpen(false);
                               handleLanguageChange(locale);
                             }}
                           >
@@ -310,16 +318,16 @@ const Header = () => {
           </Login>
 
           <MobileMenuFooter>
-            <DropdownWrapper ref={dropdownRef}>
+            <DropdownWrapper ref={mobileDropdownRef}>
               <DropdownButton
                 size='xs'
                 type='button'
                 variant='secondary'
-                onClick={() => setDropdownOpen(open => !open)}
+                onClick={() => setMobileDropdownOpen(open => !open)}
               >
                 {localeLabels[currentLocale] || 'GEO'}
               </DropdownButton>
-              {dropdownOpen && (
+              {mobileDropdownOpen && (
                 <MobileDropdownMenu>
                   {Object.entries(localeLabels)
                     .filter(([locale]) => locale !== currentLocale)
@@ -327,7 +335,7 @@ const Header = () => {
                       <DropdownItem
                         key={locale}
                         onClick={() => {
-                          setDropdownOpen(false);
+                          setMobileDropdownOpen(false);
                           handleLanguageChange(locale);
                         }}
                       >
