@@ -1,4 +1,7 @@
 {
+  "Header": {
+    "login": "Login"
+  },
   "Navigation": {
     "home": "Home",
     "order": "Order",
@@ -6,5 +9,17 @@
     "terms": "Terms",
     "price": "Price",
     "contact": "Contact"
+  },
+  "Footer": {
+    "Navigation": {
+      "home": "Home",
+      "order": "Order",
+      "delivery": "Delivery",
+      "terms": "Terms",
+      "price": "Price",
+      "contact": "Contact"
+    },
+    "download": "Get the app",
+    "copyright": "© 2025 Amanati. All rights reserved."
   }
 }
