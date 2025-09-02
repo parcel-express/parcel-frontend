@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Noto_Sans_Georgian } from 'next/font/google';
 import '../globals.css';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
@@ -11,6 +11,12 @@ import StyledComponentsRegistry from '../components/StyledComponentsRegistry';
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
+
+const notoSansGeorgian = Noto_Sans_Georgian({
+  variable: '--font-noto-sans-georgian',
+  subsets: ['georgian'],
   weight: ['400', '500', '600', '700'],
 });
 
@@ -40,7 +46,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={inter.variable}>
+      <body className={`${inter.variable} ${notoSansGeorgian.variable}`}>
         <StyledComponentsRegistry>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
         </StyledComponentsRegistry>

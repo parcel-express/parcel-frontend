@@ -12,13 +12,15 @@ import CalculatorIcon from '@/icons/CalculcatorIcon';
 import CloseIcon from '@/icons/CloseIcon';
 import LogoIcon from '@/icons/LogoIcon';
 
+import { colors } from '../styles/colors';
+
 import Button from './Button';
 import Container from './Container';
 
 const MainHeader = styled.header`
   width: 100%;
-  background-color: #fff;
-  border-bottom: 1px solid var(--Colors-Border-border-primary, #d5d7da);
+  background-color: ${colors.background.white};
+  border-bottom: 1px solid ${colors.border.primary};
 `;
 
 const HeaderContainer = styled.div`
@@ -32,8 +34,18 @@ const HeaderContainer = styled.div`
 const NavList = styled.ul`
   display: flex;
   gap: 34px;
-  :hover {
-    text-shadow: 1px 0 black;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const NavLink = styled(Link)`
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: ${colors.brand.purple};
   }
 `;
 
@@ -54,10 +66,10 @@ const DropdownButton = styled(Button)`
 `;
 
 const DropdownMenu = styled.div`
-  background-color: #fff;
+  background-color: ${colors.background.white};
   position: absolute;
   border-radius: 8px;
-  border: 1px solid #d5d7da;
+  border: 1px solid ${colors.border.primary};
   width: 52px;
   padding: 5px;
   top: 100%;
@@ -65,10 +77,10 @@ const DropdownMenu = styled.div`
 `;
 
 const MobileDropdownMenu = styled.div`
-  background-color: #fff;
+  background-color: ${colors.background.white};
   position: absolute;
   border-radius: 8px;
-  border: 1px solid #d5d7da;
+  border: 1px solid ${colors.border.primary};
   width: 52px;
   padding: 5px;
   bottom: 100%;
@@ -77,13 +89,19 @@ const MobileDropdownMenu = styled.div`
 
 const DropdownItem = styled.button`
   border: none;
-  background-color: #fff;
+  background-color: ${colors.background.white};
   width: 100%;
   height: 41px;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 14px;
+  color: ${colors.text.black};
   &:hover {
-    background-color: #d9d9d9;
+    background-color: ${colors.state.hover.medium};
+  }
+  &:focus {
+    outline: 2px solid ${colors.state.focus.outline};
+    outline-offset: 2px;
   }
 `;
 
@@ -95,6 +113,7 @@ const MobileMenuOverlay = styled.div<{ $isOpen: boolean }>`
   right: 0;
   bottom: 0;
   z-index: 1000;
+  background: ${colors.overlay.dark};
 `;
 
 const MobileMenuContainer = styled.div<{ $isOpen: boolean }>`
@@ -104,7 +123,7 @@ const MobileMenuContainer = styled.div<{ $isOpen: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
-  background: white;
+  background: ${colors.background.white};
   z-index: 1001;
   display: flex;
   flex-direction: column;
@@ -130,15 +149,22 @@ const MobileNavLink = styled(Link)`
   font-size: 14px;
   line-height: 24px;
   padding: 10px 12px;
+  color: ${colors.text.black};
+  text-decoration: none;
+  border-radius: 4px;
   &:hover {
-    background: #f5f5f5;
+    background: ${colors.state.hover.light};
+  }
+  &:focus {
+    outline: 2px solid ${colors.state.focus.outline};
+    outline-offset: 2px;
   }
 `;
 
 const Login = styled.div`
   margin: 0 20.5px;
-  border-top: 1px solid #e9eaeb;
-  border-bottom: 1px solid #e9eaeb;
+  border-top: 1px solid ${colors.border.light};
+  border-bottom: 1px solid ${colors.border.light};
   padding: 12px 0;
 `;
 
@@ -190,7 +216,7 @@ const Header = () => {
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (mobileDropdownOpen) {
+    if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -208,25 +234,25 @@ const Header = () => {
           <HeaderContainer>
             <LogoIcon />
             <DesktopContainer>
-              <NavList>
-                <ul>
-                  <Link href='/'>{t('home')}</Link>
-                </ul>
-                <ul>
-                  <Link href='/order'>{t('order')}</Link>
-                </ul>
-                <ul>
-                  <Link href='/delivery'>{t('delivery')}</Link>
-                </ul>
-                <ul>
-                  <Link href='/terms'>{t('terms')}</Link>
-                </ul>
-                <ul>
-                  <Link href='/price'>{t('price')}</Link>
-                </ul>
-                <ul>
-                  <Link href='/contact'>{t('contact')}</Link>
-                </ul>
+              <NavList role='navigation' aria-label='Main navigation'>
+                <li>
+                  <NavLink href='/'>{t('home')}</NavLink>
+                </li>
+                <li>
+                  <NavLink href='/order'>{t('order')}</NavLink>
+                </li>
+                <li>
+                  <NavLink href='/delivery'>{t('delivery')}</NavLink>
+                </li>
+                <li>
+                  <NavLink href='/terms'>{t('terms')}</NavLink>
+                </li>
+                <li>
+                  <NavLink href='/price'>{t('price')}</NavLink>
+                </li>
+                <li>
+                  <NavLink href='/contact'>{t('contact')}</NavLink>
+                </li>
               </NavList>
             </DesktopContainer>
             <DesktopContainer>
