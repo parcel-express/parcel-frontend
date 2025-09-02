@@ -1,9 +1,15 @@
 'use client';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import styled from 'styled-components';
+
+import AppStoreIcon from '@/icons/AppStoreIcon';
+import FbIcon from '@/icons/FbIcon';
+import LinkedinIcon from '@/icons/LinkedinIcon';
+import LogoTranspIcon from '@/icons/LogoTranspIcon';
+import PlayStoreIcon from '@/icons/PlayStoreIcon';
+import XIcon from '@/icons/XIcon';
 
 import Container from './Container';
 import { DesktopContainer } from './Responsive';
@@ -28,11 +34,6 @@ const FooterTopContainer = styled.footer`
   }
 `;
 
-const LogoImage = styled.img`
-  width: 84px;
-  height: 50px;
-`;
-
 const NavigationWrapper = styled.nav`
   display: flex;
   gap: 32px;
@@ -41,11 +42,18 @@ const NavigationWrapper = styled.nav`
   font-weight: 600;
   line-height: 24px;
   align-items: center;
+  cursor: pointer;
   @media (max-width: 1080px) {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
     margin-bottom: 44px;
+  }
+`;
+
+const NavigationWrapperLink = styled(Link)`
+  &:hover {
+    color: #fff;
   }
 `;
 
@@ -63,6 +71,8 @@ const DownloadLinks = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  align-items: flex-end;
+  cursor: pointer;
 `;
 
 const FooterBottomContainer = styled.footer`
@@ -81,6 +91,7 @@ const FooterBottomContainer = styled.footer`
 const SocialsWrapper = styled.div`
   display: flex;
   gap: 16px;
+  cursor: pointer;
 `;
 
 const Footer = () => {
@@ -91,29 +102,39 @@ const Footer = () => {
       <Container>
         <FooterTopContainer>
           <LogoLinks>
-            <LogoImage src='/images/footer/logoTransp.png' alt='logo' width={84} height={50} />
+            <LogoTranspIcon />
             <NavigationWrapper>
-              <Link href='/home'>{t('home')}</Link>
-              <Link href='/order'>{t('order')}</Link>
-              <Link href='/delivery'>{t('delivery')}</Link>
-              <Link href='/terms'>{t('terms')}</Link>
-              <Link href='/price'>{t('price')}</Link>
-              <Link href='/contact'>{t('contact')}</Link>
+              <NavigationWrapperLink href='/'>{t('home')}</NavigationWrapperLink>
+              <NavigationWrapperLink href='/order'>{t('order')}</NavigationWrapperLink>
+              <NavigationWrapperLink href='/delivery'>{t('delivery')}</NavigationWrapperLink>
+              <NavigationWrapperLink href='/terms'>{t('terms')}</NavigationWrapperLink>
+              <NavigationWrapperLink href='/price'>{t('price')}</NavigationWrapperLink>
+              <NavigationWrapperLink href='/contact'>{t('contact')}</NavigationWrapperLink>
             </NavigationWrapper>
           </LogoLinks>
           <DownloadLinks>
             <p>{tFooter('download')}</p>
-            <Image src='/images/footer/appstore.png' alt='appstore' width={134} height={40} />
-            <Image src='/images/footer/playstore.png' alt='playstore' width={134} height={40} />
+            <Link href='https://www.apple.com/app-store/'>
+              <AppStoreIcon />
+            </Link>
+            <Link href='https://play.google.com/store'>
+              <PlayStoreIcon />
+            </Link>
           </DownloadLinks>
         </FooterTopContainer>
         <FooterBottomContainer>
           <p>{tFooter('copyright')}</p>
           <DesktopContainer>
             <SocialsWrapper>
-              <Image src='/images/footer/x.png' alt='x' width={24} height={24} />
-              <Image src='/images/footer/linkedin.png' alt='linkedin' width={24} height={24} />
-              <Image src='/images/footer/fb.png' alt='facebook' width={24} height={24} />
+              <Link href='https://x.com/'>
+                <XIcon />
+              </Link>
+              <Link href='https://www.linkedin.com/'>
+                <LinkedinIcon />
+              </Link>
+              <Link href='https://www.facebook.com/'>
+                <FbIcon />
+              </Link>
             </SocialsWrapper>
           </DesktopContainer>
         </FooterBottomContainer>

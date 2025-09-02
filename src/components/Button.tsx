@@ -1,7 +1,13 @@
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
-export type ButtonVariant = 'default' | 'primary' | 'secondary' | 'tertiary' | 'disabled';
+export type ButtonVariant =
+  | 'transparent'
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'disabled';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 interface ButtonProps {
@@ -18,7 +24,7 @@ interface ButtonProps {
 
 const sizeStyles = {
   xs: css`
-    padding: 8px 12px;
+    padding: 13px;
     font-size: 14px;
     line-height: 20px;
     border-radius: 14px;
@@ -55,11 +61,11 @@ const sizeStyles = {
   `,
   lg: css`
     padding: 12px 18px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
-    border-radius: 14px;
+    border-radius: 8px;
     gap: 6px;
-
+    width: 100%;
     .icon {
       width: 20px;
       height: 20px;
@@ -80,6 +86,11 @@ const sizeStyles = {
 };
 
 const variantStyles = {
+  transparent: css`
+    background: transparent;
+    border: none;
+    padding: 0;
+  `,
   default: css`
     background: transparent;
     color: #ffffff;
@@ -91,7 +102,6 @@ const variantStyles = {
 
     &:hover {
       background: rgba(255, 255, 255, 0.05);
-      transform: translateY(-1px);
       box-shadow:
         0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
         0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
@@ -100,7 +110,6 @@ const variantStyles = {
 
     &:active {
       background: rgba(255, 255, 255, 0.12);
-      transform: translateY(0px) scale(0.98);
       box-shadow:
         0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
         0px -1px 0px 0px inset rgba(10, 13, 18, 0.05),
@@ -123,7 +132,6 @@ const variantStyles = {
       background:
         linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%),
         linear-gradient(104.863deg, rgb(102, 45, 145) 21.817%, rgb(48, 46, 156) 110.55%);
-      transform: translateY(-2px);
       box-shadow:
         0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
         0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
@@ -135,7 +143,6 @@ const variantStyles = {
       background:
         linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%),
         linear-gradient(104.863deg, rgb(102, 45, 145) 21.817%, rgb(48, 46, 156) 110.55%);
-      transform: translateY(0px) scale(0.96);
       box-shadow:
         0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
         0px -1px 0px 0px inset rgba(10, 13, 18, 0.05),
@@ -150,7 +157,6 @@ const variantStyles = {
 
     &:hover {
       background: #f9fafb;
-      transform: translateY(-1px);
       box-shadow:
         0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
         0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
@@ -160,7 +166,6 @@ const variantStyles = {
 
     &:active {
       background: #f3f4f6;
-      transform: translateY(0px) scale(0.98);
       box-shadow:
         0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
         0px -1px 0px 0px inset rgba(10, 13, 18, 0.05),
@@ -180,7 +185,6 @@ const variantStyles = {
 
     &:hover {
       background: #f3f4f6;
-      transform: translateY(-1px);
       box-shadow:
         0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
         0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
@@ -190,7 +194,6 @@ const variantStyles = {
 
     &:active {
       background: #e5e7eb;
-      transform: translateY(0px) scale(0.98);
       box-shadow:
         0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
         0px -1px 0px 0px inset rgba(10, 13, 18, 0.05),
@@ -228,14 +231,6 @@ const focusedStyles = css`
     0px 1px 2px 0px rgba(10, 13, 18, 0.05),
     0px 0px 0px 2px #ffffff,
     0px 0px 0px 4px #9e77ed;
-
-  &:hover {
-    transform: translateY(-2px) !important;
-  }
-
-  &:active {
-    transform: translateY(0px) scale(0.97) !important;
-  }
 `;
 
 const pulseAnimation = css`
