@@ -1,8 +1,4 @@
 {
-  "Header": {
-    "login": "Login",
-    "language": "eng"
-  },
   "Navigation": {
     "home": "Home",
     "order": "Order",
