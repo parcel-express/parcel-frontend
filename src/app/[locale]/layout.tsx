@@ -44,9 +44,14 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
+  const fontFamily =
+    locale === 'ka'
+      ? 'var(--font-noto-sans-georgian), sans-serif'
+      : 'var(--font-inter), sans-serif';
+
   return (
     <html lang={locale}>
-      <body className={`${inter.variable} ${notoSansGeorgian.variable}`}>
+      <body className={`${inter.variable} ${notoSansGeorgian.variable}`} style={{ fontFamily }}>
         <StyledComponentsRegistry>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
         </StyledComponentsRegistry>

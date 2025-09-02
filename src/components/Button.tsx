@@ -1,4 +1,3 @@
-import { useLocale } from 'next-intl';
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
@@ -318,15 +317,10 @@ const StyledButton = styled.button<{
   $variant: ButtonVariant;
   $size: ButtonSize;
   $focused: boolean;
-  $locale: string;
 }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: ${({ $locale }) =>
-    $locale === 'ka'
-      ? 'var(--font-noto-sans-georgian), sans-serif'
-      : 'var(--font-inter), sans-serif'};
   font-weight: 600;
   font-style: normal;
   border: none;
@@ -377,7 +371,6 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   ...props
 }) => {
-  const locale = useLocale();
   const effectiveVariant = disabled ? 'disabled' : variant;
 
   return (
@@ -386,7 +379,6 @@ export const Button: React.FC<ButtonProps> = ({
       $variant={effectiveVariant}
       $size={size}
       $focused={focused && !disabled}
-      $locale={locale}
       disabled={disabled}
       onClick={onClick}
       {...props}
