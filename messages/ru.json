@@ -1,12 +1,14 @@
 {
-  "HomePage": {
-    "title": "Добро пожаловать в Parcel Express",
-    "description": "Ваш надежный сервис доставки посылок"
+  "Header": {
+    "login": "Войти",
+    "language": "ру"
   },
   "Navigation": {
     "home": "Главная",
-    "about": "О нас",
-    "services": "Услуги",
+    "order": "Заказ",
+    "delivery": "Доставка",
+    "terms": "Условия",
+    "price": "Цены",
     "contact": "Контакты"
   }
 }
