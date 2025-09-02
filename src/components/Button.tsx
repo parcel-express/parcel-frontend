@@ -267,21 +267,21 @@ const pulseAnimation = css`
         0px 0px 0px 1px inset ${colors.shadow.inset},
         0px -2px 0px 0px inset ${colors.shadow.light},
         0px 1px 2px 0px ${colors.shadow.light},
-        0px 0px 0px 0px rgba(158, 119, 237, 0);
+        0px 0px 0px 0px ${colors.shadow.ringTransparent};
     }
     50% {
       box-shadow:
         0px 0px 0px 1px inset ${colors.shadow.inset},
         0px -2px 0px 0px inset ${colors.shadow.light},
         0px 1px 2px 0px ${colors.shadow.light},
-        0px 0px 0px 4px rgba(158, 119, 237, 0.2);
+        0px 0px 0px 4px ${colors.shadow.ringLight};
     }
     100% {
       box-shadow:
         0px 0px 0px 1px inset ${colors.shadow.inset},
         0px -2px 0px 0px inset ${colors.shadow.light},
         0px 1px 2px 0px ${colors.shadow.light},
-        0px 0px 0px 0px rgba(158, 119, 237, 0);
+        0px 0px 0px 0px ${colors.shadow.ringTransparent};
     }
   }
 `;

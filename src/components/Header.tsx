@@ -45,7 +45,7 @@ const NavLink = styled(Link)`
   color: inherit;
 
   &:hover {
-    color: ${colors.brand.purple};
+    color: ${colors.brand.primary};
   }
 `;
 

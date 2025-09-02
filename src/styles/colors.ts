@@ -3,8 +3,6 @@ export const colors = {
   brand: {
     primary: '#662d91',
     secondary: '#302e9c',
-    purple: '#662D90',
-    blue: '#302e9c',
     gradientStart: '#662d91',
     gradientEnd: '#302e9c',
   },
@@ -61,6 +59,8 @@ export const colors = {
     darker: 'rgba(10, 13, 18, 0.12)',
     inset: 'rgba(10, 13, 18, 0.18)',
     ring: 'rgba(158, 119, 237, 0.4)',
+    ringTransparent: 'rgba(158, 119, 237, 0)',
+    ringLight: 'rgba(158, 119, 237, 0.2)',
   },
 
   // Overlay colors
