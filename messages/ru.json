@@ -1,7 +1,6 @@
 {
   "Header": {
-    "login": "Войти",
-    "language": "ру"
+    "login": "Войти"
   },
   "Navigation": {
     "home": "Главная",
@@ -10,5 +9,15 @@
     "terms": "Условия",
     "price": "Цены",
     "contact": "Контакты"
+  },
+  "Footer": {
+    "home": "Главная",
+    "order": "Заказ",
+    "delivery": "Доставка",
+    "terms": "Условия",
+    "price": "Цены",
+    "contact": "Контакты",
+    "download": "Скачать приложение",
+    "copyright": "© 2025 Amanati. Все права защищены."
   }
 }
