@@ -34,7 +34,7 @@ const HeaderContainer = styled.div`
 
 const NavList = styled.ul`
   display: flex;
-  gap: 34px;
+  gap: 20px;
   list-style: none;
   margin: 0;
   padding: 0;
