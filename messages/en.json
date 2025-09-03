@@ -22,5 +22,40 @@
     },
     "download": "Get the app",
     "copyright": "© 2025 Amanati. All rights reserved."
+  },
+  "Services": {
+    "title": "Our Offers",
+    "card1": {
+      "title": "Cost Reduction",
+      "description": "Reducing transportation costs for your business"
+    },
+    "card2": {
+      "title": "Flexible Delivery",
+      "description": "Delivering shipments to all cities and regions of Georgia"
+    },
+    "card3": {
+      "title": "Time Saved",
+      "description": "Time saved on delivery for your business"
+    },
+    "card4": {
+      "title": "Loyal Partners",
+      "description": "Increased customer trust in your business"
+    },
+    "card5": {
+      "title": "Experience",
+      "description": "Professional and responsible couriers"
+    },
+    "card6": {
+      "title": "Experience",
+      "description": "Fast and easy order placement"
+    },
+    "card7": {
+      "title": "Full Scale",
+      "description": "We offer unique opportunities to enhance business efficiency."
+    },
+    "card8": {
+      "title": "Cargo Insurance",
+      "description": "Reliable packaging and safe delivery of shipments"
+    }
   }
 }
