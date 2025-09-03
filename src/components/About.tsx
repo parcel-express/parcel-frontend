@@ -13,11 +13,11 @@ import Typography from './Typography';
 const MainContainer = styled.div`
   padding: 60px 15px 60px 0;
   display: grid;
-  grid-template-columns: 651px 1fr;
+  gap: 20px;
+  grid-template-columns: minmax(570px, 651px) 1fr;
   @media screen and (max-width: 1080px) {
     padding: 40px 0;
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 `;
 
@@ -33,15 +33,12 @@ const Bio = styled.div`
 const ImageContainer = styled.div`
   display: flex;
   justify-content: right;
-  @media screen and (max-width: 1080px) {
-    width: 100%;
-  }
 `;
 
 const MobileImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 310px;
+  height: calc(310.8 / 336 * (100vw - 40px));
 `;
 
 const About = () => {
@@ -64,8 +61,9 @@ const About = () => {
             {t('description')}
           </Typography>
         </Bio>
-        <ImageContainer>
-          <DesktopContainer>
+
+        <DesktopContainer>
+          <ImageContainer>
             <Image
               src='/images/about/aboutLogo.png'
               alt='About Logo'
@@ -73,13 +71,13 @@ const About = () => {
               height={407}
               objectFit='contain'
             />
-          </DesktopContainer>
-          <MobileContainer>
-            <MobileImageWrapper>
-              <Image src='/images/about/aboutLogo.png' alt='About Logo' fill objectFit='cover' />
-            </MobileImageWrapper>
-          </MobileContainer>
-        </ImageContainer>
+          </ImageContainer>
+        </DesktopContainer>
+        <MobileContainer>
+          <MobileImageWrapper>
+            <Image src='/images/about/aboutLogo.png' alt='About Logo' fill objectFit='contain' />
+          </MobileImageWrapper>
+        </MobileContainer>
       </MainContainer>
     </Container>
   );

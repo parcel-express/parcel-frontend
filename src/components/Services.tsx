@@ -46,6 +46,8 @@ const GridItem = styled.div`
   cursor: pointer;
   @media screen and (max-width: 1080px) {
     padding: 16px;
+    display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
     width: 100%;
