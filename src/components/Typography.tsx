@@ -49,7 +49,7 @@ const variantStyles = {
     letter-spacing: -0.72px;
   `,
   'display-sm': css`
-    font-size: 30px;
+    font-size: 28px;
     line-height: 38px;
   `,
   'display-xs': css`

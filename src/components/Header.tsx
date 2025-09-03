@@ -16,6 +16,7 @@ import { colors } from '../styles/colors';
 
 import Button from './Button';
 import Container from './Container';
+import Typography from './Typography';
 
 const MainHeader = styled.header`
   width: 100%;
@@ -43,7 +44,6 @@ const NavLink = styled(Link)`
   display: inline-block;
   text-decoration: none;
   color: inherit;
-
   &:hover {
     color: ${colors.brand.primary};
   }
@@ -94,8 +94,6 @@ const DropdownItem = styled.button`
   height: 41px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
-  color: ${colors.text.black};
   &:hover {
     background-color: ${colors.state.hover.medium};
   }
@@ -146,10 +144,7 @@ const MobileNavList = styled.ul`
 
 const MobileNavLink = styled(Link)`
   display: block;
-  font-size: 14px;
-  line-height: 24px;
   padding: 10px 12px;
-  color: ${colors.text.black};
   text-decoration: none;
   border-radius: 4px;
   &:hover {
@@ -236,31 +231,43 @@ const Header = () => {
             <DesktopContainer>
               <NavList role='navigation' aria-label='Main navigation'>
                 <li>
-                  <NavLink href='/'>{t('home')}</NavLink>
+                  <Typography variant='text-sm' color={colors.text.black}>
+                    <NavLink href='/'>{t('home')}</NavLink>
+                  </Typography>
                 </li>
                 <li>
-                  <NavLink href='/order'>{t('order')}</NavLink>
+                  <Typography variant='text-sm' color={colors.text.black}>
+                    <NavLink href='/order'>{t('order')}</NavLink>
+                  </Typography>
                 </li>
                 <li>
-                  <NavLink href='/delivery'>{t('delivery')}</NavLink>
+                  <Typography variant='text-sm' color={colors.text.black}>
+                    <NavLink href='/delivery'>{t('delivery')}</NavLink>
+                  </Typography>
                 </li>
                 <li>
-                  <NavLink href='/terms'>{t('terms')}</NavLink>
+                  <Typography variant='text-sm' color={colors.text.black}>
+                    <NavLink href='/terms'>{t('terms')}</NavLink>
+                  </Typography>
                 </li>
                 <li>
-                  <NavLink href='/price'>{t('price')}</NavLink>
+                  <Typography variant='text-sm' color={colors.text.black}>
+                    <NavLink href='/price'>{t('price')}</NavLink>
+                  </Typography>
                 </li>
                 <li>
-                  <NavLink href='/contact'>{t('contact')}</NavLink>
+                  <Typography variant='text-sm' color={colors.text.black}>
+                    <NavLink href='/contact'>{t('contact')}</NavLink>
+                  </Typography>
                 </li>
               </NavList>
             </DesktopContainer>
             <DesktopContainer>
               <Buttons>
-                <Button size='xs' type='button' variant='secondary'>
+                <Button size='xs' type='button' variant='secondary' aria-label='Open calculator'>
                   <CalculatorIcon />
                 </Button>
-                <Button size='xs' type='button' variant='secondary'>
+                <Button size='xs' type='button' variant='secondary' aria-label='View notifications'>
                   <BellIcon />
                 </Button>
                 <Button size='md' type='button' variant='primary'>
@@ -273,7 +280,9 @@ const Header = () => {
                     variant='secondary'
                     onClick={() => setDesktopDropdownOpen(open => !open)}
                   >
-                    {localeLabels[currentLocale] || 'GEO'}
+                    <Typography variant='text-sm' color={colors.text.black} weight='bold'>
+                      {localeLabels[currentLocale] || 'GEO'}
+                    </Typography>
                   </DropdownButton>
                   {desktopDropdownOpen && (
                     <DropdownMenu>
@@ -314,27 +323,41 @@ const Header = () => {
             </Button>
           </MobileMenuHeader>
           <MobileNavList>
-            <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
-              {t('home')}
-            </MobileNavLink>
-            <MobileNavLink href='/order' onClick={() => setMobileMenuOpen(false)}>
-              {t('order')}
-            </MobileNavLink>
-            <MobileNavLink href='/delivery' onClick={() => setMobileMenuOpen(false)}>
-              {t('delivery')}
-            </MobileNavLink>
-            <MobileNavLink href='/terms' onClick={() => setMobileMenuOpen(false)}>
-              {t('terms')}
-            </MobileNavLink>
-            <MobileNavLink href='/price' onClick={() => setMobileMenuOpen(false)}>
-              {t('price')}
-            </MobileNavLink>
-            <MobileNavLink href='/contact' onClick={() => setMobileMenuOpen(false)}>
-              {t('contact')}
-            </MobileNavLink>
-            <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
-              {t('logout')}
-            </MobileNavLink>
+            <Typography variant='text-sm' color={colors.text.black}>
+              <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
+                {t('home')}
+              </MobileNavLink>
+            </Typography>
+            <Typography variant='text-sm' color={colors.text.black}>
+              <MobileNavLink href='/order' onClick={() => setMobileMenuOpen(false)}>
+                {t('order')}
+              </MobileNavLink>
+            </Typography>
+            <Typography variant='text-sm' color={colors.text.black}>
+              <MobileNavLink href='/delivery' onClick={() => setMobileMenuOpen(false)}>
+                {t('delivery')}
+              </MobileNavLink>
+            </Typography>
+            <Typography variant='text-sm' color={colors.text.black}>
+              <MobileNavLink href='/terms' onClick={() => setMobileMenuOpen(false)}>
+                {t('terms')}
+              </MobileNavLink>
+            </Typography>
+            <Typography variant='text-sm' color={colors.text.black}>
+              <MobileNavLink href='/price' onClick={() => setMobileMenuOpen(false)}>
+                {t('price')}
+              </MobileNavLink>
+            </Typography>
+            <Typography variant='text-sm' color={colors.text.black}>
+              <MobileNavLink href='/contact' onClick={() => setMobileMenuOpen(false)}>
+                {t('contact')}
+              </MobileNavLink>
+            </Typography>
+            <Typography variant='text-sm' color={colors.text.black}>
+              <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
+                {t('logout')}
+              </MobileNavLink>
+            </Typography>
           </MobileNavList>
 
           <Login>
