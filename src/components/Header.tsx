@@ -172,8 +172,8 @@ const MobileMenuFooter = styled.div`
 `;
 
 const Header = () => {
-  const t = useTranslations('Navigation');
   const tHeader = useTranslations('Header');
+  const tNavigation = useTranslations('Navigation');
   const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -232,32 +232,32 @@ const Header = () => {
               <NavList role='navigation' aria-label='Main navigation'>
                 <li>
                   <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/'>{t('home')}</NavLink>
+                    <NavLink href='/'>{tNavigation('home')}</NavLink>
                   </Typography>
                 </li>
                 <li>
                   <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/order'>{t('order')}</NavLink>
+                    <NavLink href='/order'>{tNavigation('order')}</NavLink>
                   </Typography>
                 </li>
                 <li>
                   <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/delivery'>{t('delivery')}</NavLink>
+                    <NavLink href='/delivery'>{tNavigation('delivery')}</NavLink>
                   </Typography>
                 </li>
                 <li>
                   <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/terms'>{t('terms')}</NavLink>
+                    <NavLink href='/terms'>{tNavigation('terms')}</NavLink>
                   </Typography>
                 </li>
                 <li>
                   <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/price'>{t('price')}</NavLink>
+                    <NavLink href='/price'>{tNavigation('price')}</NavLink>
                   </Typography>
                 </li>
                 <li>
                   <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/contact'>{t('contact')}</NavLink>
+                    <NavLink href='/contact'>{tNavigation('contact')}</NavLink>
                   </Typography>
                 </li>
               </NavList>
@@ -325,37 +325,37 @@ const Header = () => {
           <MobileNavList>
             <Typography variant='text-sm' color={colors.text.black}>
               <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
-                {t('home')}
+                {tNavigation('home')}
               </MobileNavLink>
             </Typography>
             <Typography variant='text-sm' color={colors.text.black}>
               <MobileNavLink href='/order' onClick={() => setMobileMenuOpen(false)}>
-                {t('order')}
+                {tNavigation('order')}
               </MobileNavLink>
             </Typography>
             <Typography variant='text-sm' color={colors.text.black}>
               <MobileNavLink href='/delivery' onClick={() => setMobileMenuOpen(false)}>
-                {t('delivery')}
+                {tNavigation('delivery')}
               </MobileNavLink>
             </Typography>
             <Typography variant='text-sm' color={colors.text.black}>
               <MobileNavLink href='/terms' onClick={() => setMobileMenuOpen(false)}>
-                {t('terms')}
+                {tNavigation('terms')}
               </MobileNavLink>
             </Typography>
             <Typography variant='text-sm' color={colors.text.black}>
               <MobileNavLink href='/price' onClick={() => setMobileMenuOpen(false)}>
-                {t('price')}
+                {tNavigation('price')}
               </MobileNavLink>
             </Typography>
             <Typography variant='text-sm' color={colors.text.black}>
               <MobileNavLink href='/contact' onClick={() => setMobileMenuOpen(false)}>
-                {t('contact')}
+                {tNavigation('contact')}
               </MobileNavLink>
             </Typography>
             <Typography variant='text-sm' color={colors.text.black}>
               <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
-                {t('logout')}
+                {tNavigation('logout')}
               </MobileNavLink>
             </Typography>
           </MobileNavList>

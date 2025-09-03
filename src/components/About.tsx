@@ -69,13 +69,18 @@ const About = () => {
               alt='About Logo'
               width={440}
               height={407}
-              objectFit='contain'
+              style={{ objectFit: 'contain' }}
             />
           </ImageContainer>
         </DesktopContainer>
         <MobileContainer>
           <MobileImageWrapper>
-            <Image src='/images/about/aboutLogo.png' alt='About Logo' fill objectFit='contain' />
+            <Image
+              src='/images/about/aboutLogo.png'
+              alt='About Logo'
+              fill
+              style={{ objectFit: 'contain' }}
+            />
           </MobileImageWrapper>
         </MobileContainer>
       </MainContainer>

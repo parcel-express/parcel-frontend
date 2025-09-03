@@ -90,7 +90,7 @@ const Services = () => {
                   alt='card1'
                   width={110}
                   height={110}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-sm' color={colors.text.secondary} weight='bold'>
@@ -107,7 +107,7 @@ const Services = () => {
                   alt='card1'
                   width={43}
                   height={43}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-xs' color={colors.text.secondary} weight='bold'>
@@ -126,7 +126,7 @@ const Services = () => {
                   alt='card2'
                   width={110}
                   height={110}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-sm' color={colors.text.secondary} weight='bold'>
@@ -143,7 +143,7 @@ const Services = () => {
                   alt='card2'
                   width={43}
                   height={43}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-xs' color={colors.text.secondary} weight='bold'>
@@ -162,7 +162,7 @@ const Services = () => {
                   alt='card3'
                   width={110}
                   height={110}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-sm' color={colors.text.secondary} weight='bold'>
@@ -179,7 +179,7 @@ const Services = () => {
                   alt='card3'
                   width={43}
                   height={43}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-xs' color={colors.text.secondary} weight='bold'>
@@ -198,7 +198,7 @@ const Services = () => {
                   alt='card4'
                   width={110}
                   height={110}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-sm' color={colors.text.secondary} weight='bold'>
@@ -215,7 +215,7 @@ const Services = () => {
                   alt='card4'
                   width={43}
                   height={43}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-xs' color={colors.text.secondary} weight='bold'>
@@ -234,7 +234,7 @@ const Services = () => {
                   alt='card5'
                   width={110}
                   height={110}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-sm' color={colors.text.secondary} weight='bold'>
@@ -251,7 +251,7 @@ const Services = () => {
                   alt='card5'
                   width={43}
                   height={43}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-xs' color={colors.text.secondary} weight='bold'>
@@ -270,7 +270,7 @@ const Services = () => {
                   alt='card6'
                   width={110}
                   height={110}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-sm' color={colors.text.secondary} weight='bold'>
@@ -287,7 +287,7 @@ const Services = () => {
                   alt='card6'
                   width={43}
                   height={43}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-xs' color={colors.text.secondary} weight='bold'>
@@ -306,7 +306,7 @@ const Services = () => {
                   alt='card7'
                   width={110}
                   height={110}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-sm' color={colors.text.secondary} weight='bold'>
@@ -323,7 +323,7 @@ const Services = () => {
                   alt='card7'
                   width={43}
                   height={43}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-xs' color={colors.text.secondary} weight='bold'>
@@ -342,7 +342,7 @@ const Services = () => {
                   alt='card8'
                   width={110}
                   height={110}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-sm' color={colors.text.secondary} weight='bold'>
@@ -359,7 +359,7 @@ const Services = () => {
                   alt='card8'
                   width={43}
                   height={43}
-                  objectFit='contain'
+                  style={{ objectFit: 'contain' }}
                 />
                 <CardBio>
                   <Typography variant='text-xs' color={colors.text.secondary} weight='bold'>
