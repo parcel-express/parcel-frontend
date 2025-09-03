@@ -19,10 +19,10 @@ const ServicesContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 44px;
-  padding: 50px 0 78px 0;
+  padding: 60px 0;
   @media screen and (max-width: 1080px) {
     gap: 24px;
-    padding: 31px 0 50px 0;
+    padding: 30px 0;
   }
 `;
 
@@ -37,13 +37,16 @@ const Grid = styled.div`
 `;
 
 const GridItem = styled.div`
-  padding: 26px 20px;
+  padding: 20px;
   background: ${colors.background.white};
   border: 1px solid ${colors.border.primary};
   border-radius: 12px;
   cursor: pointer;
   &:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  @media screen and (max-width: 1080px) {
+    padding: 16px;
   }
 `;
 const Services = () => {
