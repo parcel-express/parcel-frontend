@@ -15,6 +15,7 @@ import { colors } from '../styles/colors';
 
 import Container from './Container';
 import { DesktopContainer } from './Responsive';
+import Typography from './Typography';
 
 const MainFooter = styled.footer`
   background: linear-gradient(
@@ -43,10 +44,6 @@ const FooterTopContainer = styled.footer`
 const NavigationWrapper = styled.nav`
   display: flex;
   gap: 32px;
-  color: ${colors.text.light};
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
   align-items: center;
   cursor: pointer;
   @media (max-width: 1080px) {
@@ -73,9 +70,6 @@ const LogoLinks = styled.div`
 `;
 
 const DownloadLinks = styled.div`
-  color: ${colors.text.white};
-  font-size: 16px;
-  font-weight: 500;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -87,9 +81,6 @@ const FooterBottomContainer = styled.footer`
   display: flex;
   justify-content: space-between;
   padding: 32px 32px 0 32px;
-  color: #d6bbfb;
-  font-size: 16px;
-  line-height: 24px;
   border-top: 1px solid ${colors.border.brand};
   @media (max-width: 1080px) {
     padding: 23px 0 0 0;
@@ -112,35 +103,51 @@ const Footer = () => {
           <LogoLinks>
             <LogoTranspIcon />
             <NavigationWrapper>
-              <NavigationWrapperLink href='/'>{t('home')}</NavigationWrapperLink>
-              <NavigationWrapperLink href='/order'>{t('order')}</NavigationWrapperLink>
-              <NavigationWrapperLink href='/delivery'>{t('delivery')}</NavigationWrapperLink>
-              <NavigationWrapperLink href='/terms'>{t('terms')}</NavigationWrapperLink>
-              <NavigationWrapperLink href='/price'>{t('price')}</NavigationWrapperLink>
-              <NavigationWrapperLink href='/contact'>{t('contact')}</NavigationWrapperLink>
+              <Typography variant='text-md' color={colors.text.light} weight='semibold'>
+                <NavigationWrapperLink href='/'>{t('home')}</NavigationWrapperLink>
+              </Typography>
+              <Typography variant='text-md' color={colors.text.light} weight='semibold'>
+                <NavigationWrapperLink href='/order'>{t('order')}</NavigationWrapperLink>
+              </Typography>
+              <Typography variant='text-md' color={colors.text.light} weight='semibold'>
+                <NavigationWrapperLink href='/delivery'>{t('delivery')}</NavigationWrapperLink>
+              </Typography>
+              <Typography variant='text-md' color={colors.text.light} weight='semibold'>
+                <NavigationWrapperLink href='/terms'>{t('terms')}</NavigationWrapperLink>
+              </Typography>
+              <Typography variant='text-md' color={colors.text.light} weight='semibold'>
+                <NavigationWrapperLink href='/price'>{t('price')}</NavigationWrapperLink>
+              </Typography>
+              <Typography variant='text-md' color={colors.text.light} weight='semibold'>
+                <NavigationWrapperLink href='/contact'>{t('contact')}</NavigationWrapperLink>
+              </Typography>
             </NavigationWrapper>
           </LogoLinks>
           <DownloadLinks>
-            <p>{tFooter('download')}</p>
-            <Link href='https://www.apple.com/app-store/'>
+            <Typography variant='text-md' color={colors.text.white} weight='medium'>
+              {tFooter('download')}
+            </Typography>
+            <Link href='https://www.apple.com/app-store/' aria-label='Download on the App Store'>
               <AppStoreIcon />
             </Link>
-            <Link href='https://play.google.com/store'>
+            <Link href='https://play.google.com/store' aria-label='Download on the Play Store'>
               <PlayStoreIcon />
             </Link>
           </DownloadLinks>
         </FooterTopContainer>
         <FooterBottomContainer>
-          <p>{tFooter('copyright')}</p>
+          <Typography variant='text-md' color={colors.text.light} weight='regular'>
+            {tFooter('copyright')}
+          </Typography>
           <DesktopContainer>
             <SocialsWrapper>
-              <Link href='https://x.com/'>
+              <Link href='https://x.com/' aria-label='Visit our Twitter profile'>
                 <XIcon />
               </Link>
-              <Link href='https://www.linkedin.com/'>
+              <Link href='https://www.linkedin.com/' aria-label='Visit our LinkedIn profile'>
                 <LinkedinIcon />
               </Link>
-              <Link href='https://www.facebook.com/'>
+              <Link href='https://www.facebook.com/' aria-label='Visit our Facebook profile'>
                 <FbIcon />
               </Link>
             </SocialsWrapper>
