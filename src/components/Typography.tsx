@@ -98,7 +98,6 @@ const StyledText = styled.div<{
   $weight: TypographyWeight;
   $color?: string;
 }>`
-  font-family: 'Inter', sans-serif;
   color: ${props => props.$color || '#181d27'};
   margin: 0;
 

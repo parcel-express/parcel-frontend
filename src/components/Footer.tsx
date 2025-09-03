@@ -11,11 +11,17 @@ import LogoTranspIcon from '@/icons/LogoTranspIcon';
 import PlayStoreIcon from '@/icons/PlayStoreIcon';
 import XIcon from '@/icons/XIcon';
 
+import { colors } from '../styles/colors';
+
 import Container from './Container';
 import { DesktopContainer } from './Responsive';
 
 const MainFooter = styled.footer`
-  background: linear-gradient(93.55deg, #662d91 21.82%, #302e9c 110.55%);
+  background: linear-gradient(
+    93.55deg,
+    ${colors.brand.gradientStart} 21.82%,
+    ${colors.brand.gradientEnd} 110.55%
+  );
   padding: 64px 0 48px 0;
   @media (max-width: 1080px) {
     padding: 42px 0 32px 0;
@@ -37,7 +43,7 @@ const FooterTopContainer = styled.footer`
 const NavigationWrapper = styled.nav`
   display: flex;
   gap: 32px;
-  color: #e9d7fe;
+  color: ${colors.text.light};
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
@@ -52,8 +58,10 @@ const NavigationWrapper = styled.nav`
 `;
 
 const NavigationWrapperLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
   &:hover {
-    color: #fff;
+    color: ${colors.text.white};
   }
 `;
 
@@ -65,7 +73,7 @@ const LogoLinks = styled.div`
 `;
 
 const DownloadLinks = styled.div`
-  color: #fff;
+  color: ${colors.text.white};
   font-size: 16px;
   font-weight: 500;
   display: flex;
@@ -82,7 +90,7 @@ const FooterBottomContainer = styled.footer`
   color: #d6bbfb;
   font-size: 16px;
   line-height: 24px;
-  border-top: 1px solid var(--Colors-Border-border-brand_alt, #7f56d9);
+  border-top: 1px solid ${colors.border.brand};
   @media (max-width: 1080px) {
     padding: 23px 0 0 0;
   }

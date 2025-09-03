@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
+import { colors } from '../styles/colors';
+
 export type ButtonVariant =
   | 'transparent'
   | 'default'
@@ -87,126 +89,150 @@ const sizeStyles = {
 
 const variantStyles = {
   transparent: css`
-    background: transparent;
+    background: ${colors.background.transparent};
     border: none;
     padding: 0;
   `,
   default: css`
-    background: transparent;
-    color: #ffffff;
-    border: 2px solid rgba(255, 255, 255, 0.12);
+    background: ${colors.background.transparent};
+    color: ${colors.text.white};
+    border: 2px solid ${colors.border.white};
     box-shadow:
-      0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-      0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-      0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+      0px 0px 0px 1px inset ${colors.shadow.inset},
+      0px -2px 0px 0px inset ${colors.shadow.light},
+      0px 1px 2px 0px ${colors.shadow.light};
 
     &:hover {
-      background: rgba(255, 255, 255, 0.05);
+      background: ${colors.state.hover.background};
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 2px 4px 0px rgba(10, 13, 18, 0.08);
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -2px 0px 0px inset ${colors.shadow.light},
+        0px 2px 4px 0px ${colors.shadow.medium};
     }
 
     &:active {
-      background: rgba(255, 255, 255, 0.12);
+      background: ${colors.state.hover.backgroundMedium};
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -1px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -1px 0px 0px inset ${colors.shadow.light},
+        0px 1px 2px 0px ${colors.shadow.light};
       transition: all 0.1s ease-in-out;
     }
   `,
   primary: css`
     background:
-      linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-      linear-gradient(104.863deg, rgb(102, 45, 145) 21.817%, rgb(48, 46, 156) 110.55%);
-    color: #ffffff;
-    border: 2px solid rgba(255, 255, 255, 0.12);
+      linear-gradient(
+        90deg,
+        ${colors.overlay.gradientDark} 0%,
+        ${colors.overlay.gradientDark} 100%
+      ),
+      linear-gradient(
+        104.863deg,
+        ${colors.brand.gradientStart} 21.817%,
+        ${colors.brand.gradientEnd} 110.55%
+      );
+    color: ${colors.text.white};
+    border: 2px solid ${colors.border.white};
     box-shadow:
-      0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-      0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-      0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+      0px 0px 0px 1px inset ${colors.shadow.inset},
+      0px -2px 0px 0px inset ${colors.shadow.light},
+      0px 1px 2px 0px ${colors.shadow.light};
 
     &:hover {
       background:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%),
-        linear-gradient(104.863deg, rgb(102, 45, 145) 21.817%, rgb(48, 46, 156) 110.55%);
+        linear-gradient(
+          90deg,
+          ${colors.overlay.gradientMedium} 0%,
+          ${colors.overlay.gradientMedium} 100%
+        ),
+        linear-gradient(
+          104.863deg,
+          ${colors.brand.gradientStart} 21.817%,
+          ${colors.brand.gradientEnd} 110.55%
+        );
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 4px 8px 0px rgba(10, 13, 18, 0.12),
-        0px 0px 0px 0px rgba(158, 119, 237, 0.4);
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -2px 0px 0px inset ${colors.shadow.light},
+        0px 4px 8px 0px ${colors.shadow.darker},
+        0px 0px 0px 0px ${colors.shadow.ring};
     }
 
     &:active {
       background:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%),
-        linear-gradient(104.863deg, rgb(102, 45, 145) 21.817%, rgb(48, 46, 156) 110.55%);
+        linear-gradient(
+          90deg,
+          ${colors.overlay.gradientDarker} 0%,
+          ${colors.overlay.gradientDarker} 100%
+        ),
+        linear-gradient(
+          104.863deg,
+          ${colors.brand.gradientStart} 21.817%,
+          ${colors.brand.gradientEnd} 110.55%
+        );
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -1px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 2px 4px 0px rgba(10, 13, 18, 0.1);
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -1px 0px 0px inset ${colors.shadow.light},
+        0px 2px 4px 0px ${colors.shadow.dark};
       transition: all 0.1s ease-in-out;
     }
   `,
   secondary: css`
-    background: #ffffff;
-    color: #000000;
-    border: 1px solid #d5d7da;
+    background: ${colors.background.white};
+    color: ${colors.text.black};
+    border: 1px solid ${colors.border.primary};
 
     &:hover {
-      background: #f9fafb;
+      background: ${colors.background.light};
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 2px 4px 0px rgba(10, 13, 18, 0.08);
-      border-color: #c1c4c9;
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -2px 0px 0px inset ${colors.shadow.light},
+        0px 2px 4px 0px ${colors.shadow.medium};
+      border-color: ${colors.border.secondary};
     }
 
     &:active {
-      background: #f3f4f6;
+      background: ${colors.background.lighter};
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -1px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 1px 2px 0px rgba(10, 13, 18, 0.05);
-      border-color: #b8bcc5;
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -1px 0px 0px inset ${colors.shadow.light},
+        0px 1px 2px 0px ${colors.shadow.light};
+      border-color: ${colors.border.tertiary};
       transition: all 0.1s ease-in-out;
     }
   `,
   tertiary: css`
-    background: #f9fafb;
-    color: #252b37;
-    border: 1px solid #d5d7da;
+    background: ${colors.background.light};
+    color: ${colors.text.dark};
+    border: 1px solid ${colors.border.primary};
     box-shadow:
-      0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-      0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-      0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+      0px 0px 0px 1px inset ${colors.shadow.inset},
+      0px -2px 0px 0px inset ${colors.shadow.light},
+      0px 1px 2px 0px ${colors.shadow.light};
 
     &:hover {
-      background: #f3f4f6;
+      background: ${colors.background.lighter};
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 2px 4px 0px rgba(10, 13, 18, 0.08);
-      border-color: #c1c4c9;
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -2px 0px 0px inset ${colors.shadow.light},
+        0px 2px 4px 0px ${colors.shadow.medium};
+      border-color: ${colors.border.secondary};
     }
 
     &:active {
-      background: #e5e7eb;
+      background: ${colors.background.lightest};
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -1px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 1px 2px 0px rgba(10, 13, 18, 0.05);
-      border-color: #b8bcc5;
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -1px 0px 0px inset ${colors.shadow.light},
+        0px 1px 2px 0px ${colors.shadow.light};
+      border-color: ${colors.border.tertiary};
       transition: all 0.1s ease-in-out;
     }
   `,
   disabled: css`
-    background: #ffffff;
-    color: #a4a7ae;
-    border: 1px solid #e9eaeb;
-    box-shadow: 0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+    background: ${colors.background.white};
+    color: ${colors.text.disabled};
+    border: 1px solid ${colors.border.light};
+    box-shadow: 0px 1px 2px 0px ${colors.shadow.light};
     cursor: not-allowed;
     transform: none;
 
@@ -215,12 +241,12 @@ const variantStyles = {
     }
 
     &:hover {
-      background: #ffffff;
+      background: ${colors.background.white};
       transform: none;
     }
 
     &:active {
-      background: #ffffff;
+      background: ${colors.background.white};
       transform: none;
     }
   `,
@@ -228,33 +254,33 @@ const variantStyles = {
 
 const focusedStyles = css`
   box-shadow:
-    0px 1px 2px 0px rgba(10, 13, 18, 0.05),
-    0px 0px 0px 2px #ffffff,
-    0px 0px 0px 4px #9e77ed;
+    0px 1px 2px 0px ${colors.shadow.light},
+    0px 0px 0px 2px ${colors.background.white},
+    0px 0px 0px 4px ${colors.state.focus.ring};
 `;
 
 const pulseAnimation = css`
   @keyframes pulse {
     0% {
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 1px 2px 0px rgba(10, 13, 18, 0.05),
-        0px 0px 0px 0px rgba(158, 119, 237, 0);
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -2px 0px 0px inset ${colors.shadow.light},
+        0px 1px 2px 0px ${colors.shadow.light},
+        0px 0px 0px 0px ${colors.shadow.ringTransparent};
     }
     50% {
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 1px 2px 0px rgba(10, 13, 18, 0.05),
-        0px 0px 0px 4px rgba(158, 119, 237, 0.2);
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -2px 0px 0px inset ${colors.shadow.light},
+        0px 1px 2px 0px ${colors.shadow.light},
+        0px 0px 0px 4px ${colors.shadow.ringLight};
     }
     100% {
       box-shadow:
-        0px 0px 0px 1px inset rgba(10, 13, 18, 0.18),
-        0px -2px 0px 0px inset rgba(10, 13, 18, 0.05),
-        0px 1px 2px 0px rgba(10, 13, 18, 0.05),
-        0px 0px 0px 0px rgba(158, 119, 237, 0);
+        0px 0px 0px 1px inset ${colors.shadow.inset},
+        0px -2px 0px 0px inset ${colors.shadow.light},
+        0px 1px 2px 0px ${colors.shadow.light},
+        0px 0px 0px 0px ${colors.shadow.ringTransparent};
     }
   }
 `;
@@ -270,7 +296,7 @@ const rippleEffect = css`
     left: 50%;
     width: 0;
     height: 0;
-    background: rgba(255, 255, 255, 0.3);
+    background: ${colors.overlay.light};
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition:
@@ -295,7 +321,6 @@ const StyledButton = styled.button<{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-style: normal;
   border: none;
