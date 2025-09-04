@@ -44,7 +44,7 @@ const variantStyles = {
     letter-spacing: -0.96px;
   `,
   'display-md': css`
-    font-size: 38px;
+    font-size: 36px;
     line-height: 44px;
     letter-spacing: -0.72px;
   `,

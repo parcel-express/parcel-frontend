@@ -16,11 +16,12 @@ const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-bottom: 17px;
+  margin-bottom: 16px;
   @media screen and (max-width: 1080px) {
     grid-template-columns: 1fr;
     padding: 38.42px 14.29px;
     gap: 52px;
+    margin-bottom: 24px;
   }
 `;
 

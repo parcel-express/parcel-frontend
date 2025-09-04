@@ -75,5 +75,32 @@
       "price": "from 5.5 GEL",
       "value": "the lowest tariff"
     }
+  },
+  "FAQ": {
+    "title": "Frequently Asked Questions",
+    "question1": {
+      "title": "How do I place an order?",
+      "answer": "Yes, you can use it for free for 30 days. If you wish, I can offer you a free, personalized 30-minute introductory call to get you started as quickly as possible."
+    },
+    "question2": {
+      "title": "Can you change your subscription later?",
+      "answer": "Our standard delivery time is 24-48 hours."
+    },
+    "question3": {
+      "title": "What are the terms for canceling my service?",
+      "answer": "Payment for the order can be made online or through the courier."
+    },
+    "question4": {
+      "title": "Can you add additional details to my invoice?",
+      "answer": "Yes, you can add additional details to your invoice."
+    },
+    "question5": {
+      "title": "What is your privacy policy?",
+      "answer": "We respect the privacy of our customers' personal information."
+    },
+    "question6": {
+      "title": "How can I update the email associated with my account?",
+      "answer": "You can contact us via email or phone."
+    }
   }
 }
