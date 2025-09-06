@@ -117,14 +117,14 @@ The pipeline will:
 
 ## Supported Languages
 
-- English (en) - Default
-- Georgian (ka) - Uses Noto Sans Georgian font
+- Georgian (ka) - Default (shown at root `/`)
+- English (en) - Uses Inter font
 - Russian (ru) - Uses Inter font
 
 Access specific locales:
 
+- `/` for Georgian (default)
 - `/en` for English
-- `/ka` for Georgian
 - `/ru` for Russian
 
 ## Learn More

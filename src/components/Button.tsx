@@ -385,7 +385,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const pathname = usePathname();
-  const currentLocale = pathname.split('/')[1] || 'en';
+  const currentLocale = pathname.split('/')[1] || 'ka';
   const effectiveVariant = disabled ? 'disabled' : variant;
 
   return (

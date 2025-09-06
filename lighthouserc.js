@@ -2,7 +2,7 @@ module.exports = {
   ci: {
     collect: {
       // URLs to test - add your deployment URL here
-      url: ['http://localhost:3000/en', 'http://localhost:3000/ka', 'http://localhost:3000/ru'],
+      url: ['http://localhost:3000', 'http://localhost:3000/en', 'http://localhost:3000/ru'],
       // Number of runs per URL for more consistent results
       numberOfRuns: 1,
       // Start a local server if needed
