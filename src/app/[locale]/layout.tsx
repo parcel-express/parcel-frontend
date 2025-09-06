@@ -27,6 +27,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
+  const titles = {
+    en: 'Parcel Express',
+    ka: 'ფარსელ ექსპრესი',
+    ru: 'Парсель Экспресс',
+  };
+
   const descriptions = {
     en: 'Fast, reliable international shipping and package delivery service. Track packages, schedule deliveries, and ship worldwide with competitive rates.',
     ka: 'სწრაფი, საიმედო საერთაშორისო გადაზიდვისა და ამანათის მიწოდების სერვისი. თვალყური ადევნეთ ამანათებს, დაგეგმეთ მიწოდება და გაგზავნეთ მთელ მსოფლიოში კონკურენტული ფასებით.',
@@ -37,8 +43,11 @@ export async function generateMetadata({
   const currentLocale = locale && locale in descriptions ? locale : 'ka';
 
   return {
-    title: 'Parcel Express',
+    title: titles[currentLocale as keyof typeof titles],
     description: descriptions[currentLocale as keyof typeof descriptions],
+    appleWebApp: {
+      title: titles[currentLocale as keyof typeof titles],
+    },
   };
 }
 
