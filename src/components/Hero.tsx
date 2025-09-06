@@ -270,6 +270,9 @@ const Hero = () => {
               alt='Hero Image'
               width={645}
               height={481}
+              priority
+              loading='eager'
+              sizes='(max-width: 1080px) 0px, 645px'
               style={{ objectFit: 'contain' }}
             />
           </ImageContainer>
@@ -281,6 +284,9 @@ const Hero = () => {
               src='/images/hero/hero.png'
               alt='Hero Image'
               fill
+              priority
+              loading='eager'
+              sizes='(max-width: 768px) 400px, (max-width: 1080px) 500px, 0px'
               style={{ objectFit: 'contain' }}
             />
           </MobileImageWrapper>

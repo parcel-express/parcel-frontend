@@ -69,6 +69,8 @@ const About = () => {
               alt='About Logo'
               width={440}
               height={407}
+              loading='lazy'
+              sizes='(max-width: 1080px) calc(100vw - 30px), 440px'
               style={{ objectFit: 'contain' }}
             />
           </ImageContainer>
@@ -79,6 +81,8 @@ const About = () => {
               src='/images/about/aboutLogo.png'
               alt='About Logo'
               fill
+              loading='lazy'
+              sizes='(max-width: 1080px) calc(100vw - 30px), 440px'
               style={{ objectFit: 'contain' }}
             />
           </MobileImageWrapper>

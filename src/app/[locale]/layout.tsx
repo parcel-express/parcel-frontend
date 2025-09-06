@@ -22,7 +22,13 @@ const notoSansGeorgian = Noto_Sans_Georgian({
 
 export const metadata: Metadata = {
   title: 'Parcel Express',
-  description: 'Your reliable package delivery service',
+  description:
+    'Fast, reliable international shipping and package delivery service. Track packages, schedule deliveries, and ship worldwide with competitive rates.',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export function generateStaticParams() {
