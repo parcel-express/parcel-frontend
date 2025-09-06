@@ -20,11 +20,24 @@ const notoSansGeorgian = Noto_Sans_Georgian({
   weight: ['400', '500', '600', '700'],
 });
 
-export const metadata: Metadata = {
-  title: 'Parcel Express',
-  description:
-    'Fast, reliable international shipping and package delivery service. Track packages, schedule deliveries, and ship worldwide with competitive rates.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  const descriptions = {
+    en: 'Fast, reliable international shipping and package delivery service. Track packages, schedule deliveries, and ship worldwide with competitive rates.',
+    ka: 'სწრაფი, საიმედო საერთაშორისო გადაზიდვისა და ამანათის მიწოდების სერვისი. თვალყური ადევნეთ ამანათებს, დაგეგმეთ მიწოდება და გაგზავნეთ მთელ მსოფლიოში კონკურენტული ფასებით.',
+    ru: 'Быстрая, надежная международная доставка посылок и грузов. Отслеживайте посылки, планируйте доставку и отправляйте по всему миру по конкурентным ценам.',
+  };
+
+  return {
+    title: 'Parcel Express',
+    description: descriptions[locale as keyof typeof descriptions] || descriptions.ka,
+  };
+}
 
 export const viewport = {
   width: 'device-width',

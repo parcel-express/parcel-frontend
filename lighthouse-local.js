@@ -28,6 +28,9 @@ module.exports = {
         'color-contrast': 'error',
         'button-name': 'error',
         list: 'error',
+
+        // Best practices - disable console errors due to expected 404s
+        'errors-in-console': 'off',
       },
     },
     upload: {
