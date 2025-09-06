@@ -7,6 +7,8 @@ module.exports = {
       numberOfRuns: 1,
       // Start a local server if needed
       startServerCommand: 'npm run build && npm run start',
+      startServerReadyPattern: 'Ready on',
+      startServerReadyTimeout: 10000,
       // Settings for the Lighthouse run
       settings: {
         // Chrome flags for consistent testing

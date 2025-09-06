@@ -33,9 +33,12 @@ export async function generateMetadata({
     ru: 'Быстрая, надежная международная доставка посылок и грузов. Отслеживайте посылки, планируйте доставку и отправляйте по всему миру по конкурентным ценам.',
   };
 
+  // Default to 'ka' if locale is undefined or not in our list
+  const currentLocale = locale && locale in descriptions ? locale : 'ka';
+
   return {
     title: 'Parcel Express',
-    description: descriptions[locale as keyof typeof descriptions] || descriptions.ka,
+    description: descriptions[currentLocale as keyof typeof descriptions],
   };
 }
 

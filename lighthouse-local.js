@@ -31,6 +31,9 @@ module.exports = {
 
         // Best practices - disable console errors due to expected 404s
         'errors-in-console': 'off',
+
+        // SEO
+        'meta-description': 'error',
       },
     },
     upload: {
