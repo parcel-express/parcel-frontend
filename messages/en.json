@@ -102,5 +102,13 @@
       "title": "How can I update the email associated with my account?",
       "answer": "You can contact us via email or phone."
     }
+  },
+  "Hero": {
+    "titleStart": "Your Digital",
+    "titleSpan": "Courier Company",
+
+    "description": "Send personal or corporate parcels across Georgia and track them through our transparent website.",
+    "placeholder": "Enter tracking code",
+    "button": "Search"
   }
 }

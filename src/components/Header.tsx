@@ -58,6 +58,7 @@ const Buttons = styled.div`
 const DropdownWrapper = styled.div`
   position: relative;
   display: inline-block;
+  z-index: 3;
 `;
 
 const DropdownButton = styled(Button)`
