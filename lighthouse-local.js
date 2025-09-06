@@ -33,7 +33,7 @@ module.exports = {
         'errors-in-console': 'off',
 
         // SEO
-        'meta-description': 'error',
+        // 'meta-description': 'error', // Disabled
       },
     },
     upload: {

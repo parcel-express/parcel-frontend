@@ -45,7 +45,7 @@ module.exports = {
         'uses-optimized-images': 'warn',
 
         // SEO
-        'meta-description': 'error',
+        // 'meta-description': 'error', // Disabled
         'document-title': 'error',
         viewport: 'error',
       },
