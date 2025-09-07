@@ -230,38 +230,40 @@ const Header = () => {
           <HeaderContainer>
             <LogoIcon />
             <DesktopContainer>
-              <NavList role='navigation' aria-label='Main navigation'>
-                <li>
-                  <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/'>{tNavigation('home')}</NavLink>
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/order'>{tNavigation('order')}</NavLink>
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/delivery'>{tNavigation('delivery')}</NavLink>
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/terms'>{tNavigation('terms')}</NavLink>
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/price'>{tNavigation('price')}</NavLink>
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant='text-sm' color={colors.text.black}>
-                    <NavLink href='/contact'>{tNavigation('contact')}</NavLink>
-                  </Typography>
-                </li>
-              </NavList>
+              <nav aria-label='Main navigation'>
+                <NavList>
+                  <li>
+                    <Typography variant='text-sm' color={colors.text.black}>
+                      <NavLink href='/'>{tNavigation('home')}</NavLink>
+                    </Typography>
+                  </li>
+                  <li>
+                    <Typography variant='text-sm' color={colors.text.black}>
+                      <NavLink href='/order'>{tNavigation('order')}</NavLink>
+                    </Typography>
+                  </li>
+                  <li>
+                    <Typography variant='text-sm' color={colors.text.black}>
+                      <NavLink href='/delivery'>{tNavigation('delivery')}</NavLink>
+                    </Typography>
+                  </li>
+                  <li>
+                    <Typography variant='text-sm' color={colors.text.black}>
+                      <NavLink href='/terms'>{tNavigation('terms')}</NavLink>
+                    </Typography>
+                  </li>
+                  <li>
+                    <Typography variant='text-sm' color={colors.text.black}>
+                      <NavLink href='/price'>{tNavigation('price')}</NavLink>
+                    </Typography>
+                  </li>
+                  <li>
+                    <Typography variant='text-sm' color={colors.text.black}>
+                      <NavLink href='/contact'>{tNavigation('contact')}</NavLink>
+                    </Typography>
+                  </li>
+                </NavList>
+              </nav>
             </DesktopContainer>
             <DesktopContainer>
               <Buttons>
@@ -280,6 +282,7 @@ const Header = () => {
                     type='button'
                     variant='secondary'
                     onClick={() => setDesktopDropdownOpen(open => !open)}
+                    aria-label='Change language'
                   >
                     <Typography variant='text-sm' color={colors.text.black} weight='bold'>
                       {localeLabels[currentLocale] || 'GEO'}
@@ -296,6 +299,7 @@ const Header = () => {
                               setDesktopDropdownOpen(false);
                               handleLanguageChange(locale);
                             }}
+                            aria-label={`Switch to ${label}`}
                           >
                             {label}
                           </DropdownItem>
@@ -306,7 +310,12 @@ const Header = () => {
               </Buttons>
             </DesktopContainer>
             <MobileContainer>
-              <Button onClick={() => setMobileMenuOpen(true)} size='xs' variant='transparent'>
+              <Button
+                onClick={() => setMobileMenuOpen(true)}
+                size='xs'
+                variant='transparent'
+                aria-label='Open menu'
+              >
                 <BurgerMenuIcon />
               </Button>
             </MobileContainer>
@@ -319,46 +328,65 @@ const Header = () => {
         <MobileMenuContainer $isOpen={mobileMenuOpen}>
           <MobileMenuHeader>
             <LogoIcon />
-            <Button onClick={() => setMobileMenuOpen(false)} variant='transparent' size='xs'>
+            <Button
+              onClick={() => setMobileMenuOpen(false)}
+              variant='transparent'
+              size='xs'
+              aria-label='Close menu'
+            >
               <CloseIcon />
             </Button>
           </MobileMenuHeader>
           <MobileNavList>
-            <Typography variant='text-sm' color={colors.text.black}>
-              <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
-                {tNavigation('home')}
-              </MobileNavLink>
-            </Typography>
-            <Typography variant='text-sm' color={colors.text.black}>
-              <MobileNavLink href='/order' onClick={() => setMobileMenuOpen(false)}>
-                {tNavigation('order')}
-              </MobileNavLink>
-            </Typography>
-            <Typography variant='text-sm' color={colors.text.black}>
-              <MobileNavLink href='/delivery' onClick={() => setMobileMenuOpen(false)}>
-                {tNavigation('delivery')}
-              </MobileNavLink>
-            </Typography>
-            <Typography variant='text-sm' color={colors.text.black}>
-              <MobileNavLink href='/terms' onClick={() => setMobileMenuOpen(false)}>
-                {tNavigation('terms')}
-              </MobileNavLink>
-            </Typography>
-            <Typography variant='text-sm' color={colors.text.black}>
-              <MobileNavLink href='/price' onClick={() => setMobileMenuOpen(false)}>
-                {tNavigation('price')}
-              </MobileNavLink>
-            </Typography>
-            <Typography variant='text-sm' color={colors.text.black}>
-              <MobileNavLink href='/contact' onClick={() => setMobileMenuOpen(false)}>
-                {tNavigation('contact')}
-              </MobileNavLink>
-            </Typography>
-            <Typography variant='text-sm' color={colors.text.black}>
-              <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
-                {tNavigation('logout')}
-              </MobileNavLink>
-            </Typography>
+            <li>
+              <Typography variant='text-sm' color={colors.text.black}>
+                <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
+                  {tNavigation('home')}
+                </MobileNavLink>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant='text-sm' color={colors.text.black}>
+                <MobileNavLink href='/order' onClick={() => setMobileMenuOpen(false)}>
+                  {tNavigation('order')}
+                </MobileNavLink>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant='text-sm' color={colors.text.black}>
+                <MobileNavLink href='/delivery' onClick={() => setMobileMenuOpen(false)}>
+                  {tNavigation('delivery')}
+                </MobileNavLink>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant='text-sm' color={colors.text.black}>
+                <MobileNavLink href='/terms' onClick={() => setMobileMenuOpen(false)}>
+                  {tNavigation('terms')}
+                </MobileNavLink>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant='text-sm' color={colors.text.black}>
+                <MobileNavLink href='/price' onClick={() => setMobileMenuOpen(false)}>
+                  {tNavigation('price')}
+                </MobileNavLink>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant='text-sm' color={colors.text.black}>
+                <MobileNavLink href='/contact' onClick={() => setMobileMenuOpen(false)}>
+                  {tNavigation('contact')}
+                </MobileNavLink>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant='text-sm' color={colors.text.black}>
+                <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
+                  {tNavigation('logout')}
+                </MobileNavLink>
+              </Typography>
+            </li>
           </MobileNavList>
 
           <Login>
@@ -374,6 +402,7 @@ const Header = () => {
                 type='button'
                 variant='secondary'
                 onClick={() => setMobileDropdownOpen(open => !open)}
+                aria-label='Change language'
               >
                 {localeLabels[currentLocale] || 'GEO'}
               </DropdownButton>
@@ -388,6 +417,7 @@ const Header = () => {
                           setMobileDropdownOpen(false);
                           handleLanguageChange(locale);
                         }}
+                        aria-label={`Switch to ${label}`}
                       >
                         {label}
                       </DropdownItem>

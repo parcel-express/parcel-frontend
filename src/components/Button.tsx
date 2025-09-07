@@ -1,3 +1,4 @@
+import { usePathname } from 'next/navigation';
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
@@ -26,10 +27,10 @@ interface ButtonProps {
 
 const sizeStyles = {
   xs: css`
-    padding: 13px;
-    font-size: 14px;
-    line-height: 20px;
-    border-radius: 14px;
+    padding: 12px 20px;
+    font-size: 12px;
+    line-height: 100%;
+    border-radius: 8px;
     gap: 4px;
 
     .icon {
@@ -329,6 +330,7 @@ const StyledButton = styled.button<{
   $variant: ButtonVariant;
   $size: ButtonSize;
   $focused: boolean;
+  $locale?: string;
 }>`
   display: flex;
   align-items: center;
@@ -341,6 +343,10 @@ const StyledButton = styled.button<{
   white-space: nowrap;
   position: relative;
   user-select: none;
+  font-family: ${({ $locale }) =>
+    $locale === 'ka'
+      ? 'var(--font-noto-sans-georgian), sans-serif'
+      : 'var(--font-inter), sans-serif'};
 
   ${({ $size }) => sizeStyles[$size]}
   ${({ $variant }) => variantStyles[$variant]}
@@ -383,6 +389,8 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   ...props
 }) => {
+  const pathname = usePathname();
+  const currentLocale = pathname.split('/')[1] || 'ka';
   const effectiveVariant = disabled ? 'disabled' : variant;
 
   return (
@@ -391,6 +399,7 @@ export const Button: React.FC<ButtonProps> = ({
       $variant={effectiveVariant}
       $size={size}
       $focused={focused && !disabled}
+      $locale={currentLocale}
       disabled={disabled}
       onClick={onClick}
       {...props}

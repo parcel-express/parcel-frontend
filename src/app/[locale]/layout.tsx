@@ -20,9 +20,40 @@ const notoSansGeorgian = Noto_Sans_Georgian({
   weight: ['400', '500', '600', '700'],
 });
 
-export const metadata: Metadata = {
-  title: 'Parcel Express',
-  description: 'Your reliable package delivery service',
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  const titles = {
+    en: 'Parcel Express',
+    ka: 'ფარსელ ექსპრესი',
+    ru: 'Парсель Экспресс',
+  };
+
+  const descriptions = {
+    en: 'Fast, reliable international shipping and package delivery service. Track packages, schedule deliveries, and ship worldwide with competitive rates.',
+    ka: 'სწრაფი, საიმედო საერთაშორისო გადაზიდვისა და ამანათის მიწოდების სერვისი. თვალყური ადევნეთ ამანათებს, დაგეგმეთ მიწოდება და გაგზავნეთ მთელ მსოფლიოში კონკურენტული ფასებით.',
+    ru: 'Быстрая, надежная международная доставка посылок и грузов. Отслеживайте посылки, планируйте доставку и отправляйте по всему миру по конкурентным ценам.',
+  };
+
+  // Default to 'ka' if locale is undefined or not in our list
+  const currentLocale = locale && locale in descriptions ? locale : 'ka';
+
+  return {
+    title: titles[currentLocale as keyof typeof titles],
+    description: descriptions[currentLocale as keyof typeof descriptions],
+    appleWebApp: {
+      title: titles[currentLocale as keyof typeof titles],
+    },
+  };
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export function generateStaticParams() {
