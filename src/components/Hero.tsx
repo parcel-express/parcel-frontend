@@ -6,13 +6,11 @@ import styled from 'styled-components';
 
 import CheckmarkIcon from '@/icons/CheckmarkIcon';
 import CheckmarkMobileIcon from '@/icons/CheckmarkMobileIcon';
-import CubeIcon from '@/icons/CubeIcon';
-import CubeIconBig from '@/icons/CubeIconBig';
 import { colors } from '@/styles/colors';
 
-import Button from './Button';
 import Container from './Container';
 import { DesktopContainer, MobileContainer } from './Responsive';
+import SearchInput from './SearchInput';
 import Typography from './Typography';
 
 const MainContainer = styled.div`
@@ -86,37 +84,17 @@ const TitleSpanRow = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  @media (max-width: 1080px) {
-  }
+  background: linear-gradient(98.54deg, #662d91 27.21%, #302e9c 100.85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
+
 const CheckmarkWrapper = styled.div`
   position: relative;
   top: -7px;
   @media (max-width: 1080px) {
     top: 0;
-  }
-`;
-
-const Input = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 14px 10px;
-  background-color: ${colors.background.white};
-  border: 1px solid ${colors.border.primary};
-  border-radius: 8px;
-  @media (max-width: 1080px) {
-    padding: 4px 4px 4px 12px;
-  }
-`;
-
-const StyledInput = styled.input`
-  border: none;
-  outline: none;
-  width: 100%;
-  &::placeholder {
-    opacity: 0.5;
   }
 `;
 
@@ -142,33 +120,21 @@ const MobileImageWrapper = styled.div`
 
 const CubeIconBigStyled = styled.div`
   position: absolute;
-  left: -155px;
-  top: 20px;
+  left: -111px;
+  top: 50px;
   z-index: 1;
 `;
 
 const CubeIconStyled = styled.div`
   position: absolute;
-  left: -165px;
-  bottom: 78px;
+  left: -168px;
+  bottom: 44px;
   z-index: 1;
 `;
 
 const StyledImage = styled(Image)`
   position: relative;
   z-index: 2;
-`;
-
-const GradientText = styled.span`
-  background: linear-gradient(
-    98.54deg,
-    ${colors.brand.gradientStart} 27.21%,
-    ${colors.brand.gradientEnd} 100.85%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
 `;
 
 const Hero = () => {
@@ -185,12 +151,7 @@ const Hero = () => {
                     {tHero('titleStart')}
                   </Typography>
                   <TitleSpanRow>
-                    <Typography
-                      as='span'
-                      className={GradientText.styledComponentId}
-                      variant='display-lg'
-                      weight='bold'
-                    >
+                    <Typography variant='display-lg' weight='bold'>
                       {tHero('titleSpan')}
                     </Typography>
                     <CheckmarkWrapper>
@@ -207,12 +168,7 @@ const Hero = () => {
                     {tHero('titleStart')}
                   </Typography>
                   <TitleSpanRow>
-                    <Typography
-                      as='span'
-                      className={GradientText.styledComponentId}
-                      variant='text-xl'
-                      weight='bold'
-                    >
+                    <Typography variant='text-xl' weight='bold'>
                       {tHero('titleSpan')}
                     </Typography>
                     <CheckmarkWrapper>
@@ -237,42 +193,37 @@ const Hero = () => {
           </Description>
 
           <DesktopContainer>
-            <Input>
-              <StyledInput placeholder={tHero('placeholder')} type='text' />
-              <Button variant='primary' size='mdHero'>
-                <Typography variant='text-sm' weight='bold' color={colors.text.white}>
-                  {tHero('button')}
-                </Typography>
-              </Button>
-            </Input>
+            <SearchInput size='md' />
           </DesktopContainer>
           <MobileContainer>
-            <Input>
-              <StyledInput placeholder={tHero('placeholder')} type='text' />
-              <Button variant='primary' size='xs'>
-                <Typography variant='text-xs' weight='bold' color={colors.text.white}>
-                  {tHero('button')}
-                </Typography>
-              </Button>
-            </Input>
+            <SearchInput size='xs' />
           </MobileContainer>
         </LeftContainer>
         <DesktopContainer>
           <ImageContainer>
             <CubeIconBigStyled>
-              <CubeIconBig />
+              <Image
+                src='/images/hero/cube.png'
+                alt='Background Cube'
+                width={315}
+                height={295}
+                style={{ objectFit: 'contain' }}
+              />
             </CubeIconBigStyled>
             <CubeIconStyled>
-              <CubeIcon />
+              <Image
+                src='/images/hero/cube.png'
+                alt='Background Cube'
+                width={175}
+                height={163}
+                style={{ objectFit: 'contain' }}
+              />
             </CubeIconStyled>
             <StyledImage
               src='/images/hero/hero.png'
               alt='Hero Image'
               width={645}
               height={481}
-              priority
-              loading='eager'
-              sizes='(max-width: 1080px) 0px, 645px'
               style={{ objectFit: 'contain' }}
             />
           </ImageContainer>
@@ -284,9 +235,6 @@ const Hero = () => {
               src='/images/hero/hero.png'
               alt='Hero Image'
               fill
-              priority
-              loading='eager'
-              sizes='(max-width: 768px) 400px, (max-width: 1080px) 500px, 0px'
               style={{ objectFit: 'contain' }}
             />
           </MobileImageWrapper>

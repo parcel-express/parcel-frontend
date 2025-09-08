@@ -11,7 +11,7 @@ export type ButtonVariant =
   | 'secondary'
   | 'tertiary'
   | 'disabled';
-export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'mdHero';
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'mdSearch' | 'xsSearch';
 
 interface ButtonProps {
   children: ReactNode;
@@ -38,6 +38,11 @@ const sizeStyles = {
       height: 20px;
     }
   `,
+  xsSearch: css`
+    padding: 9px 25px;
+    border-radius: 8px;
+    gap: 4px;
+  `,
   sm: css`
     padding: 10px 14px;
     font-size: 14px;
@@ -62,7 +67,7 @@ const sizeStyles = {
       height: 20px;
     }
   `,
-  mdHero: css`
+  mdSearch: css`
     padding: 12px 36px;
     font-size: 14px;
     line-height: 100%;
