@@ -1,5 +1,6 @@
 'use client';
 import About from '@/components/About';
+import Dropdown from '@/components/Dropdown';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -11,6 +12,7 @@ export default function Page() {
   return (
     <>
       <Header />
+      <Dropdown items={['Text Field', 'Text Field 2']} />
       <Hero />
       <Services />
       <About />

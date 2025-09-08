@@ -110,5 +110,9 @@
     "description": "Send personal or corporate parcels across Georgia and track them through our transparent website.",
     "placeholder": "Enter tracking code",
     "button": "Search"
+  },
+  "Dropdown": {
+    "title": "Team Member",
+    "placeholder": "Select team member"
   }
 }
