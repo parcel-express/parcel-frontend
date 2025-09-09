@@ -7,14 +7,14 @@ import { colors } from '@/styles/colors';
 import AsteriskIcon from '../icons/AsteriskIcon';
 import DropArrowIcon from '../icons/DropArrowIcon';
 
-import Typography from './Typography';
+import { Typography } from './Typography';
 
 const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  width: 320px;
+  width: 100%;
 `;
 
 const Title = styled.div`
@@ -33,7 +33,7 @@ const InputContainer = styled.button.attrs({ type: 'button' })<{ $open?: boolean
         background: linear-gradient(${colors.background.light}, ${colors.background.light}) padding-box,
         linear-gradient(93.55deg, #662D91 21.82%, #302E9C 110.55%) border-box;
       `
-      : `border: 2px solid ${colors.border.primary}; background: transparent;`}
+      : `border: 2px solid ${colors.border.primary};`}
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -92,7 +92,7 @@ type DropdownProps = {
 const Dropdown: React.FC<DropdownProps> = ({ items, onChange, value, placeholder, label }) => {
   const [open, setOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
-
+  const listId = React.useId();
   const toggle = () => setOpen(prev => !prev);
 
   React.useEffect(() => {
@@ -116,14 +116,20 @@ const Dropdown: React.FC<DropdownProps> = ({ items, onChange, value, placeholder
             <AsteriskIcon />
           </Title>
         )}
-        <InputContainer $open={open} aria-expanded={open} onClick={toggle}>
+        <InputContainer
+          $open={open}
+          aria-expanded={open}
+          aria-haspopup='listbox'
+          aria-controls={open ? listId : undefined}
+          onClick={toggle}
+        >
           <Typography variant='text-md' color={value ? colors.text.primary : colors.text.disabled}>
             {items.find(item => item.value === value)?.label ?? placeholder}
           </Typography>
           <DropArrowIcon />
         </InputContainer>
         {open && (
-          <DropdownContainer>
+          <DropdownContainer role='listbox' id={listId}>
             {items.map(item => (
               <Item
                 key={item.value}
@@ -132,7 +138,8 @@ const Dropdown: React.FC<DropdownProps> = ({ items, onChange, value, placeholder
                   setOpen(false);
                   onChange(item.value);
                 }}
-                aria-pressed={value === item.value}
+                role='option'
+                aria-selected={value === item.value}
               >
                 <Typography variant='text-md' color={colors.text.primary} weight='medium'>
                   {item?.label}

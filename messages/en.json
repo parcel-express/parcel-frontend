@@ -111,8 +111,7 @@
     "placeholder": "Enter tracking code",
     "button": "Search"
   },
-  "Dropdown": {
-    "title": "Team Member",
-    "placeholder": "Select team member"
+  "Delivery": {
+    "title": "Delivery Schedule"
   }
 }
