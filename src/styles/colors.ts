@@ -42,6 +42,7 @@ export const colors = {
   state: {
     hover: {
       light: '#f5f5f5',
+      lighter: '#fafafa',
       medium: '#d9d9d9',
       background: 'rgba(255, 255, 255, 0.05)',
       backgroundMedium: 'rgba(255, 255, 255, 0.12)',
