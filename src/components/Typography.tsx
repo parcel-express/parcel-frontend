@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 export type TypographyVariant =
   | 'display-2xl'
   | 'display-xl'
+  | 'title-md'
   | 'display-lg'
   | 'display-md'
   | 'display-sm'
@@ -42,6 +43,10 @@ const variantStyles = {
     font-size: 44px;
     line-height: 60px;
     letter-spacing: -0.96px;
+  `,
+  'title-md': css`
+    font-size: 32px;
+    line-height: 32px;
   `,
   'display-md': css`
     font-size: 36px;
