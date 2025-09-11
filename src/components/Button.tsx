@@ -27,7 +27,7 @@ interface ButtonProps {
 
 const sizeStyles = {
   xs: css`
-    padding: 12px 20px;
+    padding: 12px 13px;
     font-size: 12px;
     line-height: 100%;
     border-radius: 8px;

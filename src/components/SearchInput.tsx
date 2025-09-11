@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslations } from 'use-intl';
 
+import SearchIcon from '@/icons/SearchIcon';
 import { colors } from '@/styles/colors';
 
 import Button from './Button';
@@ -13,22 +14,10 @@ const inputSizes = {
     padding: '9px 13px 9px 21px',
   },
   xs: {
-    padding: '4px 3px 4px 11px',
+    paddingNoIcon: '4px 3px 4px 11px',
+    paddingWithIcon: '12px 14px',
   },
 } as const;
-
-export type InputSize = keyof typeof inputSizes;
-
-const Input = styled.div<{ $size?: InputSize }>`
-  display: flex;
-  justify-content: space-between;
-  padding: ${({ $size }) => inputSizes[$size ?? 'md'].padding};
-  align-items: center;
-  width: 100%;
-  background-color: ${colors.background.white};
-  border: 1px solid ${colors.border.primary};
-  border-radius: 8px;
-`;
 
 const StyledInput = styled.input<{ $size?: InputSize }>`
   border: none;
@@ -39,13 +28,48 @@ const StyledInput = styled.input<{ $size?: InputSize }>`
   }
 `;
 
-const SearchInput: React.FC<{ size?: InputSize }> = ({ size = 'md' }) => {
+const LeftIconWrapper = styled.div<{ $size?: InputSize }>`
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  pointer-events: none;
+  svg {
+    display: block;
+  }
+`;
+
+export type InputSize = keyof typeof inputSizes;
+
+const Input = styled.div<{ $size?: InputSize; $hasLeftIcon?: boolean }>`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: ${({ $size, $hasLeftIcon }) =>
+    $size === 'xs'
+      ? $hasLeftIcon
+        ? inputSizes.xs.paddingWithIcon
+        : inputSizes.xs.paddingNoIcon
+      : inputSizes.md.padding};
+  width: 100%;
+  background-color: ${colors.background.white};
+  border: 1px solid ${colors.border.primary};
+  border-radius: 8px;
+`;
+
+const SearchInput: React.FC<{
+  size?: InputSize;
+  placeholder?: string;
+  mode?: 'button' | 'icon';
+  onIconClick?: () => void;
+  leftIcon?: boolean;
+}> = ({ size = 'md', placeholder, mode = 'button', leftIcon = true }) => {
   const tHero = useTranslations('Hero');
+  const resolvedPlaceholder = placeholder ?? tHero('placeholder');
   return (
     <>
       <DesktopContainer>
         <Input $size={size}>
-          <StyledInput placeholder={tHero('placeholder')} type='text' />
+          <StyledInput placeholder={resolvedPlaceholder} type='text' />
           <Button variant='primary' size='mdSearch'>
             <Typography variant='text-sm' weight='bold' color={colors.text.white}>
               {tHero('button')}
@@ -54,13 +78,22 @@ const SearchInput: React.FC<{ size?: InputSize }> = ({ size = 'md' }) => {
         </Input>
       </DesktopContainer>
       <MobileContainer>
-        <Input $size={size}>
-          <StyledInput placeholder={tHero('placeholder')} type='text' />
-          <Button variant='primary' size='xsSearch'>
-            <Typography variant='text-xs' weight='bold' color={colors.text.white}>
-              {tHero('button')}
-            </Typography>
-          </Button>
+        <Input $size={size} $hasLeftIcon={leftIcon}>
+          {leftIcon ? (
+            <LeftIconWrapper $size={size} aria-hidden>
+              <SearchIcon />
+            </LeftIconWrapper>
+          ) : null}
+
+          <StyledInput placeholder={resolvedPlaceholder} type='text' />
+
+          {mode === 'button' ? (
+            <Button variant='primary' size='xsSearch'>
+              <Typography variant='text-xs' weight='bold' color={colors.text.white}>
+                {tHero('button')}
+              </Typography>
+            </Button>
+          ) : null}
         </Input>
       </MobileContainer>
     </>
