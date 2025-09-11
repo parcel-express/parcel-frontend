@@ -112,6 +112,7 @@
     "button": "Search"
   },
   "Delivery": {
-    "title": "Delivery Schedule"
+    "title": "Delivery Schedule",
+    "placeholder": "Enter City"
   }
 }
