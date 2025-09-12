@@ -111,5 +111,11 @@
   "Delivery": {
     "title": "მიწოდების გრაფიკი",
     "placeholder": "ჩაწერე ქალაქი"
+  },
+  "Price": {
+    "title": "ტარიფები",
+    "TakeRequest": { "title": "შეკვეთის მიღება" },
+    "Delivery": { "title": "ჩაბარების ვადა" },
+    "Tariffs": { "title": "ტარიფები" }
   }
 }

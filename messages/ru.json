@@ -111,5 +111,11 @@
   "Dropdown": {
     "title": "Член команды",
     "placeholder": "Выберите город"
+  },
+  "Price": {
+    "title": "Тарифы",
+    "TakeRequest": { "title": "Принять заказ" },
+    "Delivery": { "title": "Время доставки" },
+    "Tariffs": { "title": "Тарифы" }
   }
 }

@@ -114,5 +114,11 @@
   "Delivery": {
     "title": "Delivery Schedule",
     "placeholder": "Enter City"
+  },
+  "Price": {
+    "title": "Tariffs",
+    "TakeRequest": { "title": "Take Order" },
+    "Delivery": { "title": "Delivery Time" },
+    "Tariffs": { "title": "Tariffs" }
   }
 }

@@ -105,43 +105,7 @@ function DeliveryScreen() {
         <MainContainer>
           <Title>
             <PageTitle title={tDelivery('title')} desktopVariant='large'></PageTitle>
-            <PageTitle title={tDelivery('title')} desktopVariant='large'></PageTitle>
           </Title>
-          <DesktopContainer>
-            <DropdownContainer>
-              <Dropdown
-                value={selectedDropdown}
-                onChange={value => {
-                  setSelectedDropdown(value);
-                }}
-                placeholder='აირჩიე ქალაქი'
-                label=''
-                items={[
-                  { label: 'თბილისი', value: '1' },
-                  { label: 'ბათუმი', value: '2' },
-                  { label: 'ქუთაისი', value: '3' },
-                  { label: 'რუსთავი', value: '4' },
-                  { label: 'გორი', value: '5' },
-                  { label: 'ზუგდიდი', value: '6' },
-                ]}
-              />
-            </DropdownContainer>
-          </DesktopContainer>
-          <MobileContainer>
-            <SearchInput
-              size='xs'
-              placeholder={tDelivery('placeholder')}
-              mode='icon'
-              leftIcon={true}
-            />
-          </MobileContainer>
-          <TableContainer>
-            <Table
-              details={deliveryItems}
-              rows={19}
-              titles={{ firstTitle: 'ქალაქი', secondTitle: 'ჩაბარება / აღება' }}
-            />
-          </TableContainer>
           <DesktopContainer>
             <DropdownContainer>
               <Dropdown
