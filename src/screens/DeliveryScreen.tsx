@@ -37,21 +37,6 @@ const TableContainer = styled.div`
 
   @media (max-width: 1080px) {
     margin-top: 20px;
-
-    max-height: 650px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* optional: thin custom scrollbar for WebKit */
-  @media (max-width: 1080px) {
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.12);
-      border-radius: 999px;
-    }
   }
 `;
 
