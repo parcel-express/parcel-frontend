@@ -10,7 +10,7 @@ import Header from '@/components/Header';
 import PageTitle from '@/components/PageTitle';
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
 import SearchInput from '@/components/SearchInput';
-import Table, { TableDetail } from '@/components/Table';
+import Table from '@/components/Table';
 
 const DropdownContainer = styled.div`
   max-width: 576px;
@@ -43,61 +43,64 @@ const TableContainer = styled.div`
   }
 `;
 
-const deliveryItems: TableDetail[] = [
+const deliveryItems = [
   {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
+    city: 'თბილისი',
+    schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
   },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
+  { city: 'ბათუმი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
+  { city: 'ქუთაისი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
   {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
+    city: 'თბილისი',
+    schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
   },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
+  { city: 'ბათუმი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
+  { city: 'ქუთაისი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
   {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
+    city: 'თბილისი',
+    schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
   },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
+  { city: 'ბათუმი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
+  { city: 'ქუთაისი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
   {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
+    city: 'თბილისი',
+    schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
   },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
+  { city: 'ბათუმი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
+  { city: 'ქუთაისი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
   {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
+    city: 'თბილისი',
+    schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
   },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
+  { city: 'ბათუმი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
+  { city: 'ქუთაისი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
   {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
+    city: 'თბილისი',
+    schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
   },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
+  { city: 'ბათუმი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
+  { city: 'ქუთაისი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
   {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
+    city: 'თბილისი',
+    schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
   },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
+  { city: 'ბათუმი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
+  { city: 'ქუთაისი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
   {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
+    city: 'თბილისი',
+    schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
   },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
+  { city: 'ბათუმი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
+  { city: 'ქუთაისი', schedule: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
 ];
 
 function DeliveryScreen() {
   const [selectedDropdown, setSelectedDropdown] = React.useState<string>('');
   const tDelivery = useTranslations('Delivery');
-
+  const deliveryTableDetails = React.useMemo(
+    () => deliveryItems.map(i => [i.city, i.schedule]),
+    []
+  );
   return (
     <>
       <Header />
@@ -136,9 +139,11 @@ function DeliveryScreen() {
           </MobileContainer>
           <TableContainer>
             <Table
-              details={deliveryItems}
+              details={deliveryTableDetails}
               rows={19}
-              titles={{ firstTitle: 'ქალაქი', secondTitle: 'ჩაბარება / აღება' }}
+              mobileShowTitles={false}
+              columns={2}
+              columnTitles={['ქალაქი', 'ჩაბარება / აღება']}
             />
           </TableContainer>
         </MainContainer>
