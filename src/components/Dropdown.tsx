@@ -31,7 +31,7 @@ const InputContainer = styled.button.attrs({ type: 'button' })<{ $open?: boolean
       
         border: 1px solid transparent;
         background: linear-gradient(${colors.background.light}, ${colors.background.light}) padding-box,
-        linear-gradient(93.55deg, #662D91 21.82%, #302E9C 110.55%) border-box;
+        linear-gradient(93.55deg, ${colors.brand.primary} 21.82%, ${colors.brand.secondary} 110.55%) border-box;
       `
       : `border: 1px solid ${colors.border.primary};`}
   display: flex;
@@ -46,7 +46,8 @@ const InputContainer = styled.button.attrs({ type: 'button' })<{ $open?: boolean
     border: 1px solid transparent;
     background:
       linear-gradient(${colors.background.light}, ${colors.background.light}) padding-box,
-      linear-gradient(93.55deg, #662d91 21.82%, #302e9c 110.55%) border-box;
+      linear-gradient(93.55deg, ${colors.brand.primary} 21.82%, ${colors.brand.secondary} 110.55%)
+        border-box;
   }
 `;
 

@@ -39,7 +39,7 @@ const PageTitleWrapper = styled.div`
 `;
 
 const MobileCard = styled.div`
-  background: #fff;
+  background: ${colors.background.white};
   border-radius: 12px;
   border: 1px solid ${colors.border.primary};
   margin-top: 24px;
@@ -51,7 +51,6 @@ const MobileCardHeader = styled.div`
 `;
 
 const MobileList = styled.ul`
-  margin: 0;
   margin: 4px 0 12px 0;
 `;
 
@@ -62,23 +61,30 @@ const MobileListItem = styled.li`
   padding: 8px 16px;
 `;
 
-const thirdColumnTitles = [
-  'წონა, კგ (ფაქტობრივი ან მოცულობითი)',
-  'ქალაქი',
-  'რეგიონი',
-  'ფილიალიდან გატანა',
-  'ცენტ. ქალაქი',
-  'სოფელი',
-  'მაღალმთიანი',
-  'თბილისის შემოგარენი',
-];
-
-const thirdDetailsRow = ['1 კგ - მდე', '12₾', '12₾', '12₾', '12₾', '12₾', '12₾', '12₾'];
-
 const PriceScreen: React.FC = () => {
   const tPrice = useTranslations('Price');
+  const thirdColumnTitles = [
+    tPrice('Tariffs.Columns.weight'),
+    tPrice('Tariffs.Columns.city'),
+    tPrice('Tariffs.Columns.region'),
+    tPrice('Tariffs.Columns.pickupFromBranch'),
+    tPrice('Tariffs.Columns.capitalCity'),
+    tPrice('Tariffs.Columns.village'),
+    tPrice('Tariffs.Columns.highland'),
+    tPrice('Tariffs.Columns.tbilisiSuburbs'),
+  ];
+  const thirdDetailsRow = [
+    tPrice('Tariffs.Rows.upto1kg'),
+    tPrice('Tariffs.Rows.row1'),
+    tPrice('Tariffs.Rows.row1'),
+    tPrice('Tariffs.Rows.row1'),
+    tPrice('Tariffs.Rows.row1'),
+    tPrice('Tariffs.Rows.row1'),
+    tPrice('Tariffs.Rows.row1'),
+    tPrice('Tariffs.Rows.row1'),
+  ];
   const mobileShowTitles = true;
-  const thirdRows = Array.from({ length: 9 }, () => thirdDetailsRow);
+  const thirdRows = Array.from({ length: 9 }, () => [...thirdDetailsRow]);
 
   return (
     <>
@@ -90,24 +96,28 @@ const PriceScreen: React.FC = () => {
           </PageTitleWrapper>
           <TableSection>
             <DesktopContainer>
-              <Typography variant='display-xs' color='textSecondary' weight='bold'>
+              <Typography variant='display-xs' color={colors.text.black} weight='bold'>
                 {tPrice('TakeRequest.title')}
               </Typography>
             </DesktopContainer>
             <MobileContainer>
-              <Typography variant='text-md' color='textSecondary' weight='bold'>
+              <Typography variant='text-md' color={colors.text.black} weight='bold'>
                 {tPrice('TakeRequest.title')}
               </Typography>
             </MobileContainer>
             <Table
               rows={1}
               columns={3}
-              columnTitles={['ქალაქი', 'რეგიონი', 'სოფლები, მაღალმთიანი რეგიონი']}
+              columnTitles={[
+                tPrice('TakeRequest.Columns.city'),
+                tPrice('TakeRequest.Columns.region'),
+                tPrice('TakeRequest.Columns.highland'),
+              ]}
               details={[
                 [
-                  'ორშ-პარ - 16:00 საათამდე, შაბ - 12:00 საათამდე',
-                  'ორშ-პარ - 16:00 საათამდე',
-                  'ორშ-პარ - 16:00 საათამდე',
+                  tPrice('TakeRequest.Rows.row1'),
+                  tPrice('TakeRequest.Rows.row2'),
+                  tPrice('TakeRequest.Rows.row3'),
                 ],
               ]}
               mobileShowTitles={mobileShowTitles}
@@ -115,27 +125,37 @@ const PriceScreen: React.FC = () => {
           </TableSection>
           <TableSection>
             <DesktopContainer>
-              <Typography variant='display-xs' color='textSecondary' weight='bold'>
+              <Typography variant='display-xs' color={colors.text.black} weight='bold'>
                 {tPrice('Delivery.title')}
               </Typography>
             </DesktopContainer>
             <MobileContainer>
-              <Typography variant='text-md' color='textSecondary' weight='bold'>
+              <Typography variant='text-md' color={colors.text.black} weight='bold'>
                 {tPrice('Delivery.title')}
               </Typography>
             </MobileContainer>
             <Table
               rows={1}
               columns={3}
-              columnTitles={['ქალაქი', 'რეგიონი', 'სოფლები, მაღალმთიანი რეგიონი']}
-              details={[['1- 2 სამუშაო დღე', '1- 4 სამუშაო დღე', '1- 4 სამუშაო დღე']]}
+              columnTitles={[
+                tPrice('Delivery.Columns.city'),
+                tPrice('Delivery.Columns.region'),
+                tPrice('Delivery.Columns.highland'),
+              ]}
+              details={[
+                [
+                  tPrice('Delivery.Rows.row1'),
+                  tPrice('Delivery.Rows.row2'),
+                  tPrice('Delivery.Rows.row3'),
+                ],
+              ]}
               mobileShowTitles={mobileShowTitles}
             />
           </TableSection>
           <TableSection>
             <DesktopContainer>
-              <Typography variant='display-xs' color='textSecondary' weight='bold'>
-                {tPrice('TakeRequest.title')}
+              <Typography variant='display-xs' color={colors.text.black} weight='bold'>
+                {tPrice('Tariffs.title')}
               </Typography>
             </DesktopContainer>
 
@@ -150,12 +170,12 @@ const PriceScreen: React.FC = () => {
             </DesktopContainer>
 
             <MobileContainer>
-              <Typography variant='text-md' color='textSecondary' weight='bold'>
+              <Typography variant='text-md' color={colors.text.black} weight='bold'>
                 {tPrice('Tariffs.title')}
               </Typography>
 
               {thirdRows.map((row, rowIdx) => (
-                <MobileCard aria-label='price-card-mobile' key={rowIdx}>
+                <MobileCard aria-labelledby={`price-card-header-${rowIdx}`} key={rowIdx}>
                   <MobileCardHeader>
                     <Typography variant='text-xs' color={colors.text.tertiary} weight='medium'>
                       {thirdColumnTitles[0]}

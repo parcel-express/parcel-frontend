@@ -78,7 +78,7 @@ const CardBody = styled.div`
   }
 `;
 
-const DescriptionWapper = styled.div`
+const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -103,7 +103,7 @@ const defaultData: string[][] = [
   ['ზუგდიდი', 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი', '₾10'],
 ];
 
-const defaultTitles = ['ქალაქი', 'ჩაბარება / აღება', 'ფასი'] as const;
+const defaultTitles: string[] = ['ქალაქი', 'ჩაბარება / აღება', 'ფასი'];
 
 export type TableProps = {
   details?: string[][];
@@ -115,12 +115,13 @@ export type TableProps = {
 
 const Table: React.FC<TableProps> = ({
   details = defaultData,
-  columnTitles = defaultTitles as unknown as string[],
+  columnTitles = defaultTitles,
   rows,
   mobileShowTitles = false,
   columns,
 }) => {
-  const cols = columns ?? columnTitles.length ?? 2;
+  const inferred = columnTitles?.length ?? 0;
+  const cols = Math.max(1, columns ?? (inferred > 0 ? inferred : 2));
   const displayData = rows != null ? details.slice(0, rows) : details;
 
   return (
@@ -132,7 +133,7 @@ const Table: React.FC<TableProps> = ({
               key={`h-${ci}`}
               variant='text-xs'
               weight='semibold'
-              color={colors.text.lighter}
+              color={colors.text.tertiary}
             >
               <Title>{columnTitles[ci] ?? ''}</Title>
             </Typography>
@@ -177,7 +178,7 @@ const Table: React.FC<TableProps> = ({
                         <ClockIcon />
                       </IconWrapper>
                     )}
-                    <DescriptionWapper>
+                    <DescriptionWrapper>
                       {mobileShowTitles && (
                         <Typography variant='text-xs' weight='semibold' color={colors.text.lighter}>
                           <TitleMobile>{columnTitles[ci] ?? ''}</TitleMobile>
@@ -190,7 +191,7 @@ const Table: React.FC<TableProps> = ({
                       >
                         {value}
                       </Typography>
-                    </DescriptionWapper>
+                    </DescriptionWrapper>
                   </Section>
                 );
               })}
