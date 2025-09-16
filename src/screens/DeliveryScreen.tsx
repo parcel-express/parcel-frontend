@@ -92,7 +92,6 @@ function DeliveryScreen() {
           <TableContainer>
             <Table
               details={deliveryTableDetails}
-              rows={deliveryItems.length}
               mobileShowTitles={false}
               columns={2}
               columnTitles={[tDelivery('Table.title1'), tDelivery('Table.title2')]}
