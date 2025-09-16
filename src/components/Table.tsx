@@ -9,13 +9,13 @@ import { colors } from '@/styles/colors';
 import { DesktopContainer, MobileContainer } from './Responsive';
 import { Typography } from './Typography';
 
-const DesktopGrid = styled.div`
+const DesktopGrid = styled.div<{ columns?: number }>`
   width: 100%;
   border: 1px solid ${colors.border.light};
   border-radius: 12px;
-  padding: 0 84px 0 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(${p => p.columns ?? 2}, minmax(60px, 1fr));
+  gap: 0;
   background-color: ${colors.background.white};
 `;
 
@@ -23,21 +23,21 @@ const Title = styled.span`
   display: block;
   border-bottom: 1px solid ${colors.border.light};
   padding: 13px 0 13px 24px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   @media screen and (max-width: 1080px) {
     display: none;
   }
 `;
 
-const FirstRow = styled.span`
+const Cell = styled.span.withConfig({
+  shouldForwardProp: prop => prop !== 'first',
+})<{ first?: boolean }>`
   display: block;
   border-bottom: 1px solid ${colors.border.light};
-  padding: 18px 0 18px 20px;
-`;
-
-const SecondRow = styled.span`
-  display: block;
-  border-bottom: 1px solid ${colors.border.light};
-  padding: 18px 0 18px 24px;
+  padding: 18px 0 18px ${p => (p.first ? '20px' : '24px')};
+  white-space: normal;
 `;
 
 /* Mobile card styles */
@@ -52,6 +52,9 @@ const Card = styled.div`
   border-radius: 8px;
   background: ${colors.background.white};
   padding: 16px 0;
+  @media screen and (max-width: 1080px) {
+    padding: 16px 0 0 0;
+  }
 `;
 
 const CardTop = styled.div`
@@ -66,9 +69,16 @@ const CardBody = styled.div`
   display: flex;
   gap: 4px;
   padding: 16px 0 0 16px;
+  @media screen and (max-width: 1080px) {
+    border-bottom: 1px solid ${colors.border.light};
+    padding: 16px;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
-const DescriptionWapper = styled.div`
+const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -82,89 +92,100 @@ const IconWrapper = styled.div`
   width: 20px;
   height: 20px;
 `;
-const defaultData = [
-  {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
-  },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'თბილისი', secondrow: 'პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
-  { firstrow: 'რუსთავი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'გორი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი' },
-  { firstrow: 'ზუგდიდი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-];
 
-const defaultTitles = {
-  firstTitle: 'ქალაქი',
-  secondTitle: 'ჩაბარება / აღება',
-} as const;
-
-export type TableDetail = {
-  firstrow: string;
-  secondrow: string;
-};
-
-export type TableTitles = {
-  firstTitle?: string;
-  secondTitle?: string;
-};
+const defaultData: string[][] = [];
+const defaultTitles: string[] = [];
 
 export type TableProps = {
-  details?: TableDetail[];
-  titles?: TableTitles;
+  details?: string[][];
+  columnTitles?: string[];
   rows?: number;
+  mobileShowTitles?: boolean;
+  columns?: number;
 };
 
-const Table: React.FC<TableProps> = ({ details = defaultData, titles = defaultTitles, rows }) => {
+const Table: React.FC<TableProps> = ({
+  details = defaultData,
+  columnTitles = defaultTitles,
+  rows,
+  mobileShowTitles = false,
+  columns,
+}) => {
+  const inferred = columnTitles?.length ?? 0;
+  const cols = Math.max(1, columns ?? (inferred > 0 ? inferred : 2));
   const displayData = rows != null ? details.slice(0, rows) : details;
 
   return (
     <>
       <DesktopContainer>
-        <DesktopGrid>
-          <Typography variant='text-xs' weight='semibold' color={colors.text.lighter}>
-            <Title>{titles.firstTitle}</Title>
-          </Typography>
-          <Typography variant='text-xs' weight='semibold' color={colors.text.lighter}>
-            <Title>{titles.secondTitle}</Title>
-          </Typography>
-
-          {displayData.map((item, index) => (
-            <React.Fragment key={index}>
-              <Typography variant='text-sm' weight='regular' color={colors.text.tertiary}>
-                <FirstRow>{item.firstrow}</FirstRow>
-              </Typography>
-              <Typography variant='text-sm' weight='regular' color={colors.text.tertiary}>
-                <SecondRow>{item.secondrow}</SecondRow>
-              </Typography>
-            </React.Fragment>
+        <DesktopGrid columns={cols}>
+          {Array.from({ length: cols }).map((_, ci) => (
+            <Typography
+              key={`h-${ci}`}
+              variant='text-xs'
+              weight='semibold'
+              color={colors.text.tertiary}
+            >
+              <Title>{columnTitles[ci] ?? ''}</Title>
+            </Typography>
           ))}
+
+          {displayData.map((row, index) =>
+            Array.from({ length: cols }).map((_, ci) => {
+              const value = row[ci] ?? '';
+              return (
+                <Typography
+                  key={`${index}-${ci}`}
+                  variant='text-sm'
+                  weight='regular'
+                  color={colors.text.tertiary}
+                >
+                  <Cell first={ci === 0}>{value}</Cell>
+                </Typography>
+              );
+            })
+          )}
         </DesktopGrid>
       </DesktopContainer>
+
       <MobileContainer>
         <MobileList>
-          {displayData.map((item, idx) => (
+          {displayData.map((row, idx) => (
             <Card key={idx}>
-              <CardTop>
-                <LocationIcon />
-                <Typography variant='text-sm' weight='bold' color={colors.text.primary}>
-                  {item.firstrow}
-                </Typography>
-              </CardTop>
-              <CardBody>
-                <IconWrapper>
-                  <ClockIcon />
-                </IconWrapper>
-                <DescriptionWapper>
-                  <Typography variant='text-xs' weight='regular' color={colors.text.primary}>
-                    <TitleMobile>{titles.secondTitle}</TitleMobile>
-                  </Typography>
-                  <Typography variant='text-sm' weight='bold' color={colors.text.primary}>
-                    {item.secondrow}
-                  </Typography>
-                </DescriptionWapper>
-              </CardBody>
+              {Array.from({ length: cols }).map((_, ci) => {
+                const value = row[ci] ?? '';
+                const showIcon = !mobileShowTitles && ci === 0;
+                const showClock = !mobileShowTitles && ci === 1;
+                const Section = ci === 0 ? CardTop : CardBody;
+                return (
+                  <Section key={`${idx}-m-${ci}`}>
+                    {showIcon && (
+                      <IconWrapper>
+                        <LocationIcon />
+                      </IconWrapper>
+                    )}
+                    {showClock && (
+                      <IconWrapper>
+                        <ClockIcon />
+                      </IconWrapper>
+                    )}
+                    <DescriptionWrapper>
+                      {mobileShowTitles && (
+                        <Typography variant='text-xs' weight='semibold' color={colors.text.lighter}>
+                          <TitleMobile>{columnTitles[ci] ?? ''}</TitleMobile>
+                        </Typography>
+                      )}
+                      <Typography
+                        variant='text-sm'
+                        weight={mobileShowTitles ? 'medium' : 'bold'}
+                        color={colors.text.primary}
+                      >
+                        {value}
+                      </Typography>
+                    </DescriptionWrapper>
+                  </Section>
+                );
+              })}
             </Card>
           ))}
         </MobileList>

@@ -10,7 +10,17 @@ import Header from '@/components/Header';
 import PageTitle from '@/components/PageTitle';
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
 import SearchInput from '@/components/SearchInput';
-import Table, { TableDetail } from '@/components/Table';
+import Table from '@/components/Table';
+
+type DropdownItem = {
+  label: string;
+  value: string;
+};
+
+type DeliveryItem = {
+  city: string;
+  schedule: string;
+};
 
 const DropdownContainer = styled.div`
   max-width: 576px;
@@ -34,82 +44,22 @@ const Title = styled.div`
 
 const TableContainer = styled.div`
   margin-top: 13px;
-
   @media (max-width: 1080px) {
     margin-top: 20px;
-
-    max-height: 650px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* optional: thin custom scrollbar for WebKit */
-  @media (max-width: 1080px) {
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.12);
-      border-radius: 999px;
-    }
   }
 `;
-
-const deliveryItems: TableDetail[] = [
-  {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
-  },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
-  {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
-  },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
-  {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
-  },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
-  {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
-  },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
-  {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
-  },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
-  {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
-  },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
-  {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
-  },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
-  {
-    firstrow: 'თბილისი',
-    secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი, შაბათი',
-  },
-  { firstrow: 'ბათუმი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი, პარასკევი' },
-  { firstrow: 'ქუთაისი', secondrow: 'ორშაბათი, სამშაბათი, ოთხშაბათი, ხუთშაბათი' },
-];
 
 function DeliveryScreen() {
   const [selectedDropdown, setSelectedDropdown] = React.useState<string>('');
   const tDelivery = useTranslations('Delivery');
 
+  const dropdownItems = tDelivery.raw('Dropdown.items') as DropdownItem[];
+  const deliveryItems = tDelivery.raw('Items') as DeliveryItem[];
+
+  const deliveryTableDetails = React.useMemo(
+    () => deliveryItems.map(i => [i.city, i.schedule]),
+    [deliveryItems]
+  );
   return (
     <>
       <Header />
@@ -125,16 +75,9 @@ function DeliveryScreen() {
                 onChange={value => {
                   setSelectedDropdown(value);
                 }}
-                placeholder='აირჩიე ქალაქი'
+                placeholder={tDelivery('placeholder')}
                 label=''
-                items={[
-                  { label: 'თბილისი', value: '1' },
-                  { label: 'ბათუმი', value: '2' },
-                  { label: 'ქუთაისი', value: '3' },
-                  { label: 'რუსთავი', value: '4' },
-                  { label: 'გორი', value: '5' },
-                  { label: 'ზუგდიდი', value: '6' },
-                ]}
+                items={dropdownItems}
               />
             </DropdownContainer>
           </DesktopContainer>
@@ -148,9 +91,10 @@ function DeliveryScreen() {
           </MobileContainer>
           <TableContainer>
             <Table
-              details={deliveryItems}
-              rows={19}
-              titles={{ firstTitle: 'ქალაქი', secondTitle: 'ჩაბარება / აღება' }}
+              details={deliveryTableDetails}
+              mobileShowTitles={false}
+              columns={2}
+              columnTitles={[tDelivery('Table.title1'), tDelivery('Table.title2')]}
             />
           </TableContainer>
         </MainContainer>
