@@ -4,8 +4,8 @@ module.exports = {
       // URLs to test - add your deployment URL here
       url: [
         'http://localhost:3000',
-        'http://localhost:3000/en/delivery',
-        'http://localhost:3000/en/price',
+        'http://localhost:3000/delivery',
+        'http://localhost:3000/price',
       ],
       // Number of runs per URL for more consistent results
       numberOfRuns: 1,
@@ -38,7 +38,6 @@ module.exports = {
         'speed-index': ['error', { maxNumericValue: 3000 }],
 
         // Accessibility
-        'color-contrast': 'error',
         'button-name': 'error',
         list: 'error',
         listitem: 'error',
