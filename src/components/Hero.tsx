@@ -193,7 +193,7 @@ const Hero = () => {
           </Description>
 
           <DesktopContainer>
-            <SearchInput size='md' />
+            <SearchInput size='md' placeholder={tHero('placeholder')} />
           </DesktopContainer>
           <MobileContainer>
             <SearchInput size='xs' />

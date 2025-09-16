@@ -112,6 +112,78 @@
     "button": "Search"
   },
   "Delivery": {
-    "title": "Delivery Schedule"
+    "title": "Delivery Schedule",
+    "placeholder": "Enter City",
+    "Dropdown": {
+      "items": [
+        { "label": "Tbilisi", "value": "1" },
+        { "label": "Batumi", "value": "2" },
+        { "label": "Kutaisi", "value": "3" },
+        { "label": "Rustavi", "value": "4" },
+        { "label": "Gori", "value": "5" },
+        { "label": "Zugdidi", "value": "6" }
+      ]
+    },
+    "Table": {
+      "title1": "City",
+      "title2": "Drop-off / Pickup"
+    },
+    "Items": [
+      { "city": "Tbilisi", "schedule": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday" },
+      { "city": "Batumi", "schedule": "Monday, Tuesday, Wednesday, Thursday, Friday" },
+      { "city": "Kutaisi", "schedule": "Monday, Tuesday, Wednesday, Thursday" }
+    ]
+  },
+  "Price": {
+    "title": "Tariffs",
+    "TakeRequest": {
+      "title": "Take Order",
+      "Columns": {
+        "city": "City",
+        "region": "Region",
+        "highland": "Village, Highland"
+      },
+      "Rows": {
+        "row1": "Mon-Fri - until 16:00, Sat - until 12:00",
+        "row2": "Mon-Fri - until 16:00",
+        "row3": "Mon-Fri - until 16:00"
+      }
+    },
+    "Delivery": {
+      "title": "Delivery Time",
+      "Columns": {
+        "city": "City",
+        "region": "Region",
+        "highland": "Village, Highland"
+      },
+      "Rows": {
+        "row1": "1-2 business days",
+        "row2": "1-4 business days",
+        "row3": "1-4 business days"
+      }
+    },
+    "Tariffs": {
+      "title": "Tariffs",
+      "Columns": {
+        "weight": "Weight",
+        "city": "City",
+        "region": "Region",
+        "pickupFromBranch": "Pickup from branch",
+        "capitalCity": "Capital city",
+        "village": "Village",
+        "highland": "Highland",
+        "tbilisiSuburbs": "Tbilisi suburbs"
+      },
+      "Rows": {
+        "upto1kg": "Up to 1 kg",
+        "row1": "12 GEL",
+        "row2": "12 GEL",
+        "row3": "12 GEL",
+        "row4": "12 GEL",
+        "row5": "12 GEL",
+        "row6": "12 GEL",
+        "row7": "12 GEL"
+      }
+    }
   }
 }
