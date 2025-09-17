@@ -185,5 +185,48 @@
         "row7": "12 GEL"
       }
     }
+  },
+  "Tracking": {
+    "title": "Track your parcel",
+    "button": "Search",
+    "placeholder": "Enter tracking code",
+    "card1": "Tracking",
+    "card2": "Expected delivery date",
+    "sender": "Sender",
+    "senderName": "Giorgi",
+    "receiverCity": "Receiver City",
+    "receiverCityName": "Tbilisi",
+    "receiverAddress": "Receiver Address",
+    "receiverAddressName": "Guramishvili 25",
+    "LastSection": {
+      "title": "Parcel History",
+      "title2": "Comment",
+      "title3": "Signature"
+    },
+    "Steps": {
+      "step1": "Delivered",
+      "step2": "Picked up for delivery",
+      "step3": "In warehouse, Tbilisi",
+      "step4": "Received",
+      "step5": "To be picked up",
+      "step6": "Processed"
+    }
+  },
+  "Calculator": {
+    "title": "Calculator",
+    "bio": "Find out the delivery price easily",
+    "input1Title": "Sender",
+    "placeholder1": "Select city",
+    "input2Title": "Recipient",
+    "placeholder2": "Select city",
+    "input3Title": "Pickup Date",
+    "placeholder3": "22 Dec 2025",
+    "input4Title": "Delivery Date",
+    "placeholder4": "24 Dec 2025",
+    "input5Title": "Parcel Weight",
+    "placeholder5": "Enter weight",
+    "checkout": "Delivery Cost",
+    "price": "12 GEL",
+    "button": "Clear"
   }
 }

@@ -9,9 +9,14 @@ const TitleContainer = styled.div``;
 interface PageTitleProps {
   title: string;
   desktopVariant?: 'large' | 'small';
+  mobileVariant?: 'text-lg' | 'title-md' | 'display-lg';
 }
 
-const PageTitle: React.FC<PageTitleProps> = ({ title, desktopVariant = 'large' }) => {
+const PageTitle: React.FC<PageTitleProps> = ({
+  title,
+  desktopVariant = 'large',
+  mobileVariant = 'text-lg',
+}) => {
   const desktopTypographyVariant = desktopVariant === 'small' ? 'title-md' : 'display-lg';
   return (
     <TitleContainer>
@@ -21,7 +26,7 @@ const PageTitle: React.FC<PageTitleProps> = ({ title, desktopVariant = 'large' }
         </Typography>
       </DesktopContainer>
       <MobileContainer>
-        <Typography variant='text-lg' weight='bold'>
+        <Typography variant={mobileVariant} weight='bold'>
           {title}
         </Typography>
       </MobileContainer>
