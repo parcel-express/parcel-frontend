@@ -22,7 +22,16 @@ const Hero = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  border-bottom: 1px solid ${colors.border.primary};
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100vw;
+    height: 1px;
+    transform: translateX(-50%);
+    background: ${colors.border.primary};
+  }
   @media screen and (max-width: 1080px) {
     gap: 16px;
     padding: 36px 0 28px 0;
@@ -32,9 +41,11 @@ const Hero = styled.div`
 const ImageWrapper = styled.div`
   position: absolute;
   top: 0;
-  left: 0;
-  z-index: -1;
-
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  pointer-events: none;
   @media screen and (max-width: 1080px) {
     display: none;
   }
@@ -103,11 +114,22 @@ const Details = styled.div`
 `;
 
 const LastSection = styled.div`
+  position: relative;
   padding: 36px 0 84px 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border-top: 1px solid ${colors.border.primary};
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 100vw;
+    height: 1px;
+    transform: translateX(-50%);
+    background: ${colors.border.primary};
+  }
+
   @media screen and (max-width: 1080px) {
     padding: 28px 0 72px 0;
   }
@@ -126,24 +148,64 @@ const Steps = styled.div`
   flex-direction: column;
   gap: 28px;
   margin-top: 32px;
+  @media screen and (max-width: 1080px) {
+    margin-top: 12px;
+  }
 `;
 
 const IconWrapper = styled.div`
-  background: linear-gradient(93.55deg, #662d91 21.82%, #302e9c 110.55%);
+  position: relative;
   border-radius: 10px;
   padding: 12px;
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(93.55deg, #662d91 21.82%, #302e9c 110.55%);
+    opacity: 0.1;
+    z-index: -1;
+  }
+  svg {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const StepBox = styled.div`
   display: flex;
   gap: 16px;
   align-items: center;
+  position: relative;
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 51px;
+    left: 23px;
+    width: 2px;
+    height: calc(100% + 28px - 50px);
+    background-color: ${colors.border.primary};
+    opacity: 0.3;
+    z-index: -1;
+  }
 `;
 
 const StepDetails = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2px;
+`;
+
+const MobileTitles = styled.div`
+  display: none;
+  @media screen and (max-width: 1080px) {
+    display: block;
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
 `;
 
 const TrackingScreen = () => {
@@ -157,8 +219,10 @@ const TrackingScreen = () => {
             <Image
               src='/images/tracking/background.png'
               alt='Hero Background Image'
-              fill={true}
-              objectFit='contain'
+              fill
+              priority
+              sizes='100vw'
+              style={{ objectFit: 'cover' }}
             />
           </ImageWrapper>
           <PageTitle title={tTracking('title')} />
@@ -292,15 +356,26 @@ const TrackingScreen = () => {
         </UserInfo>
         <LastSection>
           <Titles>
-            <Typography color={colors.text.black} variant='text-lg' weight='bold'>
-              {tTracking('LastSection.title')}
-            </Typography>
-            <Typography color={colors.text.black} variant='text-lg' weight='bold'>
-              {tTracking('LastSection.title2')}
-            </Typography>
-            <Typography color={colors.text.black} variant='text-lg' weight='bold'>
-              {tTracking('LastSection.title3')}
-            </Typography>
+            <DesktopContainer>
+              <Typography color={colors.text.black} variant='text-lg' weight='bold'>
+                {tTracking('LastSection.title')}
+              </Typography>
+            </DesktopContainer>
+            <MobileContainer>
+              <Typography color={colors.text.black} variant='text-lg' weight='bold'>
+                {tTracking('LastSection.title')}
+              </Typography>
+            </MobileContainer>
+            <DesktopContainer>
+              <Typography color={colors.text.black} variant='text-lg' weight='bold'>
+                {tTracking('LastSection.title2')}
+              </Typography>
+            </DesktopContainer>
+            <DesktopContainer>
+              <Typography color={colors.text.black} variant='text-lg' weight='bold'>
+                {tTracking('LastSection.title3')}
+              </Typography>
+            </DesktopContainer>
           </Titles>
           <Steps>
             <StepBox>
@@ -308,12 +383,22 @@ const TrackingScreen = () => {
                 <PackageIcon />
               </IconWrapper>
               <StepDetails>
-                <Typography color={colors.text.black} variant='text-lg' weight='medium'>
-                  {tTracking('Steps.step1')}
-                </Typography>
-                <Typography color={colors.text.black} variant='text-sm' weight='medium'>
-                  02.07.2025 - 13:23
-                </Typography>
+                <DesktopContainer>
+                  <Typography color={colors.text.black} variant='text-lg' weight='medium'>
+                    {tTracking('Steps.step1')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </DesktopContainer>
+                <MobileContainer>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    {tTracking('Steps.step1')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-xs' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </MobileContainer>
               </StepDetails>
             </StepBox>
             <StepBox>
@@ -321,12 +406,22 @@ const TrackingScreen = () => {
                 <ClockIcon />
               </IconWrapper>
               <StepDetails>
-                <Typography color={colors.text.black} variant='text-lg' weight='medium'>
-                  {tTracking('Steps.step2')}
-                </Typography>
-                <Typography color={colors.text.black} variant='text-sm' weight='medium'>
-                  02.07.2025 - 13:23
-                </Typography>
+                <DesktopContainer>
+                  <Typography color={colors.text.black} variant='text-lg' weight='medium'>
+                    {tTracking('Steps.step2')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </DesktopContainer>
+                <MobileContainer>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    {tTracking('Steps.step2')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-xs' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </MobileContainer>
               </StepDetails>
             </StepBox>
             <StepBox>
@@ -334,12 +429,22 @@ const TrackingScreen = () => {
                 <BuildingIcon />
               </IconWrapper>
               <StepDetails>
-                <Typography color={colors.text.black} variant='text-lg' weight='bold'>
-                  {tTracking('Steps.step3')}
-                </Typography>
-                <Typography color={colors.text.black} variant='text-sm' weight='medium'>
-                  02.07.2025 - 13:23
-                </Typography>
+                <DesktopContainer>
+                  <Typography color={colors.text.black} variant='text-lg' weight='bold'>
+                    {tTracking('Steps.step3')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </DesktopContainer>
+                <MobileContainer>
+                  <Typography color={colors.text.black} variant='text-sm' weight='bold'>
+                    {tTracking('Steps.step3')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-xs' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </MobileContainer>
               </StepDetails>
             </StepBox>
             <StepBox>
@@ -347,12 +452,22 @@ const TrackingScreen = () => {
                 <PackageIcon />
               </IconWrapper>
               <StepDetails>
-                <Typography color={colors.text.black} variant='text-lg' weight='medium'>
-                  {tTracking('Steps.step4')}
-                </Typography>
-                <Typography color={colors.text.black} variant='text-sm' weight='medium'>
-                  02.07.2025 - 13:23
-                </Typography>
+                <DesktopContainer>
+                  <Typography color={colors.text.black} variant='text-lg' weight='medium'>
+                    {tTracking('Steps.step4')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </DesktopContainer>
+                <MobileContainer>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    {tTracking('Steps.step4')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-xs' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </MobileContainer>
               </StepDetails>
             </StepBox>
             <StepBox>
@@ -360,12 +475,22 @@ const TrackingScreen = () => {
                 <PackageIcon />
               </IconWrapper>
               <StepDetails>
-                <Typography color={colors.text.black} variant='text-lg' weight='medium'>
-                  {tTracking('Steps.step5')}
-                </Typography>
-                <Typography color={colors.text.black} variant='text-sm' weight='medium'>
-                  02.07.2025 - 13:23
-                </Typography>
+                <DesktopContainer>
+                  <Typography color={colors.text.black} variant='text-lg' weight='medium'>
+                    {tTracking('Steps.step5')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </DesktopContainer>
+                <MobileContainer>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    {tTracking('Steps.step5')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-xs' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </MobileContainer>
               </StepDetails>
             </StepBox>
             <StepBox>
@@ -373,15 +498,36 @@ const TrackingScreen = () => {
                 <PackageIcon />
               </IconWrapper>
               <StepDetails>
-                <Typography color={colors.text.black} variant='text-lg' weight='medium'>
-                  {tTracking('Steps.step6')}
-                </Typography>
-                <Typography color={colors.text.black} variant='text-sm' weight='medium'>
-                  02.07.2025 - 13:23
-                </Typography>
+                <DesktopContainer>
+                  <Typography color={colors.text.black} variant='text-lg' weight='medium'>
+                    {tTracking('Steps.step6')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </DesktopContainer>
+                <MobileContainer>
+                  <Typography color={colors.text.black} variant='text-sm' weight='medium'>
+                    {tTracking('Steps.step6')}
+                  </Typography>
+                  <Typography color={colors.text.black} variant='text-xs' weight='medium'>
+                    02.07.2025 - 13:23
+                  </Typography>
+                </MobileContainer>
               </StepDetails>
             </StepBox>
           </Steps>
+
+          <MobileContainer>
+            <MobileTitles>
+              <Typography color={colors.text.black} variant='text-lg' weight='bold'>
+                {tTracking('LastSection.title2')}
+              </Typography>
+              <Typography color={colors.text.black} variant='text-lg' weight='bold'>
+                {tTracking('LastSection.title3')}
+              </Typography>
+            </MobileTitles>
+          </MobileContainer>
         </LastSection>
       </Container>
       <Footer />
