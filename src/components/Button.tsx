@@ -23,6 +23,8 @@ interface ButtonProps {
   focused?: boolean;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
+  style?: React.CSSProperties;
+  backgroundOpacity?: number;
 }
 
 const sizeStyles = {
@@ -331,6 +333,7 @@ const StyledButton = styled.button<{
   $size: ButtonSize;
   $focused: boolean;
   $locale?: string;
+  $backgroundOpacity?: number;
 }>`
   display: flex;
   align-items: center;
@@ -353,7 +356,29 @@ const StyledButton = styled.button<{
   ${({ $focused }) => $focused && focusedStyles}
   ${rippleEffect}
   ${pulseAnimation}
-  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+    background: ${({ $backgroundOpacity }) =>
+      $backgroundOpacity !== undefined && $backgroundOpacity < 1
+        ? `rgba(255,255,255, ${1 - Math.min(Math.max($backgroundOpacity, 0), 1)})`
+        : 'transparent'};
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+  ${({ $backgroundOpacity }) =>
+    $backgroundOpacity !== undefined &&
+    $backgroundOpacity < 1 &&
+    css`
+      border: none !important;
+    `}
   &:disabled {
     ${variantStyles.disabled}
   }
@@ -387,6 +412,7 @@ export const Button: React.FC<ButtonProps> = ({
   focused = false,
   onClick,
   type = 'button',
+  backgroundOpacity = 1,
   ...props
 }) => {
   const pathname = usePathname();
@@ -400,6 +426,7 @@ export const Button: React.FC<ButtonProps> = ({
       $size={size}
       $focused={focused && !disabled}
       $locale={currentLocale}
+      $backgroundOpacity={backgroundOpacity}
       disabled={disabled}
       onClick={onClick}
       {...props}

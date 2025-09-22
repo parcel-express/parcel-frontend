@@ -82,15 +82,44 @@ const Item = styled.button.attrs({ type: 'button' })<{ $selected?: boolean }>`
   }
 `;
 
+const PlainInput = styled.input`
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid ${colors.border.primary};
+  background: white;
+  width: 100%;
+  font: inherit;
+  color: ${colors.text.primary};
+  &::placeholder {
+    color: ${colors.text.disabled};
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(${colors.background.light}, ${colors.background.light}) padding-box,
+      linear-gradient(93.55deg, ${colors.brand.primary} 21.82%, ${colors.brand.secondary} 110.55%)
+        border-box;
+  }
+`;
+
 type DropdownProps = {
   items: { label: string; value: string }[];
   onChange: (value: string) => void;
   value: string;
   placeholder: string;
   label: string;
+  variant?: 'dropdown' | 'input';
 };
 
-const Dropdown: React.FC<DropdownProps> = ({ items, onChange, value, placeholder, label }) => {
+const Dropdown: React.FC<DropdownProps> = ({
+  items,
+  onChange,
+  value,
+  placeholder,
+  label,
+  variant = 'dropdown',
+}) => {
   const [open, setOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const listId = React.useId();
@@ -106,6 +135,28 @@ const Dropdown: React.FC<DropdownProps> = ({ items, onChange, value, placeholder
     document.addEventListener('mousedown', handleOutsideClick);
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, [open]);
+
+  if (variant === 'input') {
+    return (
+      <Container>
+        {label && (
+          <Title>
+            <Typography variant='text-sm' weight='medium' color={colors.text.secondary}>
+              {label}
+            </Typography>
+            <AsteriskIcon />
+          </Title>
+        )}
+        <PlainInput
+          placeholder={placeholder}
+          value={value}
+          onChange={e => onChange(e.target.value)}
+          aria-label={label || placeholder}
+        />
+      </Container>
+    );
+  }
+
   return (
     <>
       <Container ref={containerRef}>

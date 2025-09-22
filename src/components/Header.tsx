@@ -15,6 +15,7 @@ import LogoIcon from '@/icons/LogoIcon';
 import { colors } from '../styles/colors';
 
 import Button from './Button';
+import CalculatorPopup from './CalculatorPopup';
 import Container from './Container';
 import Typography from './Typography';
 
@@ -175,6 +176,7 @@ const MobileMenuFooter = styled.div`
 const Header = () => {
   const tHeader = useTranslations('Header');
   const tNavigation = useTranslations('Navigation');
+  const [isCalculatorOpen, setCalculatorOpen] = useState(false);
   const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -210,7 +212,6 @@ const Header = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -267,7 +268,13 @@ const Header = () => {
             </DesktopContainer>
             <DesktopContainer>
               <Buttons>
-                <Button size='xs' type='button' variant='secondary' aria-label='Open calculator'>
+                <Button
+                  size='xs'
+                  type='button'
+                  variant='secondary'
+                  aria-label='Open calculator'
+                  onClick={() => setCalculatorOpen(true)}
+                >
                   <CalculatorIcon />
                 </Button>
                 <Button size='xs' type='button' variant='secondary' aria-label='View notifications'>
@@ -428,6 +435,7 @@ const Header = () => {
           </MobileMenuFooter>
         </MobileMenuContainer>
       </Container>
+      {isCalculatorOpen && <CalculatorPopup onClose={() => setCalculatorOpen(false)} />}
     </>
   );
 };
