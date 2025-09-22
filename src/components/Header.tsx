@@ -136,6 +136,11 @@ const MobileMenuHeader = styled.div`
   padding: 15px 20px;
 `;
 
+const MobileButtons = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
 const MobileNavList = styled.ul`
   list-style: none;
   padding: 0 16px 16px 16px;
@@ -317,14 +322,25 @@ const Header = () => {
               </Buttons>
             </DesktopContainer>
             <MobileContainer>
-              <Button
-                onClick={() => setMobileMenuOpen(true)}
-                size='xs'
-                variant='transparent'
-                aria-label='Open menu'
-              >
-                <BurgerMenuIcon />
-              </Button>
+              <MobileButtons>
+                <Button
+                  size='xs'
+                  type='button'
+                  variant='secondary'
+                  aria-label='Open calculator'
+                  onClick={() => setCalculatorOpen(true)}
+                >
+                  <CalculatorIcon />
+                </Button>
+                <Button
+                  onClick={() => setMobileMenuOpen(true)}
+                  size='xs'
+                  variant='transparent'
+                  aria-label='Open menu'
+                >
+                  <BurgerMenuIcon />
+                </Button>
+              </MobileButtons>
             </MobileContainer>
           </HeaderContainer>
         </Container>
