@@ -139,7 +139,6 @@ const DateInputRow = styled.div`
   border: none;
   background: transparent;
   width: 100%;
-
   input {
     flex: 1;
     font: inherit;
@@ -151,6 +150,7 @@ const DateInputRow = styled.div`
     appearance: none;
     outline: none;
     box-shadow: none;
+    cursor: pointer;
   }
 
   input::-webkit-calendar-picker-indicator {
@@ -165,6 +165,7 @@ const DateField = styled.div`
   padding: 20px;
   position: relative;
   min-width: 0;
+  cursor: pointer;
   &:not(:last-child) {
     border-right: 1px solid ${colors.border.primary};
   }

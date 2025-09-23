@@ -228,5 +228,9 @@
     "checkout": "Delivery Cost",
     "price": "12.00GEL",
     "button": "Clear"
+  },
+  "Calendar": {
+    "button1": "Cancel",
+    "button2": "Select"
   }
 }
