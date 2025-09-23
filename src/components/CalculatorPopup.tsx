@@ -130,7 +130,7 @@ const DateRangeBox = styled.div`
   margin-top: 4px;
 `;
 
-const DateInputRow = styled.button.attrs({ type: 'button' })`
+const DateInputRow = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -231,6 +231,7 @@ const CalculatorPopup = ({ onClose }: { onClose: () => void }) => {
       onClose();
     }
   };
+
   return (
     <Overlay
       role='button'
@@ -293,12 +294,12 @@ const CalculatorPopup = ({ onClose }: { onClose: () => void }) => {
 
             <DateRangeWrapper>
               <DateLabels>
-                <DateLabel>
+                <DateLabel htmlFor='start-date'>
                   <Typography variant='text-sm' weight='medium' color={colors.text.secondary}>
                     {tCalculator('input3Title')}
                   </Typography>
                 </DateLabel>
-                <DateLabel>
+                <DateLabel htmlFor='end-date'>
                   <Typography variant='text-sm' weight='medium' color={colors.text.secondary}>
                     {tCalculator('input4Title')}
                   </Typography>
@@ -307,11 +308,13 @@ const CalculatorPopup = ({ onClose }: { onClose: () => void }) => {
               <DateRangeBox>
                 <DateField>
                   <DateInputRow
+                    role='button'
+                    tabIndex={0}
+                    aria-label={tCalculator('input3Title')}
                     onClick={() => openNativePicker(startInputRef)}
                     onKeyDown={e => {
                       if (e.key === 'Enter' || e.key === ' ') openNativePicker(startInputRef);
                     }}
-                    aria-label={tCalculator('input3Title')}
                   >
                     <CalendarIcon />
                     <input
@@ -332,11 +335,13 @@ const CalculatorPopup = ({ onClose }: { onClose: () => void }) => {
                 </DateField>
                 <DateField>
                   <DateInputRow
+                    role='button'
+                    tabIndex={0}
+                    aria-label={tCalculator('input4Title')}
                     onClick={() => openNativePicker(endInputRef)}
                     onKeyDown={e => {
                       if (e.key === 'Enter' || e.key === ' ') openNativePicker(endInputRef);
                     }}
-                    aria-label={tCalculator('input4Title')}
                   >
                     <CalendarIcon />
                     <input
