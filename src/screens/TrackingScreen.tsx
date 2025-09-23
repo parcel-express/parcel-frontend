@@ -77,7 +77,7 @@ const Card = styled.div`
   max-width: 432px;
   border-radius: 14px;
   background: transparent;
-
+  backdrop-filter: blur(30.5px);
   &::before {
     content: '';
     position: absolute;
