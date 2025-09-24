@@ -4,7 +4,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Container from '@/components/Container';
-import DatePicker from '@/components/DatePicker';
 import Dropdown from '@/components/Dropdown';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -65,7 +64,6 @@ function DeliveryScreen() {
     <>
       <Header />
       <Container>
-        <DatePicker />
         <MainContainer>
           <Title>
             <PageTitle title={tDelivery('title')} desktopVariant='large'></PageTitle>

@@ -1,3 +1,4 @@
+'use client';
 import { usePathname } from 'next/navigation';
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';

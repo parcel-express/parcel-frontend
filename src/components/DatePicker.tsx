@@ -1,3 +1,4 @@
+'use client';
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import { Value } from '@wojtekmaj/react-daterange-picker/src/shared/types.js';
 import { useTranslations } from 'next-intl';
