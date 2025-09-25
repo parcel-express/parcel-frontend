@@ -245,7 +245,7 @@ const Header = () => {
                   </li>
                   <li>
                     <Typography variant='text-sm' color={colors.text.black}>
-                      <NavLink href='/order'>{tNavigation('order')}</NavLink>
+                      <NavLink href='/orders'>{tNavigation('order')}</NavLink>
                     </Typography>
                   </li>
                   <li>
@@ -370,7 +370,7 @@ const Header = () => {
             </li>
             <li>
               <Typography variant='text-sm' color={colors.text.black}>
-                <MobileNavLink href='/order' onClick={() => setMobileMenuOpen(false)}>
+                <MobileNavLink href='/orders' onClick={() => setMobileMenuOpen(false)}>
                   {tNavigation('order')}
                 </MobileNavLink>
               </Typography>

@@ -6,10 +6,19 @@ import Container from '@/components/Container';
 import DatePicker from '@/components/DatePicker';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import StatusDropdown from '@/components/StatusDropdown';
 
 const Wrapper = styled.div`
   margin: 100px 0 400px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
+
+const StatusWrapper = styled.div`
+  width: 115px;
+`;
+
 const OrdersScreen = () => {
   return (
     <>
@@ -17,6 +26,9 @@ const OrdersScreen = () => {
       <Container>
         <Wrapper>
           <DatePicker />
+          <StatusWrapper>
+            <StatusDropdown value='' onChange={() => {}} />
+          </StatusWrapper>
         </Wrapper>
       </Container>
       <Footer />
