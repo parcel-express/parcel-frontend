@@ -3,21 +3,23 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Container from '@/components/Container';
-import DatePicker from '@/components/DatePicker';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
 
-const Wrapper = styled.div`
-  margin: 100px 0 400px 0;
+const MainContent = styled.div`
+  display: Flex;
+  padding: 28px 0 0 0;
 `;
+
 const OrdersScreen = () => {
   return (
     <>
       <Header />
       <Container>
-        <Wrapper>
-          <DatePicker />
-        </Wrapper>
+        <MainContent>
+          <Sidebar />
+        </MainContent>
       </Container>
       <Footer />
     </>

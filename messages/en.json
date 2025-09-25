@@ -232,5 +232,16 @@
   "Calendar": {
     "button1": "Cancel",
     "button2": "Select"
+  },
+  "Sidebar": {
+    "home": "Home",
+    "orders": "My Orders",
+    "terms": "Terms",
+    "invoice": "Invoices",
+    "tariffs": "Tariffs",
+    "addresses": "My Addresses",
+    "settings": "Settings",
+    "contact": "Contact",
+    "button": "New Order"
   }
 }

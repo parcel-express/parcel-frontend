@@ -233,5 +233,16 @@
   "Calendar": {
     "button1": "Отмена",
     "button2": "Выбрать"
+  },
+  "Sidebar": {
+    "home": "Главная",
+    "orders": "Мои заказы",
+    "terms": "Условия",
+    "invoice": "Счета",
+    "tariffs": "Тарифы",
+    "addresses": "Мои адреса",
+    "settings": "Настройки",
+    "contact": "Контакты",
+    "button": "Новый заказ"
   }
 }
