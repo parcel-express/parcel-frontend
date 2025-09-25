@@ -2,9 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslations } from 'use-intl';
 
+import AddressIcon from '@/icons/AddressIcon';
+import ContactIcon from '@/icons/ContactIcon';
+import HomeIcon from '@/icons/HomeIcon';
+import InvoiceIcon from '@/icons/InvoiceIcon';
 import LogoIcon from '@/icons/LogoIcon';
 import PackageIcon from '@/icons/PackageIcon';
 import PlusTranspIcon from '@/icons/PlusTranspIcon';
+import SettingsIcon from '@/icons/SettingsIcon';
+import TariffsIcon from '@/icons/TariffsIcon';
+import TermsIcon from '@/icons/TermsIcon';
 import { colors } from '@/styles/colors';
 
 import { Button } from './Button';
@@ -52,6 +59,7 @@ const ButtonWrapper = styled.div`
   padding: 12px 0;
   border-top: 1px solid ${colors.border.light};
   border-bottom: 1px solid ${colors.border.light};
+  margin: 8px 0 8px 0;
 `;
 
 const Sidebar = () => {
@@ -63,22 +71,25 @@ const Sidebar = () => {
       </LogoWrapper>
       <ItemsWrapper>
         <MenuItem>
+          <HomeIcon />
           <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
             {tSidebar('home')}
           </Typography>
         </MenuItem>
         <MenuItem>
-          <PackageIcon />
+          <PackageIcon width={22} height={21} />
           <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
             {tSidebar('orders')}
           </Typography>
         </MenuItem>
         <MenuItem>
+          <TermsIcon />
           <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
             {tSidebar('terms')}
           </Typography>
         </MenuItem>
         <MenuItem>
+          <InvoiceIcon />
           <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
             {tSidebar('invoice')}
           </Typography>
@@ -92,21 +103,25 @@ const Sidebar = () => {
       </ButtonWrapper>
       <ItemsWrapper>
         <MenuItem>
+          <TariffsIcon />
           <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
             {tSidebar('tariffs')}
           </Typography>
         </MenuItem>
         <MenuItem>
+          <AddressIcon />
           <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
             {tSidebar('addresses')}
           </Typography>
         </MenuItem>
         <MenuItem>
+          <SettingsIcon />
           <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
             {tSidebar('settings')}
           </Typography>
         </MenuItem>
         <MenuItem>
+          <ContactIcon />
           <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
             {tSidebar('contact')}
           </Typography>

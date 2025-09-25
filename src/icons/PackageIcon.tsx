@@ -1,7 +1,20 @@
 import * as React from 'react';
 
-const PackageIcon = () => (
-  <svg xmlns='http://www.w3.org/2000/svg' width={24} height={24} fill='none'>
+type Props = {
+  size?: number;
+  width?: number;
+  height?: number;
+};
+
+const PackageIcon: React.FC<Props> = ({ size = 24, width, height, ...props }) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width={width ?? size}
+    height={height ?? size}
+    viewBox='0 0 24 24'
+    fill='none'
+    {...props}
+  >
     <path
       stroke='#000'
       strokeLinecap='round'
