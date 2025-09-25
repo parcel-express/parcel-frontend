@@ -243,5 +243,27 @@
     "settings": "Settings",
     "contact": "Contact",
     "button": "New Order"
+  },
+  "Status": {
+    "placeholder": "Status",
+    "Status": {
+      "status1": "New",
+      "status2": "Activated",
+      "status3": "In Progress",
+      "status4": "Expired",
+      "status5": "Cancelled",
+      "status6": "Continued",
+      "status7": "Updated",
+      "status8": "Occupied",
+      "status9": "Additional",
+      "status10": "Started",
+      "status11": "Temporary",
+      "status12": "Completed",
+      "status13": "Confirmed",
+      "status14": "Pending",
+      "status15": "Suspended",
+      "status16": "Introduced",
+      "status17": "Unnoticed"
+    }
   }
 }

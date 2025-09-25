@@ -51,11 +51,23 @@ const InputContainer = styled.button.attrs({ type: 'button' })<{ $open?: boolean
   }
 `;
 
-const DropdownContainer = styled.div`
+const DropdownContainer = styled.div<{ $fitContent?: boolean }>`
   position: absolute;
   top: 100%;
-  left: 0;
-  right: 0;
+  ${p =>
+    p.$fitContent
+      ? `
+    left: 0;
+    right: auto;        
+    min-width: 100%;     
+    width: max-content;  
+    max-width: 90vw;     
+  `
+      : `
+    left: 0;
+    right: 0;        
+    width: auto;
+  `}
   z-index: 1000;
   margin-top: 2px;
   padding: 4px 6px 4px 6px;
@@ -77,6 +89,7 @@ const Item = styled.button.attrs({ type: 'button' })<{ $selected?: boolean }>`
   background: ${props => (props.$selected ? colors.state.hover.lighter : 'transparent')};
   border: none;
   text-align: left;
+  white-space: nowrap;
   &:hover {
     background-color: ${colors.background.light};
   }
@@ -110,6 +123,7 @@ type DropdownProps = {
   placeholder: string;
   label: string;
   variant?: 'dropdown' | 'input';
+  menuFitContent?: boolean;
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -119,6 +133,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   placeholder,
   label,
   variant = 'dropdown',
+  menuFitContent = false,
 }) => {
   const [open, setOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
@@ -181,7 +196,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           <DropArrowIcon />
         </InputContainer>
         {open && (
-          <DropdownContainer role='listbox' id={listId}>
+          <DropdownContainer role='listbox' id={listId} $fitContent={menuFitContent}>
             {items.map(item => (
               <Item
                 key={item.value}

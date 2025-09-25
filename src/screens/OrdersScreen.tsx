@@ -5,11 +5,17 @@ import styled from 'styled-components';
 import Container from '@/components/Container';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import Sidebar from '@/components/Sidebar';
+import StatusDropdown from '@/components/StatusDropdown';
 
-const MainContent = styled.div`
-  display: Flex;
-  padding: 28px 0 0 0;
+const Wrapper = styled.div`
+  margin: 100px 0 400px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const StatusWrapper = styled.div`
+  width: 115px;
 `;
 
 const OrdersScreen = () => {
@@ -17,9 +23,11 @@ const OrdersScreen = () => {
     <>
       <Header />
       <Container>
-        <MainContent>
-          <Sidebar />
-        </MainContent>
+        <Wrapper>
+          <StatusWrapper>
+            <StatusDropdown value='' onChange={() => {}} />
+          </StatusWrapper>
+        </Wrapper>
       </Container>
       <Footer />
     </>
