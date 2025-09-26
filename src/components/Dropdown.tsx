@@ -101,7 +101,7 @@ const PlainInput = styled.input`
   border: 1px solid ${colors.border.primary};
   background: white;
   width: 100%;
-  font: inherit;
+  font-size: 14px;
   color: ${colors.text.primary};
   &::placeholder {
     color: ${colors.text.disabled};

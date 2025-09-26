@@ -255,5 +255,15 @@
       "status16": "Введенный",
       "status17": "Незамеченный"
     }
+  },
+  "Login": {
+    "title": "Авторизация",
+    "email": "Электронная почта",
+    "emailPlaceholder": "Введите ваш email",
+    "password": "Пароль",
+    "passwordPlaceholder": "Введите ваш пароль",
+    "button": "Войти",
+    "forgot": "Забыли пароль?",
+    "noAccount": "Нет аккаунта? <bold>Зарегистрируйтесь</bold>"
   }
 }

@@ -254,5 +254,15 @@
       "status16": "Introduced",
       "status17": "Unnoticed"
     }
+  },
+  "Login": {
+    "title": "Login",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "button": "Login",
+    "forgot": "Forgot password?",
+    "noAccount": "Don't have an account? <bold>Sign up</bold>"
   }
 }
