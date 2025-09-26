@@ -261,5 +261,35 @@
     "button": "ავტორიზაცია",
     "forgot": "დაგავიწყდა პაროლი?",
     "noAccount": "არ გაქვს ანგარიში? <bold>დარეგისტრირდი</bold>"
+  },
+  "Register": {
+    "title": "რეგისტრაცია",
+    "userType": "მომხმარებლის ტიპი",
+    "userTypePlaceholder": "აირჩიე ტიპი",
+    "name": "სახელი",
+    "namePlaceholder": "სახელი",
+    "surname": "გვარი",
+    "surnamePlaceholder": "გვარი",
+    "email": "ელ.ფოსტა",
+    "emailPlaceholder": "შეიყვანეთ ელ.ფოსტა",
+    "phone": "მობილურის ნომერი",
+    "phonePlaceholder": "შეიყვანეთ მობილურის ნომერი",
+    "password": "პაროლი",
+    "passwordPlaceholder": "პაროლი",
+    "terms": "ვეთანხმები წესებს და პირობებს",
+    "button": "რეგისტრაცია",
+    "haveAccount": "გაქვს უკვე ანგარიში? <bold>ავტორიზაცია</bold>"
+  },
+  "Password": {
+    "title": "პაროლის აღდგენა",
+    "description": "პაროლის აღსადგენად საჭიროა თქვენი ელ.ფოსტის მითითება",
+    "email": "ელ.ფოსტა",
+    "emailPlaceholder": "შეიყვანეთ ელ.ფოსტა",
+    "button": "გაგზავნა"
+  },
+  "Successful": {
+    "title": "პაროლი წარმატებით გაიგზავნა",
+    "description": "მითითებულ მეილზე, gagi.murjikneli@gmail.com-ზე გაგზავნილია ახალი პაროლი",
+    "button": "მთავარი გვერდი"
   }
 }

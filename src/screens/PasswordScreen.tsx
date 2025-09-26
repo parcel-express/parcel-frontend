@@ -38,17 +38,13 @@ const InputsWrapper = styled.div`
 
 const Title = styled.div`
   text-align: center;
+  white-space: nowrap;
   margin-top: 20px;
+  margin-bottom: -20px;
   @media (max-width: 1080px) {
     padding-bottom: 10px;
     margin-top: 0;
   }
-`;
-
-const ForgotPassword = styled.div`
-  display: flex;
-  cursor: pointer;
-  margin-top: -14px;
 `;
 
 const ButtonWrapper = styled.div`
@@ -59,80 +55,49 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const Registration = styled.div`
-  margin-top: -12px;
-  @media (max-width: 1080px) {
-    margin-top: -22px;
-  }
-`;
-
-const LoginScreen = () => {
-  const tLogin = useTranslations('Login');
+const PasswordScreen = () => {
+  const tPassword = useTranslations('Password');
   return (
     <PageBackground>
       <MobileContainer>
         <Header />
       </MobileContainer>
       <MainContainer>
-        <DesktopContainer>
-          <BigLogoIcon />
-        </DesktopContainer>
+        <BigLogoIcon />
         <Title>
           <DesktopContainer>
             <Typography variant='display-md' weight='bold' color={colors.text.black}>
-              {tLogin('title')}
+              {tPassword('title')}
             </Typography>
           </DesktopContainer>
           <MobileContainer>
             <Typography variant='display-xs' weight='bold' color={colors.text.black}>
-              {tLogin('title')}
+              {tPassword('title')}
             </Typography>
           </MobileContainer>
         </Title>
+        <Typography variant='text-sm' weight='regular' color={colors.text.black}>
+          {tPassword('description')}
+        </Typography>
         <InputsWrapper>
           <Dropdown
             variant='input'
-            label={tLogin('email')}
-            placeholder={tLogin('emailPlaceholder')}
+            label={tPassword('email')}
+            placeholder={tPassword('emailPlaceholder')}
             value=''
             onChange={() => {}}
             items={[]}
             required={false}
           />
-          <Dropdown
-            variant='input'
-            label={tLogin('password')}
-            placeholder={tLogin('passwordPlaceholder')}
-            value=''
-            onChange={() => {}}
-            items={[]}
-            required={false}
-          />
-          <ForgotPassword>
-            <Typography variant='text-sm' weight='medium' color={colors.text.black}>
-              {tLogin('forgot')}
-            </Typography>
-          </ForgotPassword>
         </InputsWrapper>
         <ButtonWrapper>
           <Button variant='primary' size='lg' onClick={() => {}}>
-            {tLogin('title')}
+            {tPassword('title')}
           </Button>
         </ButtonWrapper>
-        <Registration>
-          <Typography variant='text-sm' weight='regular' color={colors.text.dark}>
-            {tLogin.rich('noAccount', {
-              bold: chunks => (
-                <Typography as='span' variant='text-sm' weight='bold' color={colors.text.dark}>
-                  {chunks}
-                </Typography>
-              ),
-            })}
-          </Typography>
-        </Registration>
       </MainContainer>
     </PageBackground>
   );
 };
 
-export default LoginScreen;
+export default PasswordScreen;

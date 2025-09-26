@@ -23,7 +23,7 @@ const Title = styled.div`
 `;
 
 const InputContainer = styled.button.attrs({ type: 'button' })<{ $open?: boolean }>`
-  padding: 8px 12px;
+  padding: 12px 16px;
   border-radius: 8px;
   ${props =>
     props.$open
@@ -96,7 +96,10 @@ const Item = styled.button.attrs({ type: 'button' })<{ $selected?: boolean }>`
 `;
 
 const PlainInput = styled.input`
-  padding: 8px 12px;
+  padding: 12px 16px;
+  && {
+    padding: 12px 16px;
+  }
   border-radius: 8px;
   border: 1px solid ${colors.border.primary};
   background: white;
@@ -124,6 +127,7 @@ type DropdownProps = {
   label: string;
   variant?: 'dropdown' | 'input';
   menuFitContent?: boolean;
+  required?: boolean;
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -134,6 +138,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   label,
   variant = 'dropdown',
   menuFitContent = false,
+  required = true,
 }) => {
   const [open, setOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
@@ -159,7 +164,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             <Typography variant='text-sm' weight='medium' color={colors.text.secondary}>
               {label}
             </Typography>
-            <AsteriskIcon />
+            {required && <AsteriskIcon />}
           </Title>
         )}
         <PlainInput
@@ -167,6 +172,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           value={value}
           onChange={e => onChange(e.target.value)}
           aria-label={label || placeholder}
+          required={required}
         />
       </Container>
     );
@@ -180,7 +186,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             <Typography variant='text-sm' weight='medium' color={colors.text.secondary}>
               {label}
             </Typography>
-            <AsteriskIcon />
+            {required && <AsteriskIcon />}
           </Title>
         )}
         <InputContainer

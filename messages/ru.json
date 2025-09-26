@@ -265,5 +265,35 @@
     "button": "Войти",
     "forgot": "Забыли пароль?",
     "noAccount": "Нет аккаунта? <bold>Зарегистрируйтесь</bold>"
+  },
+  "Register": {
+    "title": "Регистрация",
+    "userType": "Тип пользователя",
+    "userTypePlaceholder": "Выберите тип",
+    "name": "Имя",
+    "namePlaceholder": "Имя",
+    "surname": "Фамилия",
+    "surnamePlaceholder": "Фамилия",
+    "email": "Электронная почта",
+    "emailPlaceholder": "Введите ваш email",
+    "phone": "Мобильный номер",
+    "phonePlaceholder": "Введите ваш мобильный номер",
+    "password": "Пароль",
+    "passwordPlaceholder": "Пароль",
+    "terms": "Я согласен с условиями",
+    "button": "Регистрация",
+    "haveAccount": "Уже есть аккаунт? <bold>Войти</bold>"
+  },
+  "Password": {
+    "title": "Восстановление пароля",
+    "description": "Для восстановления пароля укажите ваш адрес электронной почты",
+    "email": "Email",
+    "emailPlaceholder": "Введите ваш email",
+    "button": "Отправить"
+  },
+  "SuccessfulRequest": {
+    "title": "Пароль успешно отправлен",
+    "description": "Новый пароль был отправлен на указанный адрес электронной почты, gagi.murjikneli@gmail.com",
+    "button": "На главную страницу"
   }
 }
