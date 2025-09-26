@@ -290,9 +290,9 @@
     "emailPlaceholder": "Enter your email",
     "button": "Send"
   },
-  "SuccessfulRequest": {
+  "Successful": {
     "title": "Password Successfully Sent",
-    "description": "New password has been sent to the specified email, gagi.murjikneli@gmail.com",
+    "description": "New password has been sent to the specified email, {email}",
     "button": "Main Page"
   }
 }

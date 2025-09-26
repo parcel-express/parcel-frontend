@@ -116,7 +116,7 @@ const LoginScreen = () => {
         </InputsWrapper>
         <ButtonWrapper>
           <Button variant='primary' size='lg' onClick={() => {}}>
-            {tLogin('title')}
+            {tLogin('button')}
           </Button>
         </ButtonWrapper>
         <Registration>

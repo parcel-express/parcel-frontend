@@ -291,9 +291,9 @@
     "emailPlaceholder": "Введите ваш email",
     "button": "Отправить"
   },
-  "SuccessfulRequest": {
+  "Successful": {
     "title": "Пароль успешно отправлен",
-    "description": "Новый пароль был отправлен на указанный адрес электронной почты, gagi.murjikneli@gmail.com",
+    "description": "Новый пароль был отправлен на указанный адрес электронной почты, {email}",
     "button": "На главную страницу"
   }
 }

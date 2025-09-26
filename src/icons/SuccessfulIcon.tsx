@@ -1,7 +1,7 @@
 import * as React from 'react';
 const SuccessfulIcon = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width={108} height={108} fill='none'>
-    <circle cx={54} cy={54} r={54} fill='#17B26A' />
+    <circle cx={54} cy={54} r={54} fill='#181d27' />
     <path
       fill='#fff'
       fillRule='evenodd'
