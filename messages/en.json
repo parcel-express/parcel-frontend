@@ -308,6 +308,46 @@
       "col4": "Giorgi ",
       "col5": "Giorgi ",
       "col6": "Canceled"
+    },
+    "Login": {
+      "title": "Login",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "button": "Login",
+      "forgot": "Forgot password?",
+      "noAccount": "Don't have an account? <bold>Sign up</bold>"
+    },
+    "Register": {
+      "title": "Register",
+      "userType": "User Type",
+      "userTypePlaceholder": "Select type",
+      "name": "Name",
+      "namePlaceholder": "Name",
+      "surname": "Surname",
+      "surnamePlaceholder": "Surname",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "phone": "Phone",
+      "phonePlaceholder": "Enter your phone number",
+      "password": "Password",
+      "passwordPlaceholder": "Password",
+      "terms": "I agree to the terms and conditions",
+      "button": "Register",
+      "haveAccount": "Already have an account? <bold>Login</bold>"
+    },
+    "Password": {
+      "title": "Password Recovery",
+      "description": "To recover your password, please provide your email address",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "button": "Send"
+    },
+    "Successful": {
+      "title": "Password Successfully Sent",
+      "description": "New password has been sent to the specified email, {email}",
+      "button": "Main Page"
     }
   }
 }
