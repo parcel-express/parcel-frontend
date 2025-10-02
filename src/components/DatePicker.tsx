@@ -29,8 +29,15 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
+    gap: 2px;
   }
-
+  @media (max-width: 1080px) {
+    width: 238px;
+    .react-daterange-picker__wrapper {
+      width: 208px;
+      padding: 8px 8px;
+    }
+  }
   .react-calendar__navigation__prev2-button,
   .react-calendar__navigation__next2-button {
     display: none;
@@ -47,6 +54,7 @@ const Wrapper = styled.div`
 
   .react-daterange-picker__calendar-button {
     order: -1;
+    padding: 0;
   }
 
   .react-daterange-picker__clear-button {
@@ -208,6 +216,9 @@ const ActionButtons = styled.div`
   background: ${colors.background.white};
   padding: 16px;
   border-radius: 0 0 12px 12px;
+  @media screen and (max-width: 1080px) {
+    gap: 4px;
+  }
 `;
 
 interface SharedDateRangePickerProps {
@@ -241,7 +252,7 @@ const DatePicker: React.FC<SharedDateRangePickerProps> = ({ onChange, value }) =
       <DateRangePicker
         onChange={handleChange}
         value={date}
-        format='dd-MM-yyyy'
+        format='dd.MM.yyyy'
         calendarIcon={<CalendarIcon />}
         clearIcon={null}
         calendarProps={{

@@ -69,6 +69,7 @@ type StatusDropdownProps = {
   onChange: (value: StatusValue) => void;
   label?: string;
   placeholder?: string;
+  placeholderColor?: 'lighter' | 'secondary';
 };
 
 const StatusDropdown: React.FC<StatusDropdownProps> = ({
@@ -76,13 +77,20 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
   onChange,
   label = '',
   placeholder,
+  placeholderColor = 'lighter',
 }) => {
   const t = useTranslations('Status');
 
   const items = React.useMemo(
     () =>
       STATUS_KEYS.map(s => ({
-        label: t(`Status.${s.key}`),
+        label: (() => {
+          try {
+            return t(`Status.${s.key}` as string);
+          } catch {
+            return s.value;
+          }
+        })(),
         value: s.value,
       })),
     [t]
@@ -97,6 +105,7 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
       label={label}
       variant='dropdown'
       menuFitContent
+      placeholderColor={placeholderColor}
     />
   );
 };

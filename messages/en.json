@@ -233,6 +233,18 @@
     "button1": "Cancel",
     "button2": "Select"
   },
+  "Sidebar": {
+    "home": "Home",
+    "orders": "My Orders",
+    "terms": "Terms",
+    "invoice": "Invoices",
+    "tariffs": "Tariffs",
+    "addresses": "My Addresses",
+    "settings": "Settings",
+    "contact": "Contact",
+    "button": "New Order",
+    "logout": "Logout"
+  },
   "Status": {
     "placeholder": "Status",
     "Status": {
@@ -255,44 +267,87 @@
       "status17": "Unnoticed"
     }
   },
-  "Login": {
-    "title": "Login",
-    "email": "Email",
-    "emailPlaceholder": "Enter your email",
-    "password": "Password",
-    "passwordPlaceholder": "Enter your password",
-    "button": "Login",
-    "forgot": "Forgot password?",
-    "noAccount": "Don't have an account? <bold>Sign up</bold>"
-  },
-  "Register": {
-    "title": "Register",
-    "userType": "User Type",
-    "userTypePlaceholder": "Select type",
-    "name": "Name",
-    "namePlaceholder": "Name",
-    "surname": "Surname",
-    "surnamePlaceholder": "Surname",
-    "email": "Email",
-    "emailPlaceholder": "Enter your email",
-    "phone": "Phone",
-    "phonePlaceholder": "Enter your phone number",
-    "password": "Password",
-    "passwordPlaceholder": "Password",
-    "terms": "I agree to the terms and conditions",
-    "button": "Register",
-    "haveAccount": "Already have an account? <bold>Login</bold>"
-  },
-  "Password": {
-    "title": "Password Recovery",
-    "description": "To recover your password, please provide your email address",
-    "email": "Email",
-    "emailPlaceholder": "Enter your email",
-    "button": "Send"
-  },
-  "Successful": {
-    "title": "Password Successfully Sent",
-    "description": "New password has been sent to the specified email, {email}",
-    "button": "Main Page"
+  "Orders": {
+    "title": "My Orders",
+    "searchPlaceholder": "Search",
+    "table": {
+      "col1": "Tracking",
+      "col2": "Order Date",
+      "col3": "Pickup Date",
+      "col4": "Sender Name",
+      "col5": "Receiver Name",
+      "col6": "Status"
+    },
+    "mobileCard": {
+      "orderDate": "Order Date",
+      "pickupDate": "Pickup Date",
+      "sender": "Sender",
+      "senderAddress": "Aleko Gobronidze Street 11",
+      "receiver": "Receiver",
+      "receiverAddress": "Merab Aleksidze Street 1"
+    },
+    "statuses": {
+      "delivered": "Delivered",
+      "cancelled": "Canceled",
+      "inProgress": "In Progress",
+      "pending": "Pending",
+      "delayed": "Delayed"
+    },
+    "row1": {
+      "col1": "#26677",
+      "col2": "24 Jan 10:00",
+      "col3": "24 Jan 22:00",
+      "col4": "Gagi ",
+      "col5": "Gagi ",
+      "col6": "Waitings"
+    },
+    "row2": {
+      "col1": "#26677",
+      "col2": "24 Jan 10:00",
+      "col3": "24 Jan 22:00",
+      "col4": "Giorgi ",
+      "col5": "Giorgi ",
+      "col6": "Canceled"
+    },
+    "Login": {
+      "title": "Login",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "button": "Login",
+      "forgot": "Forgot password?",
+      "noAccount": "Don't have an account? <bold>Sign up</bold>"
+    },
+    "Register": {
+      "title": "Register",
+      "userType": "User Type",
+      "userTypePlaceholder": "Select type",
+      "name": "Name",
+      "namePlaceholder": "Name",
+      "surname": "Surname",
+      "surnamePlaceholder": "Surname",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "phone": "Phone",
+      "phonePlaceholder": "Enter your phone number",
+      "password": "Password",
+      "passwordPlaceholder": "Password",
+      "terms": "I agree to the terms and conditions",
+      "button": "Register",
+      "haveAccount": "Already have an account? <bold>Login</bold>"
+    },
+    "Password": {
+      "title": "Password Recovery",
+      "description": "To recover your password, please provide your email address",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "button": "Send"
+    },
+    "Successful": {
+      "title": "Password Successfully Sent",
+      "description": "New password has been sent to the specified email, {email}",
+      "button": "Main Page"
+    }
   }
 }

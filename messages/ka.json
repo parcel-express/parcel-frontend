@@ -230,6 +230,18 @@
     "button1": "გაუქმება",
     "button2": "არჩევა"
   },
+  "Sidebar": {
+    "home": "მთავარი",
+    "orders": "ჩემი შეკვეთები",
+    "terms": "პირობები",
+    "invoice": "ინვოისები",
+    "tariffs": "ტარიფები",
+    "addresses": "ჩემი მისამართები",
+    "settings": "პარამეტრები",
+    "contact": "კონტაქტი",
+    "button": "ახალი შეკვეთა",
+    "logout": "გასვლა"
+  },
   "Status": {
     "placeholder": "სტატუსი",
     "Status": {
@@ -252,44 +264,87 @@
       "status17": "შეუმჩნეველი"
     }
   },
-  "Login": {
-    "title": "ავტორიზაცია",
-    "email": "ელ.ფოსტა",
-    "emailPlaceholder": "შეიყვანეთ ელ.ფოსტა",
-    "password": "პაროლი",
-    "passwordPlaceholder": "პაროლი",
-    "button": "ავტორიზაცია",
-    "forgot": "დაგავიწყდა პაროლი?",
-    "noAccount": "არ გაქვს ანგარიში? <bold>დარეგისტრირდი</bold>"
-  },
-  "Register": {
-    "title": "რეგისტრაცია",
-    "userType": "მომხმარებლის ტიპი",
-    "userTypePlaceholder": "აირჩიე ტიპი",
-    "name": "სახელი",
-    "namePlaceholder": "სახელი",
-    "surname": "გვარი",
-    "surnamePlaceholder": "გვარი",
-    "email": "ელ.ფოსტა",
-    "emailPlaceholder": "შეიყვანეთ ელ.ფოსტა",
-    "phone": "მობილურის ნომერი",
-    "phonePlaceholder": "შეიყვანეთ მობილურის ნომერი",
-    "password": "პაროლი",
-    "passwordPlaceholder": "პაროლი",
-    "terms": "ვეთანხმები წესებს და პირობებს",
-    "button": "რეგისტრაცია",
-    "haveAccount": "გაქვს უკვე ანგარიში? <bold>ავტორიზაცია</bold>"
-  },
-  "Password": {
-    "title": "პაროლის აღდგენა",
-    "description": "პაროლის აღსადგენად საჭიროა თქვენი ელ.ფოსტის მითითება",
-    "email": "ელ.ფოსტა",
-    "emailPlaceholder": "შეიყვანეთ ელ.ფოსტა",
-    "button": "გაგზავნა"
-  },
-  "Successful": {
-    "title": "პაროლი წარმატებით გაიგზავნა",
-    "description": "მითითებულ მეილზე, {email}-ზე გაგზავნილია ახალი პაროლი",
-    "button": "მთავარი გვერდი"
+  "Orders": {
+    "title": "ჩემი შეკვეთები",
+    "searchPlaceholder": "ძებნა",
+    "table": {
+      "col1": "თრექინგი",
+      "col2": "შეკ, თარიღი",
+      "col3": "აღების თარიღი",
+      "col4": "გამგზ. სახ. გვარი",
+      "col5": "მიმღ. სახ. გვარი",
+      "col6": "სტატუსი"
+    },
+    "mobileCard": {
+      "orderDate": "შექმნის თარიღი",
+      "pickupDate": "აღების თარიღი",
+      "sender": "გამგზავნი",
+      "senderAddress": "Aleko Gobronidze Street 11",
+      "receiver": "მიმღები",
+      "receiverAddress": "Merab Aleksidze Street 1"
+    },
+    "statuses": {
+      "delivered": "დასრულებული",
+      "cancelled": "გაუქმებული",
+      "inProgress": "მიმდინარე",
+      "pending": "ელოდება",
+      "delayed": "დაგვიანებული"
+    },
+    "row1": {
+      "col1": "#26677",
+      "col2": "24 იან 10:00",
+      "col3": "24 იან 22:00",
+      "col4": "გაგი მურჯიკნელი",
+      "col5": "გაგი მურჯიკნელი ",
+      "col6": "ელოდება"
+    },
+    "row2": {
+      "col1": "#26677",
+      "col2": "24 იან 10:00",
+      "col3": "24 იან 22:00",
+      "col4": "გიორგი გორდიაშვილი",
+      "col5": "გიორგი გორდიაშვილი",
+      "col6": "გაუქმებული"
+    },
+    "Login": {
+      "title": "ავტორიზაცია",
+      "email": "ელ.ფოსტა",
+      "emailPlaceholder": "შეიყვანეთ ელ.ფოსტა",
+      "password": "პაროლი",
+      "passwordPlaceholder": "პაროლი",
+      "button": "ავტორიზაცია",
+      "forgot": "დაგავიწყდა პაროლი?",
+      "noAccount": "არ გაქვს ანგარიში? <bold>დარეგისტრირდი</bold>"
+    },
+    "Register": {
+      "title": "რეგისტრაცია",
+      "userType": "მომხმარებლის ტიპი",
+      "userTypePlaceholder": "აირჩიე ტიპი",
+      "name": "სახელი",
+      "namePlaceholder": "სახელი",
+      "surname": "გვარი",
+      "surnamePlaceholder": "გვარი",
+      "email": "ელ.ფოსტა",
+      "emailPlaceholder": "შეიყვანეთ ელ.ფოსტა",
+      "phone": "მობილურის ნომერი",
+      "phonePlaceholder": "შეიყვანეთ მობილურის ნომერი",
+      "password": "პაროლი",
+      "passwordPlaceholder": "პაროლი",
+      "terms": "ვეთანხმები წესებს და პირობებს",
+      "button": "რეგისტრაცია",
+      "haveAccount": "გაქვს უკვე ანგარიში? <bold>ავტორიზაცია</bold>"
+    },
+    "Password": {
+      "title": "პაროლის აღდგენა",
+      "description": "პაროლის აღსადგენად საჭიროა თქვენი ელ.ფოსტის მითითება",
+      "email": "ელ.ფოსტა",
+      "emailPlaceholder": "შეიყვანეთ ელ.ფოსტა",
+      "button": "გაგზავნა"
+    },
+    "Successful": {
+      "title": "პაროლი წარმატებით გაიგზავნა",
+      "description": "მითითებულ მეილზე, {email}-ზე გაგზავნილია ახალი პაროლი",
+      "button": "მთავარი გვერდი"
+    }
   }
 }

@@ -51,17 +51,25 @@ const InputContainer = styled.button.attrs({ type: 'button' })<{ $open?: boolean
   }
 `;
 
-const DropdownContainer = styled.div<{ $fitContent?: boolean }>`
+const DropdownContainer = styled.div<{ $fitContent?: boolean; $alignRight?: boolean }>`
   position: absolute;
   top: 100%;
   ${p =>
+    p.$alignRight
+      ? `
+    right: 0;
+    left: auto;
+  `
+      : `
+    left: 0;
+    right: auto;
+  `}
+  ${p =>
     p.$fitContent
       ? `
-    left: 0;
-    right: auto;        
-    min-width: 100%;     
-    width: max-content;  
-    max-width: 90vw;     
+    min-width: 100%;
+    width: max-content;
+    max-width: 90vw;
   `
       : `
     left: 0;
@@ -95,11 +103,8 @@ const Item = styled.button.attrs({ type: 'button' })<{ $selected?: boolean }>`
   }
 `;
 
-const PlainInput = styled.input`
-  padding: 12px 16px;
-  && {
-    padding: 12px 16px;
-  }
+const PlainInput = styled.input<{ $placeholderColor?: 'lighter' | 'secondary' }>`
+  padding: 8px 12px;
   border-radius: 8px;
   border: 1px solid ${colors.border.primary};
   background: white;
@@ -107,7 +112,8 @@ const PlainInput = styled.input`
   font-size: 14px;
   color: ${colors.text.primary};
   &::placeholder {
-    color: ${colors.text.disabled};
+    color: ${p =>
+      p.$placeholderColor === 'secondary' ? colors.text.secondary : colors.text.lighter};
   }
   &:focus {
     outline: none;
@@ -119,6 +125,14 @@ const PlainInput = styled.input`
   }
 `;
 
+const Value = styled.span`
+  flex: 1;
+  min-width: 0; /* allow flexbox to shrink */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* change to normal for multi-line wrapping */
+`;
+
 type DropdownProps = {
   items: { label: string; value: string }[];
   onChange: (value: string) => void;
@@ -127,9 +141,9 @@ type DropdownProps = {
   label: string;
   variant?: 'dropdown' | 'input';
   menuFitContent?: boolean;
+  placeholderColor?: 'lighter' | 'secondary';
   required?: boolean;
 };
-
 const Dropdown: React.FC<DropdownProps> = ({
   items,
   onChange,
@@ -138,12 +152,17 @@ const Dropdown: React.FC<DropdownProps> = ({
   label,
   variant = 'dropdown',
   menuFitContent = false,
-  required = true,
+  placeholderColor = 'lighter',
+  required = false,
 }) => {
   const [open, setOpen] = React.useState(false);
+  const [alignRight, setAlignRight] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const listRef = React.useRef<HTMLDivElement | null>(null);
   const listId = React.useId();
   const toggle = () => setOpen(prev => !prev);
+
+  const selectedItem = React.useMemo(() => items.find(i => i.value === value), [items, value]);
 
   React.useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
@@ -154,6 +173,33 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
     document.addEventListener('mousedown', handleOutsideClick);
     return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, [open]);
+
+  React.useEffect(() => {
+    if (!open) return;
+
+    const updateAlignment = () => {
+      if (!containerRef.current || !listRef.current) return;
+      const padding = 8;
+      const triggerRect = containerRef.current.getBoundingClientRect();
+      const menuWidth = listRef.current.scrollWidth;
+      if (triggerRect.left + menuWidth > window.innerWidth - padding) {
+        setAlignRight(true);
+      } else {
+        setAlignRight(false);
+      }
+    };
+
+    const rAF = requestAnimationFrame(updateAlignment);
+
+    window.addEventListener('resize', updateAlignment);
+    window.addEventListener('scroll', updateAlignment, true);
+
+    return () => {
+      cancelAnimationFrame(rAF);
+      window.removeEventListener('resize', updateAlignment);
+      window.removeEventListener('scroll', updateAlignment, true);
+    };
   }, [open]);
 
   if (variant === 'input') {
@@ -169,6 +215,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         )}
         <PlainInput
           placeholder={placeholder}
+          $placeholderColor={placeholderColor}
           value={value}
           onChange={e => onChange(e.target.value)}
           aria-label={label || placeholder}
@@ -196,30 +243,54 @@ const Dropdown: React.FC<DropdownProps> = ({
           aria-controls={open ? listId : undefined}
           onClick={toggle}
         >
-          <Typography variant='text-md' color={value ? colors.text.primary : colors.text.disabled}>
-            {items.find(item => item.value === value)?.label ?? placeholder}
-          </Typography>
+          <Value>
+            <Typography
+              variant='text-sm'
+              color={
+                selectedItem
+                  ? colors.text.primary
+                  : placeholderColor === 'secondary'
+                    ? colors.text.secondary
+                    : colors.text.lighter
+              }
+            >
+              {selectedItem ? selectedItem.label : placeholder}
+            </Typography>
+          </Value>
           <DropArrowIcon />
         </InputContainer>
         {open && (
-          <DropdownContainer role='listbox' id={listId} $fitContent={menuFitContent}>
-            {items.map(item => (
-              <Item
-                key={item.value}
-                $selected={value === item.value}
-                onClick={() => {
-                  setOpen(false);
-                  onChange(item.value);
-                }}
-                role='option'
-                aria-selected={value === item.value}
-              >
-                <Typography variant='text-md' color={colors.text.primary} weight='medium'>
-                  {item?.label}
-                </Typography>
-                {value === item.value ? <DropCheckIcon /> : null}
-              </Item>
-            ))}
+          <DropdownContainer
+            ref={listRef}
+            role='listbox'
+            id={listId}
+            $fitContent={menuFitContent}
+            $alignRight={alignRight}
+          >
+            {items.map(item => {
+              const isSelected = item.value === value;
+              return (
+                <Item
+                  key={item.value}
+                  role='option'
+                  aria-selected={isSelected}
+                  $selected={isSelected}
+                  onClick={() => {
+                    onChange(item.value);
+                    setOpen(false);
+                  }}
+                >
+                  <Typography
+                    variant='text-sm'
+                    color={colors.text.primary}
+                    weight={isSelected ? 'medium' : 'regular'}
+                  >
+                    {item.label}
+                  </Typography>
+                  {isSelected && <DropCheckIcon />}
+                </Item>
+              );
+            })}
           </DropdownContainer>
         )}
       </Container>

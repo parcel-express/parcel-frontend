@@ -234,6 +234,18 @@
     "button1": "Отмена",
     "button2": "Выбрать"
   },
+  "Sidebar": {
+    "home": "Главная",
+    "orders": "Мои заказы",
+    "terms": "Условия",
+    "invoice": "Счета",
+    "tariffs": "Тарифы",
+    "addresses": "Мои адреса",
+    "settings": "Настройки",
+    "contact": "Контакты",
+    "button": "Новый заказ",
+    "logout": "Выход"
+  },
   "Status": {
     "placeholder": "Статус",
     "Status": {
@@ -256,44 +268,87 @@
       "status17": "Незамеченный"
     }
   },
-  "Login": {
-    "title": "Авторизация",
-    "email": "Электронная почта",
-    "emailPlaceholder": "Введите ваш email",
-    "password": "Пароль",
-    "passwordPlaceholder": "Введите ваш пароль",
-    "button": "Войти",
-    "forgot": "Забыли пароль?",
-    "noAccount": "Нет аккаунта? <bold>Зарегистрируйтесь</bold>"
-  },
-  "Register": {
-    "title": "Регистрация",
-    "userType": "Тип пользователя",
-    "userTypePlaceholder": "Выберите тип",
-    "name": "Имя",
-    "namePlaceholder": "Имя",
-    "surname": "Фамилия",
-    "surnamePlaceholder": "Фамилия",
-    "email": "Электронная почта",
-    "emailPlaceholder": "Введите ваш email",
-    "phone": "Мобильный номер",
-    "phonePlaceholder": "Введите ваш мобильный номер",
-    "password": "Пароль",
-    "passwordPlaceholder": "Пароль",
-    "terms": "Я согласен с условиями",
-    "button": "Регистрация",
-    "haveAccount": "Уже есть аккаунт? <bold>Войти</bold>"
-  },
-  "Password": {
-    "title": "Восстановление пароля",
-    "description": "Для восстановления пароля укажите ваш адрес электронной почты",
-    "email": "Email",
-    "emailPlaceholder": "Введите ваш email",
-    "button": "Отправить"
-  },
-  "Successful": {
-    "title": "Пароль успешно отправлен",
-    "description": "Новый пароль был отправлен на указанный адрес электронной почты, {email}",
-    "button": "На главную страницу"
+  "Orders": {
+    "title": "Мои заказы",
+    "searchPlaceholder": "Поиск",
+    "table": {
+      "col1": "Треккинг",
+      "col2": "Дата заказа",
+      "col3": "Дата получения",
+      "col4": "Имя отправителя",
+      "col5": "Имя получателя",
+      "col6": "Статус"
+    },
+    "mobileCard": {
+      "orderDate": "Дата создания",
+      "pickupDate": "Дата получения",
+      "sender": "Отправитель",
+      "senderAddress": "Aleko Gobronidze Street 11",
+      "receiver": "Получатель",
+      "receiverAddress": "Merab Aleksidze Street 1"
+    },
+    "statuses": {
+      "delivered": "Доставлено",
+      "cancelled": "Отменено",
+      "inProgress": "В процессе",
+      "pending": "Ожидает",
+      "delayed": "Задержано"
+    },
+    "row1": {
+      "col1": "#26677",
+      "col2": "24 янв 10:00",
+      "col3": "24 янв 22:00",
+      "col4": "Гаги ",
+      "col5": "Гаги ",
+      "col6": "Ожидает"
+    },
+    "row2": {
+      "col1": "#26677",
+      "col2": "24 янв 10:00",
+      "col3": "24 янв 22:00",
+      "col4": "Гиорги ",
+      "col5": "Гиорги ",
+      "col6": "Отменен"
+    },
+    "Login": {
+      "title": "Авторизация",
+      "email": "Электронная почта",
+      "emailPlaceholder": "Введите ваш email",
+      "password": "Пароль",
+      "passwordPlaceholder": "Введите ваш пароль",
+      "button": "Войти",
+      "forgot": "Забыли пароль?",
+      "noAccount": "Нет аккаунта? <bold>Зарегистрируйтесь</bold>"
+    },
+    "Register": {
+      "title": "Регистрация",
+      "userType": "Тип пользователя",
+      "userTypePlaceholder": "Выберите тип",
+      "name": "Имя",
+      "namePlaceholder": "Имя",
+      "surname": "Фамилия",
+      "surnamePlaceholder": "Фамилия",
+      "email": "Электронная почта",
+      "emailPlaceholder": "Введите ваш email",
+      "phone": "Мобильный номер",
+      "phonePlaceholder": "Введите ваш мобильный номер",
+      "password": "Пароль",
+      "passwordPlaceholder": "Пароль",
+      "terms": "Я согласен с условиями",
+      "button": "Регистрация",
+      "haveAccount": "Уже есть аккаунт? <bold>Войти</bold>"
+    },
+    "Password": {
+      "title": "Восстановление пароля",
+      "description": "Для восстановления пароля укажите ваш адрес электронной почты",
+      "email": "Email",
+      "emailPlaceholder": "Введите ваш email",
+      "button": "Отправить"
+    },
+    "Successful": {
+      "title": "Пароль успешно отправлен",
+      "description": "Новый пароль был отправлен на указанный адрес электронной почты, {email}",
+      "button": "На главную страницу"
+    }
   }
 }

@@ -6,18 +6,35 @@ import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
+import AddressIcon from '@/icons/AddressIcon';
 import BellIcon from '@/icons/BellIcon';
 import BurgerMenuIcon from '@/icons/BurgerMenuIcon';
 import CalculatorIcon from '@/icons/CalculcatorIcon';
 import CloseIcon from '@/icons/CloseIcon';
+import ContactIcon from '@/icons/ContactIcon';
+import HomeIcon from '@/icons/HomeIcon';
+import InvoiceIcon from '@/icons/InvoiceIcon';
 import LogoIcon from '@/icons/LogoIcon';
+import LogoutIcon from '@/icons/LogoutIcon';
+import PackageIcon from '@/icons/PackageIcon';
+import PlusTranspIcon from '@/icons/PlusTranspIcon';
+import SettingsIcon from '@/icons/SettingsIcon';
+import TariffsIcon from '@/icons/TariffsIcon';
+import TermsIcon from '@/icons/TermsIcon';
 
 import { colors } from '../styles/colors';
 
 import Button from './Button';
 import CalculatorPopup from './CalculatorPopup';
 import Container from './Container';
+import {
+  SidebarWrapper as SidebarMenuWrapper,
+  ItemsWrapper as SidebarItemsWrapper,
+  MenuItem as SidebarMenuItem,
+  ButtonWrapper as SidebarButtonWrapper,
+} from './Sidebar';
 import Typography from './Typography';
+import UserBadge from './UserBadge';
 
 const MainHeader = styled.header`
   width: 100%;
@@ -178,9 +195,15 @@ const MobileMenuFooter = styled.div`
   padding: 0 0 35px 0;
 `;
 
+const MobileUserBadgeWrapper = styled.div`
+  padding: 0 0 12px 0;
+  margin-top: -8px;
+`;
+
 const Header = () => {
   const tHeader = useTranslations('Header');
   const tNavigation = useTranslations('Navigation');
+  const tSidebar = useTranslations('Sidebar');
   const [isCalculatorOpen, setCalculatorOpen] = useState(false);
   const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
@@ -195,11 +218,49 @@ const Header = () => {
     en: 'ENG',
     ru: 'RUS',
   };
+  const pathParts = pathname.split('/').filter(Boolean);
+  const possibleLocale = pathParts[0];
+  const hasLocale = Object.keys(localeLabels).includes(possibleLocale ?? '');
+  const pageSegment = hasLocale ? pathParts[1] || '' : possibleLocale || '';
+  const isOrdersPage = pageSegment === 'orders';
 
   function handleLanguageChange(locale: string) {
     router.push(`/${locale}`);
     setMobileMenuOpen(false);
   }
+
+  const mobileMenuItemsHome = [
+    { href: '/', key: 'home', label: tNavigation('home') },
+    { href: '/orders', key: 'order', label: tNavigation('order') },
+    { href: '/delivery', key: 'delivery', label: tNavigation('delivery') },
+    { href: '/terms', key: 'terms', label: tNavigation('terms') },
+    { href: '/price', key: 'price', label: tNavigation('price') },
+    { href: '/contact', key: 'contact', label: tNavigation('contact') },
+    { href: '/', key: 'logout', label: tNavigation('logout') },
+  ];
+
+  const ordersPrimary = [
+    { href: '/', key: 'sb-home', icon: <HomeIcon />, label: tSidebar('home') },
+    {
+      href: '/orders',
+      key: 'sb-orders',
+      icon: <PackageIcon width={22} height={21} />,
+      label: tSidebar('orders'),
+    },
+    { href: '/terms', key: 'sb-terms', icon: <TermsIcon />, label: tSidebar('terms') },
+    { href: '/invoice', key: 'sb-invoice', icon: <InvoiceIcon />, label: tSidebar('invoice') },
+  ];
+  const ordersSecondary = [
+    { href: '/tariffs', key: 'sb-tariffs', icon: <TariffsIcon />, label: tSidebar('tariffs') },
+    {
+      href: '/addresses',
+      key: 'sb-addresses',
+      icon: <AddressIcon />,
+      label: tSidebar('addresses'),
+    },
+    { href: '/settings', key: 'sb-settings', icon: <SettingsIcon />, label: tSidebar('settings') },
+    { href: '/contact', key: 'sb-contact', icon: <ContactIcon />, label: tSidebar('contact') },
+  ];
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -326,7 +387,7 @@ const Header = () => {
                 <Button
                   size='xs'
                   type='button'
-                  variant='secondary'
+                  variant='transparent'
                   aria-label='Open calculator'
                   onClick={() => setCalculatorOpen(true)}
                 >
@@ -360,63 +421,77 @@ const Header = () => {
               <CloseIcon />
             </Button>
           </MobileMenuHeader>
-          <MobileNavList>
-            <li>
-              <Typography variant='text-sm' color={colors.text.black}>
-                <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
-                  {tNavigation('home')}
-                </MobileNavLink>
-              </Typography>
-            </li>
-            <li>
-              <Typography variant='text-sm' color={colors.text.black}>
-                <MobileNavLink href='/orders' onClick={() => setMobileMenuOpen(false)}>
-                  {tNavigation('order')}
-                </MobileNavLink>
-              </Typography>
-            </li>
-            <li>
-              <Typography variant='text-sm' color={colors.text.black}>
-                <MobileNavLink href='/delivery' onClick={() => setMobileMenuOpen(false)}>
-                  {tNavigation('delivery')}
-                </MobileNavLink>
-              </Typography>
-            </li>
-            <li>
-              <Typography variant='text-sm' color={colors.text.black}>
-                <MobileNavLink href='/terms' onClick={() => setMobileMenuOpen(false)}>
-                  {tNavigation('terms')}
-                </MobileNavLink>
-              </Typography>
-            </li>
-            <li>
-              <Typography variant='text-sm' color={colors.text.black}>
-                <MobileNavLink href='/price' onClick={() => setMobileMenuOpen(false)}>
-                  {tNavigation('price')}
-                </MobileNavLink>
-              </Typography>
-            </li>
-            <li>
-              <Typography variant='text-sm' color={colors.text.black}>
-                <MobileNavLink href='/contact' onClick={() => setMobileMenuOpen(false)}>
-                  {tNavigation('contact')}
-                </MobileNavLink>
-              </Typography>
-            </li>
-            <li>
-              <Typography variant='text-sm' color={colors.text.black}>
-                <MobileNavLink href='/' onClick={() => setMobileMenuOpen(false)}>
-                  {tNavigation('logout')}
-                </MobileNavLink>
-              </Typography>
-            </li>
-          </MobileNavList>
-
-          <Login>
-            <Button size='lg' variant='primary'>
-              {tHeader('login')}
-            </Button>
-          </Login>
+          {!isOrdersPage && (
+            <MobileNavList>
+              {mobileMenuItemsHome.map(item => (
+                <li key={item.key}>
+                  <Typography variant='text-sm' color={colors.text.black}>
+                    <MobileNavLink href={item.href} onClick={() => setMobileMenuOpen(false)}>
+                      {item.label}
+                    </MobileNavLink>
+                  </Typography>
+                </li>
+              ))}
+            </MobileNavList>
+          )}
+          {isOrdersPage && (
+            <SidebarMenuWrapper style={{ width: '100%', border: 'none', borderRadius: 0 }}>
+              <MobileUserBadgeWrapper>
+                <UserBadge
+                  name='Gagi Murjikneli'
+                  email='gagi.murjikneli@gmail.com'
+                  presence='online'
+                />
+              </MobileUserBadgeWrapper>
+              <SidebarItemsWrapper>
+                {ordersPrimary.map(item => (
+                  <SidebarMenuItem key={item.key} onClick={() => setMobileMenuOpen(false)}>
+                    {item.icon}
+                    <Typography variant='text-sm' color={colors.text.secondary}>
+                      {item.label}
+                    </Typography>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarItemsWrapper>
+              <SidebarButtonWrapper>
+                <Button
+                  variant='primary'
+                  size='lg'
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  <PlusTranspIcon />
+                  {tSidebar('button')}
+                </Button>
+              </SidebarButtonWrapper>
+              <SidebarItemsWrapper>
+                {ordersSecondary.map(item => (
+                  <SidebarMenuItem key={item.key} onClick={() => setMobileMenuOpen(false)}>
+                    {item.icon}
+                    <Typography variant='text-sm' color={colors.text.secondary}>
+                      {item.label}
+                    </Typography>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarItemsWrapper>
+              <SidebarItemsWrapper>
+                <SidebarMenuItem onClick={() => setMobileMenuOpen(false)}>
+                  <LogoutIcon />
+                  <Typography variant='text-sm' color={colors.text.secondary}>
+                    {tSidebar('logout')}
+                  </Typography>
+                </SidebarMenuItem>
+              </SidebarItemsWrapper>
+            </SidebarMenuWrapper>
+          )}
+          {!isOrdersPage && (
+            <Login>
+              <Button size='lg' variant='primary'>
+                {tHeader('login')}
+              </Button>
+            </Login>
+          )}
 
           <MobileMenuFooter>
             <DropdownWrapper ref={mobileDropdownRef}>
