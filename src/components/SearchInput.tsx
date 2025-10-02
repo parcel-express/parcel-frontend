@@ -11,7 +11,7 @@ import Typography from './Typography';
 
 const inputSizes = {
   md: {
-    padding: '9px 13px 9px 21px',
+    padding: '8px 12px',
   },
   xs: {
     paddingNoIcon: '4px 3px 4px 11px',
@@ -65,37 +65,32 @@ const SearchInput: React.FC<{
 }> = ({ size = 'md', placeholder, mode = 'button', leftIcon = true }) => {
   const tHero = useTranslations('Hero');
   const resolvedPlaceholder = placeholder ?? tHero('placeholder');
+  const renderContent = () => (
+    <Input $size={size} $hasLeftIcon={leftIcon}>
+      {leftIcon && (
+        <LeftIconWrapper $size={size} aria-hidden>
+          <SearchIcon />
+        </LeftIconWrapper>
+      )}
+      <StyledInput placeholder={resolvedPlaceholder} type='text' $size={size} />
+      {mode === 'button' && (
+        <Button variant='primary' size={size === 'xs' ? 'xsSearch' : 'mdSearch'}>
+          <Typography
+            variant={size === 'xs' ? 'text-xs' : 'text-sm'}
+            weight='bold'
+            color={colors.text.white}
+          >
+            {tHero('button')}
+          </Typography>
+        </Button>
+      )}
+    </Input>
+  );
+
   return (
     <>
-      <DesktopContainer>
-        <Input $size={size}>
-          <StyledInput placeholder={resolvedPlaceholder} type='text' />
-          <Button variant='primary' size='mdSearch'>
-            <Typography variant='text-sm' weight='bold' color={colors.text.white}>
-              {tHero('button')}
-            </Typography>
-          </Button>
-        </Input>
-      </DesktopContainer>
-      <MobileContainer>
-        <Input $size={size} $hasLeftIcon={leftIcon}>
-          {leftIcon ? (
-            <LeftIconWrapper $size={size} aria-hidden>
-              <SearchIcon />
-            </LeftIconWrapper>
-          ) : null}
-
-          <StyledInput placeholder={resolvedPlaceholder} type='text' />
-
-          {mode === 'button' ? (
-            <Button variant='primary' size='xsSearch'>
-              <Typography variant='text-xs' weight='bold' color={colors.text.white}>
-                {tHero('button')}
-              </Typography>
-            </Button>
-          ) : null}
-        </Input>
-      </MobileContainer>
+      <DesktopContainer>{renderContent()}</DesktopContainer>
+      <MobileContainer>{renderContent()}</MobileContainer>
     </>
   );
 };

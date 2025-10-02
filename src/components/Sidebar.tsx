@@ -17,10 +17,11 @@ import { colors } from '@/styles/colors';
 import { Button } from './Button';
 import Typography from './Typography';
 
-const SidebarWrapper = styled.div`
+export const SidebarWrapper = styled.div`
   width: 292px;
-  min-height: 100vh;
-  min-height: 100dvh;
+  position: sticky;
+  top: 0;
+  height: 100vh;
   background: ${colors.background.white};
   padding: 20px 16px 12px 16px;
   border: 1px solid ${colors.border.light};
@@ -31,7 +32,7 @@ const SidebarWrapper = styled.div`
   overflow-y: auto;
 `;
 
-const MenuItem = styled.div`
+export const MenuItem = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -39,13 +40,13 @@ const MenuItem = styled.div`
   padding: 9px 12px;
 `;
 
-const LogoWrapper = styled.div`
+export const LogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 24px;
 `;
 
-const ItemsWrapper = styled.div`
+export const ItemsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -55,7 +56,7 @@ const ItemsWrapper = styled.div`
   }
 `;
 
-const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div`
   padding: 12px 0;
   border-top: 1px solid ${colors.border.light};
   border-bottom: 1px solid ${colors.border.light};

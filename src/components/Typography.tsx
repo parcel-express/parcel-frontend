@@ -26,6 +26,7 @@ interface TypographyProps {
   children: React.ReactNode;
   as?: TypographyElement;
   className?: string;
+  lineHeight?: string | number;
 }
 
 const variantStyles = {
@@ -102,12 +103,18 @@ const StyledText = styled.div<{
   $variant: TypographyVariant;
   $weight: TypographyWeight;
   $color?: string;
+  $lineHeight?: string | number;
 }>`
   color: ${props => props.$color || '#181d27'};
   margin: 0;
 
   ${props => variantStyles[props.$variant]}
   ${props => weightStyles[props.$weight]}
+  ${props =>
+    props.$lineHeight !== undefined &&
+    css`
+      line-height: ${typeof props.$lineHeight === 'number' ? props.$lineHeight : props.$lineHeight};
+    `}
 `;
 
 export const Typography: React.FC<TypographyProps> = ({
@@ -117,6 +124,7 @@ export const Typography: React.FC<TypographyProps> = ({
   children,
   as = 'p',
   className,
+  lineHeight,
 }) => {
   return (
     <StyledText
@@ -124,6 +132,7 @@ export const Typography: React.FC<TypographyProps> = ({
       $variant={variant}
       $weight={weight}
       {...(color && { $color: color })}
+      {...(lineHeight !== undefined && { $lineHeight: lineHeight })}
       className={className}
     >
       {children}

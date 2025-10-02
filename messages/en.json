@@ -242,7 +242,8 @@
     "addresses": "My Addresses",
     "settings": "Settings",
     "contact": "Contact",
-    "button": "New Order"
+    "button": "New Order",
+    "logout": "Logout"
   },
   "Status": {
     "placeholder": "Status",
@@ -264,6 +265,49 @@
       "status15": "Suspended",
       "status16": "Introduced",
       "status17": "Unnoticed"
+    }
+  },
+  "Orders": {
+    "title": "My Orders",
+    "searchPlaceholder": "Search",
+    "table": {
+      "col1": "Tracking",
+      "col2": "Order Date",
+      "col3": "Pickup Date",
+      "col4": "Sender Name",
+      "col5": "Receiver Name",
+      "col6": "Status"
+    },
+    "mobileCard": {
+      "orderDate": "Order Date",
+      "pickupDate": "Pickup Date",
+      "sender": "Sender",
+      "senderAddress": "Aleko Gobronidze Street 11",
+      "receiver": "Receiver",
+      "receiverAddress": "Merab Aleksidze Street 1"
+    },
+    "statuses": {
+      "delivered": "delivered",
+      "cancelled": "canceled",
+      "inProgress": "in Progress",
+      "pending": "pending",
+      "delayed": "delayed"
+    },
+    "row1": {
+      "col1": "#26677",
+      "col2": "24 Jan 10:00",
+      "col3": "24 Jan 22:00",
+      "col4": "Gagi ",
+      "col5": "Gagi ",
+      "col6": "Waitings"
+    },
+    "row2": {
+      "col1": "#26677",
+      "col2": "24 Jan 10:00",
+      "col3": "24 Jan 22:00",
+      "col4": "Giorgi ",
+      "col5": "Giorgi ",
+      "col6": "Canceled"
     }
   }
 }

@@ -1,27 +1,217 @@
 'use client';
-import React from 'react';
+import { useTranslations } from 'next-intl';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Container from '@/components/Container';
-import Footer from '@/components/Footer';
+import DatePicker from '@/components/DatePicker';
 import Header from '@/components/Header';
+import PageTitle from '@/components/PageTitle';
+import { DesktopContainer, MobileContainer } from '@/components/Responsive';
+import SearchInput from '@/components/SearchInput';
 import Sidebar from '@/components/Sidebar';
+import StatusBadge, { StatusVariant } from '@/components/StatusBadge';
+import StatusDropdown, { StatusValue } from '@/components/StatusDropdown';
+import Table from '@/components/Table';
+import UserBadge from '@/components/UserBadge';
+import { colors } from '@/styles/colors';
 
 const MainContent = styled.div`
   display: Flex;
+  gap: 32px;
   padding: 28px 0 0 0;
+  @media screen and (max-width: 1080px) {
+    padding: 16px 0 0 0;
+  }
 `;
 
+const ContentHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+`;
+
+const TableHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 24px;
+  border-radius: 24px 24px 0 0;
+  background: ${colors.background.light};
+  border: 1px solid ${colors.border.light};
+`;
+
+const RightHeader = styled.div`
+  display: flex;
+  gap: 12px;
+`;
+
+const RightContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+`;
+
+const TableWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 460px;
+`;
+
+const StatusWrapper = styled.div`
+  max-width: 115px;
+  align-self: center;
+`;
+
+const SearchWrapper = styled.div`
+  width: 296px;
+  align-self: center;
+  @media screen and (max-width: 1080px) {
+    width: 100%;
+    margin: 8px 0 12px 0;
+  }
+`;
+
+const UserWrapper = styled.div`
+  margin-left: auto;
+  width: 296px;
+`;
+
+const DateStatus = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  @media screen and (max-width: 1080px) {
+    margin-bottom: 28px;
+    gap: 0;
+  }
+`;
 const OrdersScreen = () => {
+  const tOrders = useTranslations('Orders');
+  const rowKeys = ['row1', 'row2'];
+  const [selectedRows, setSelectedRows] = useState<number[]>([]);
+  const [status, setStatus] = useState<StatusValue | ''>('');
+
+  const variants: StatusVariant[] = ['pending', 'cancelled', 'delivered', 'inProgress'];
+  const TOTAL_ROWS = 19;
+
+  const buildBaseRow = (idx: number) => {
+    const key = rowKeys[idx % rowKeys.length];
+    return [
+      tOrders(`${key}.col1`),
+      tOrders(`${key}.col2`),
+      tOrders(`${key}.col3`),
+      tOrders(`${key}.col4`),
+      tOrders(`${key}.col5`),
+    ];
+  };
+
+  const tableData: React.ReactNode[][] = Array.from({ length: TOTAL_ROWS }, (_, idx) => {
+    const variant = variants[idx % variants.length];
+    return [
+      ...buildBaseRow(idx),
+      <StatusBadge
+        key={`status-${idx}`}
+        variant={variant as StatusVariant}
+        label={tOrders(`statuses.${variant}`)}
+      />,
+    ];
+  });
+
   return (
     <>
-      <Header />
+      <MobileContainer>
+        <Header />
+      </MobileContainer>
       <Container>
         <MainContent>
-          <Sidebar />
+          <DesktopContainer>
+            <Sidebar />
+          </DesktopContainer>
+          <RightContent>
+            <ContentHeader>
+              <PageTitle title={tOrders('title')} desktopVariant='small' />
+              <DesktopContainer>
+                <UserWrapper>
+                  <UserBadge
+                    name='Gagi Murjikneli'
+                    email='gagi.murjikneli@gmail.com'
+                    presence='online'
+                  />
+                </UserWrapper>
+              </DesktopContainer>
+            </ContentHeader>
+            <TableWrapper>
+              <DesktopContainer>
+                <TableHeader>
+                  <DatePicker />
+                  <RightHeader>
+                    <StatusWrapper>
+                      <StatusDropdown
+                        value={status}
+                        onChange={v => setStatus(v)}
+                        placeholderColor='secondary'
+                      />
+                    </StatusWrapper>
+                    <SearchWrapper>
+                      <SearchInput
+                        size='md'
+                        placeholder={tOrders('searchPlaceholder')}
+                        mode='icon'
+                        leftIcon={true}
+                      />
+                    </SearchWrapper>
+                  </RightHeader>
+                </TableHeader>
+              </DesktopContainer>
+              <MobileContainer>
+                <SearchWrapper>
+                  <SearchInput
+                    size='md'
+                    placeholder={tOrders('searchPlaceholder')}
+                    mode='icon'
+                    leftIcon={true}
+                  />
+                </SearchWrapper>
+                <DateStatus>
+                  <DatePicker />
+                  <StatusWrapper>
+                    <StatusDropdown
+                      value={status}
+                      onChange={v => setStatus(v)}
+                      placeholderColor='secondary'
+                    />
+                  </StatusWrapper>
+                </DateStatus>
+              </MobileContainer>
+              <Table
+                cornerStyle='bottom'
+                rows={tableData.length}
+                columns={6}
+                details={tableData}
+                showArrowsIcon={true}
+                showCheckbox={true}
+                showRightArrow={true}
+                selectedRows={selectedRows}
+                onRowSelect={(i, sel) => {
+                  setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
+                }}
+                columnTitles={[
+                  tOrders('table.col1'),
+                  tOrders('table.col2'),
+                  tOrders('table.col3'),
+                  tOrders('table.col4'),
+                  tOrders('table.col5'),
+                  tOrders('table.col6'),
+                ]}
+                mobileVariant='orders'
+              />
+            </TableWrapper>
+          </RightContent>
         </MainContent>
       </Container>
-      <Footer />
     </>
   );
 };
