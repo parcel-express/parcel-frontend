@@ -139,12 +139,12 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
 const StyledCheckbox = styled.span<{ $checked: boolean }>`
   width: 20px;
   height: 20px;
-  border: 2px solid #d0d5dd;
+  border: 2px solid ${colors.border.primary};
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
+  background: ${colors.background.white};
   transition:
     border-color 0.15s,
     background 0.15s;
@@ -358,7 +358,6 @@ const Table: React.FC<TableProps> = ({
     <>
       <DesktopContainer>
         <DesktopGrid $columns={totalCols} $arrow={showRightArrow} $cornerStyle={cornerStyle}>
-          {' '}
           {/* Header */}
           {Array.from({ length: dataCols }).map((_, ci) => (
             <Typography
@@ -554,14 +553,14 @@ const Table: React.FC<TableProps> = ({
                             >
                               {value2}
                             </Typography>
-                          </User>{' '}
+                          </User>
                           <Typography
                             variant='text-sm'
                             weight='semibold'
                             color={colors.text.tertiary}
                             lineHeight='100%'
                           >
-                            {tOrders('mobileCard.senderAddress')}
+                            {tOrders('mobileCard.receiverAddress')}
                           </Typography>
                         </UserAddress>
                       </RouteUserInfos>

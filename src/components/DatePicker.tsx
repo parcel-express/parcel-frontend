@@ -216,7 +216,7 @@ const ActionButtons = styled.div`
   background: ${colors.background.white};
   padding: 16px;
   border-radius: 0 0 12px 12px;
-  @media screen (max-width: 1080px) {
+  @media screen and (max-width: 1080px) {
     gap: 4px;
   }
 `;

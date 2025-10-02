@@ -287,11 +287,11 @@
       "receiverAddress": "Merab Aleksidze Street 1"
     },
     "statuses": {
-      "delivered": "delivered",
-      "cancelled": "canceled",
-      "inProgress": "in Progress",
-      "pending": "pending",
-      "delayed": "delayed"
+      "delivered": "Delivered",
+      "cancelled": "Canceled",
+      "inProgress": "In Progress",
+      "pending": "Pending",
+      "delayed": "Delayed"
     },
     "row1": {
       "col1": "#26677",

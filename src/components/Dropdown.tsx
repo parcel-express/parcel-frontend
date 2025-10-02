@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import DropCheckIcon from '@/icons/DropCheckIcon';
 import { colors } from '@/styles/colors';
 
 import AsteriskIcon from '../icons/AsteriskIcon';
@@ -286,7 +287,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                   >
                     {item.label}
                   </Typography>
-                  {isSelected}
+                  {isSelected && <DropCheckIcon />}
                 </Item>
               );
             })}

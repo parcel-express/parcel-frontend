@@ -2,7 +2,7 @@ import * as React from 'react';
 const ArrowsIcon = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width={12} height={12} fill='none'>
     <path
-      stroke='#A4A7AE'
+      stroke='currentColor'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth={1.5}

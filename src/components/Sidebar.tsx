@@ -1,6 +1,6 @@
+import { useTranslations } from 'next-intl';
 import React from 'react';
 import styled from 'styled-components';
-import { useTranslations } from 'use-intl';
 
 import AddressIcon from '@/icons/AddressIcon';
 import ContactIcon from '@/icons/ContactIcon';
