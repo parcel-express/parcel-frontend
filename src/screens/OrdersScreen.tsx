@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Container from '@/components/Container';
 import DatePicker from '@/components/DatePicker';
 import Header from '@/components/Header';
+import OrdersDetailPopup from '@/components/OrdersDetailPopup';
 import PageTitle from '@/components/PageTitle';
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
 import SearchInput from '@/components/SearchInput';
@@ -93,6 +94,7 @@ const OrdersScreen = () => {
   const rowKeys = ['row1', 'row2'];
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const [status, setStatus] = useState<StatusValue | ''>('');
+  const [openOrderDetail, setOpenOrderDetail] = useState<number | null>(null);
 
   const variants: StatusVariant[] = ['pending', 'cancelled', 'delivered', 'inProgress'];
   const TOTAL_ROWS = 19;
@@ -207,11 +209,14 @@ const OrdersScreen = () => {
                   tOrders('table.col6'),
                 ]}
                 mobileVariant='orders'
+                onRightArrowClick={(rowIndex: number) => setOpenOrderDetail(rowIndex)}
+                onRowClick={(rowIndex: number) => setOpenOrderDetail(rowIndex)}
               />
             </TableWrapper>
           </RightContent>
         </MainContent>
       </Container>
+      {openOrderDetail !== null && <OrdersDetailPopup onClose={() => setOpenOrderDetail(null)} />}
     </>
   );
 };

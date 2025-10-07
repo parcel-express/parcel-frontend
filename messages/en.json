@@ -348,6 +348,70 @@
       "title": "Password Successfully Sent",
       "description": "New password has been sent to the specified email, {email}",
       "button": "Main Page"
+    },
+    "OrderDetails": {
+      "title": "Order Details",
+      "subtitle": "Order: #223394",
+      "buttons": {
+        "help": "Help",
+        "invoice": "Invoice",
+        "print": "Print"
+      },
+      "sections": {
+        "orderDetails": "Order Details",
+        "photos": "Photos"
+      },
+      "card1": {
+        "status": "Order Number",
+        "statusLabel": "Pending",
+        "quality": "Service Level",
+        "qualityValue": "Standard",
+        "orderDate": "Order Date",
+        "pickupDate": "Pickup Date",
+        "expectedDate": "Expected Delivery Date",
+        "deliveryDate": "Delivery Date"
+      },
+      "card2": {
+        "title": "Receiver Information",
+        "name": "Name, Surname",
+        "nameValue": "Gagi Murjikneli",
+        "city": "City",
+        "cityValue": "Tbilisi",
+        "address": "Address",
+        "addressValue": "Aleko Gobronidze Street #11",
+        "phone": "Phone"
+      },
+      "card3": {
+        "title": "Receiver Information",
+        "name": "Name, Surname",
+        "nameValue": "Gagi Murjikneli",
+        "city": "City",
+        "cityValue": "Tbilisi",
+        "address": "Address",
+        "addressValue": "Aleko Gobronidze Street #11",
+        "phone": "Phone"
+      },
+      "card4": {
+        "title": "Package Information",
+        "weight": "Weight: 0.5 kg - max",
+        "quantity": "Quantity: 2"
+      },
+      "card5": {
+        "title": "Billing Information",
+        "price": "Delivery Price",
+        "priceValue": "12.00 GEL",
+        "services": "Additional Services",
+        "servicesValue": "0.00 GEL",
+        "items": "Items Cost",
+        "itemsValue": "0.00 GEL",
+        "cod": "COD Commission",
+        "codValue": "0.00 GEL",
+        "payment": "COD - Payment with Courier",
+        "paymentValue": "0.00 GEL",
+        "company": "Company is credited",
+        "type": "Settlement Type",
+        "typeValue": "Invoice"
+      }
     }
   }
 }
