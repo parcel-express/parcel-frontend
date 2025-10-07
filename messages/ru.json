@@ -350,5 +350,69 @@
       "description": "Новый пароль был отправлен на указанный адрес электронной почты, {email}",
       "button": "На главную страницу"
     }
+  },
+  "OrderDetails": {
+    "title": "Детали заказа",
+    "subtitle": "Заказ: #223394",
+    "buttons": {
+      "help": "Помощь",
+      "invoice": "Счет",
+      "print": "Печать"
+    },
+    "sections": {
+      "orderDetails": "Детали заказа",
+      "photos": "Фотографии"
+    },
+    "card1": {
+      "status": "Номер заказа",
+      "statusLabel": "Ожидает",
+      "quality": "Уровень сервиса",
+      "qualityValue": "Стандартный",
+      "orderDate": "Дата заказа",
+      "pickupDate": "Дата получения",
+      "expectedDate": "Ожидаемая дата доставки",
+      "deliveryDate": "Дата доставки"
+    },
+    "card2": {
+      "title": "Информация о получателе",
+      "name": "Имя, Фамилия",
+      "nameValue": "Гаги Муржикнели",
+      "city": "Город",
+      "cityValue": "Тбилиси",
+      "address": "Адрес",
+      "addressValue": "ул. Алеко Гобронидзе, 11",
+      "phone": "Телефон"
+    },
+    "card3": {
+      "title": "Информация о получателе",
+      "name": "Имя, Фамилия",
+      "nameValue": "Гаги Муржикнели",
+      "city": "Город",
+      "cityValue": "Тбилиси",
+      "address": "Адрес",
+      "addressValue": "ул. Алеко Гобронидзе, 11",
+      "phone": "Телефон"
+    },
+    "card4": {
+      "title": "Информация о посылке",
+      "weight": "Вес: 0.5 кг - макс",
+      "quantity": "Количество: 2"
+    },
+    "card5": {
+      "title": "Информация о выставлении счета",
+      "price": "Цена доставки",
+      "priceValue": "12.00 GEL",
+      "services": "Дополнительные услуги",
+      "servicesValue": "0.00 GEL",
+      "items": "Стоимость товаров",
+      "itemsValue": "0.00 GEL",
+      "cod": "Комиссия COD",
+      "codValue": "0.00 GEL",
+      "payment": "COD - Оплата курьеру",
+      "paymentValue": "0.00 GEL",
+      "company": "Компания зачислена",
+      "type": "Тип расчета",
+      "typeValue": "Счет"
+    }
   }
 }

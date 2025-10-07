@@ -49,7 +49,7 @@ const Cell = styled.span.withConfig({
   display: flex;
   align-items: center;
   border-bottom: 1px solid ${colors.border.light};
-  min-height: 56px;
+  min-height: 57px;
   padding: 0
     ${p => {
       if (!p.first) return '24px';
@@ -116,14 +116,6 @@ const FirstCellInner = styled.span`
   gap: 12px;
 `;
 
-const CenterCell = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid ${colors.border.light};
-  min-height: 56px;
-`;
-
 const ArrowHeader = styled.span`
   display: block;
   border-bottom: 1px solid ${colors.border.light};
@@ -172,9 +164,19 @@ const RightArrowWrapper = styled.span`
   padding-right: 12px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
-/* Orders mobile variant semantic elements */
+const CenterCellArrow = styled.button`
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid ${colors.border.light};
+  min-height: 56px;
+  cursor: pointer;
+`;
+
 const MobileOrdersList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -184,11 +186,14 @@ const MobileOrdersList = styled.ul`
   padding: 0;
 `;
 
-const OrderCard = styled.li`
+const OrderCard = styled.button`
   border: 1px solid ${colors.border.light};
   border-radius: 8px;
   background: ${colors.background.white};
   padding: 16px;
+  cursor: pointer;
+  outline: none;
+  display: block;
 `;
 
 const OrderHeader = styled.header`
@@ -324,6 +329,8 @@ export type TableProps = {
   onRowSelect?: (rowIndex: number, selected: boolean) => void;
   cornerStyle?: 'all' | 'bottom';
   mobileVariant?: 'default' | 'orders';
+  onRightArrowClick?: (rowIndex: number) => void;
+  onRowClick?: (rowIndex: number) => void;
 };
 
 const Table: React.FC<TableProps> = ({
@@ -339,6 +346,8 @@ const Table: React.FC<TableProps> = ({
   onRowSelect,
   cornerStyle = 'all',
   mobileVariant = 'default',
+  onRightArrowClick,
+  onRowClick,
 }) => {
   const inferred = columnTitles?.length ?? 0;
   const dataCols = Math.max(1, columns ?? (inferred > 0 ? inferred : 2));
@@ -410,9 +419,13 @@ const Table: React.FC<TableProps> = ({
                 );
               })}
               {showRightArrow && (
-                <CenterCell>
+                <CenterCellArrow
+                  type='button'
+                  aria-label='Open details'
+                  onClick={() => onRightArrowClick?.(rIndex)}
+                >
                   <RightArrowIcon />
-                </CenterCell>
+                </CenterCellArrow>
               )}
             </React.Fragment>
           ))}
@@ -484,7 +497,6 @@ const Table: React.FC<TableProps> = ({
         {mobileVariant === 'orders' && (
           <MobileOrdersList>
             {displayData.map((row, idx) => {
-              // Expected shape: [orderId, label1, value1, label2, value2, status]
               const orderId = row[0];
               const label1 = row[1];
               const value1 = row[2];
@@ -492,7 +504,16 @@ const Table: React.FC<TableProps> = ({
               const value2 = row[4];
               const status = row[5];
               return (
-                <OrderCard key={`ord-${idx}`}>
+                <OrderCard
+                  key={`ord-${idx}`}
+                  onClick={() => onRowClick?.(idx)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onRowClick?.(idx);
+                    }
+                  }}
+                >
                   <OrderHeader>
                     <OrderId>
                       <Typography variant='text-sm' weight='medium' color={colors.text.primary}>
