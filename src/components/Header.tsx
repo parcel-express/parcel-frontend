@@ -346,7 +346,12 @@ const Header = () => {
                 <Button size='xs' type='button' variant='secondary' aria-label='View notifications'>
                   <BellIcon />
                 </Button>
-                <Button size='md' type='button' variant='primary'>
+                <Button
+                  size='md'
+                  type='button'
+                  variant='primary'
+                  onClick={() => router.push(`/${currentLocale}/auth/login`)}
+                >
                   {tHeader('login')}
                 </Button>
                 <DropdownWrapper ref={desktopDropdownRef}>
@@ -487,7 +492,14 @@ const Header = () => {
           )}
           {!isOrdersPage && (
             <Login>
-              <Button size='lg' variant='primary'>
+              <Button
+                size='lg'
+                variant='primary'
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  router.push(`/${currentLocale}/auth/login`);
+                }}
+              >
                 {tHeader('login')}
               </Button>
             </Login>

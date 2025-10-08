@@ -1,5 +1,6 @@
 'use client';
-import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { useTranslations, useLocale } from 'next-intl';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -61,6 +62,7 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   opacity: 0;
   pointer-events: none;
 `;
+
 const StyledCheckbox = styled.span<{ $checked: boolean }>`
   width: 20px;
   height: 20px;
@@ -79,6 +81,10 @@ const StyledCheckbox = styled.span<{ $checked: boolean }>`
   }
 `;
 
+const HaveAccount = styled.div`
+  cursor: pointer;
+`;
+
 const CheckIcon = () => (
   <svg width='14' height='14' viewBox='0 0 14 14' fill='none'>
     <path
@@ -93,8 +99,13 @@ const CheckIcon = () => (
 
 const RegisterPage = () => {
   const tRegister = useTranslations('Register');
+  const router = useRouter();
+  const locale = useLocale();
   const [acceptedTerms, setAcceptedTerms] = React.useState(false);
 
+  const goToLogin = () => {
+    router.push(`/${locale}/auth/login`);
+  };
   return (
     <PageBackground>
       <MobileContainer>
@@ -190,15 +201,24 @@ const RegisterPage = () => {
             {tRegister('button')}
           </Button>
         </ButtonWrapper>
-        <Typography variant='text-sm' weight='regular' color={colors.text.dark}>
-          {tRegister.rich('haveAccount', {
-            bold: chunks => (
-              <Typography as='span' variant='text-sm' weight='bold' color={colors.text.dark}>
-                {chunks}
-              </Typography>
-            ),
-          })}
-        </Typography>
+        <HaveAccount
+          role='button'
+          tabIndex={0}
+          onClick={goToLogin}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') goToLogin();
+          }}
+        >
+          <Typography variant='text-sm' weight='regular' color={colors.text.dark}>
+            {tRegister.rich('haveAccount', {
+              bold: chunks => (
+                <Typography as='span' variant='text-sm' weight='bold' color={colors.text.dark}>
+                  {chunks}
+                </Typography>
+              ),
+            })}
+          </Typography>
+        </HaveAccount>
       </MainContainer>
     </PageBackground>
   );

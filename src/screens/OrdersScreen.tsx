@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import Container from '@/components/Container';
+import DashboardContainer from '@/components/DashboardContainer';
 import DatePicker from '@/components/DatePicker';
 import Header from '@/components/Header';
 import OrdersDetailPopup from '@/components/OrdersDetailPopup';
@@ -20,17 +20,21 @@ import { colors } from '@/styles/colors';
 const MainContent = styled.div`
   display: Flex;
   gap: 32px;
-  padding: 28px 0 0 0;
+  height: calc(100vh - 32px);
   @media screen and (max-width: 1080px) {
     padding: 16px 0 0 0;
+    height: auto;
   }
 `;
 
 const ContentHeader = styled.div`
   display: flex;
   justify-content: space-between;
-
   align-items: center;
+  top: 32px;
+  @media screen and (min-width: 1081px) {
+    position: sticky;
+  }
 `;
 
 const TableHeader = styled.div`
@@ -58,7 +62,13 @@ const RightContent = styled.div`
 const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 460px;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  height: calc(100vh - 220px);
+  @media screen and (max-width: 1080px) {
+    height: auto;
+  }
 `;
 
 const StatusWrapper = styled.div`
@@ -127,7 +137,7 @@ const OrdersScreen = () => {
       <MobileContainer>
         <Header />
       </MobileContainer>
-      <Container>
+      <DashboardContainer>
         <MainContent>
           <DesktopContainer>
             <Sidebar />
@@ -215,7 +225,7 @@ const OrdersScreen = () => {
             </TableWrapper>
           </RightContent>
         </MainContent>
-      </Container>
+      </DashboardContainer>
       {openOrderDetail !== null && <OrdersDetailPopup onClose={() => setOpenOrderDetail(null)} />}
     </>
   );

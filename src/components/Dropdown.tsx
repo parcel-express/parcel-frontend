@@ -37,6 +37,7 @@ const InputContainer = styled.button.attrs({ type: 'button' })<{ $open?: boolean
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: left;
   cursor: pointer;
   color: inherit;
   width: 100%;
