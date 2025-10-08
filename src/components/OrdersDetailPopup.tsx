@@ -87,11 +87,12 @@ const StickyTitle = styled.div`
   }
 `;
 
-const MobileClose = styled.button`
+const MobileClose = styled(Button).attrs({
+  variant: 'transparent',
+  size: 'xs',
+  type: 'button',
+})`
   display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
   @media (max-width: 1080px) {
     display: flex;
   }

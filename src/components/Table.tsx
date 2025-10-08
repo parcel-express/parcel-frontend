@@ -125,7 +125,6 @@ const ArrowHeader = styled.span`
   padding: 22px 0;
   position: sticky;
   top: var(--table-sticky-top, 0px);
-  top: 0;
   z-index: 60;
   background: ${colors.background.white};
 `;
