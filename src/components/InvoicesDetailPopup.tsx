@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import React from 'react';
 import styled from 'styled-components';
 
-import Button from '@/components/Button';
+import { Button } from '@/components/Button';
 import { DesktopContainer } from '@/components/Responsive';
 import CloseIcon from '@/icons/CloseIcon';
 import FileDownloadIcon from '@/icons/FileDownloadIcon';
@@ -161,7 +161,6 @@ const CardTitle = styled.div`
 
 interface InvoicesDetailPopupProps {
   onClose: () => void;
-  invoiceIndex: number;
   children?: React.ReactNode;
 }
 
