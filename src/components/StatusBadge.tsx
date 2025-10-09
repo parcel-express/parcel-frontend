@@ -1,7 +1,14 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-export type StatusVariant = 'pending' | 'delayed' | 'cancelled' | 'delivered' | 'inProgress';
+export type StatusVariant =
+  | 'pending'
+  | 'delayed'
+  | 'cancelled'
+  | 'delivered'
+  | 'inProgress'
+  | 'paid'
+  | 'unpaid';
 
 const STYLES: Record<StatusVariant, { bg: string; border: string; text: string; dot: string }> = {
   pending: { bg: '#FFFAEB', border: '#FEDF89', text: '#B54708', dot: '#F79009' },
@@ -9,6 +16,8 @@ const STYLES: Record<StatusVariant, { bg: string; border: string; text: string; 
   cancelled: { bg: '#FEF3F2', border: '#FECDCA', text: '#B42318', dot: '#F04438' },
   delivered: { bg: '#ECFDF3', border: '#ABEFC6', text: '#067647', dot: '#17B26A' },
   inProgress: { bg: '#ECFDF3', border: '#ABEFC6', text: '#067647', dot: '#17B26A' },
+  paid: { bg: '#ECFDF3', border: '#ABEFC6', text: '#067647', dot: '#17B26A' },
+  unpaid: { bg: '#FEF3F2', border: '#FECDCA', text: '#B42318', dot: '#F04438' },
 };
 
 const Badge = styled.span<{ $v: StatusVariant }>`

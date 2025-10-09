@@ -22,8 +22,11 @@ const Title = styled.div`
   gap: 2px;
 `;
 
-const InputContainer = styled.button.attrs({ type: 'button' })<{ $open?: boolean }>`
-  padding: 12px 16px;
+const InputContainer = styled.button.attrs({ type: 'button' })<{
+  $open?: boolean;
+  $padding?: string;
+}>`
+  padding: ${p => p.$padding ?? '12px 16px'};
   border-radius: 8px;
   ${props =>
     props.$open
@@ -87,8 +90,8 @@ const DropdownContainer = styled.div<{ $fitContent?: boolean; $alignRight?: bool
   background: white;
 `;
 
-const Item = styled.button.attrs({ type: 'button' })<{ $selected?: boolean }>`
-  padding: 8px;
+const Item = styled.button.attrs({ type: 'button' })<{ $selected?: boolean; $padding?: string }>`
+  padding: ${p => p.$padding ?? '8px 12px'};
   border-radius: 6px;
   cursor: pointer;
   display: flex;
@@ -104,8 +107,8 @@ const Item = styled.button.attrs({ type: 'button' })<{ $selected?: boolean }>`
   }
 `;
 
-const PlainInput = styled.input<{ $placeholderColor?: 'lighter' | 'secondary' }>`
-  padding: 8px 12px;
+const PlainInput = styled.input<{ $placeholderColor?: 'lighter' | 'secondary'; $padding?: string }>`
+  padding: ${p => p.$padding ?? '8px 12px'};
   border-radius: 8px;
   border: 1px solid ${colors.border.primary};
   background: white;
@@ -128,10 +131,10 @@ const PlainInput = styled.input<{ $placeholderColor?: 'lighter' | 'secondary' }>
 
 const Value = styled.span`
   flex: 1;
-  min-width: 0; /* allow flexbox to shrink */
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap; /* change to normal for multi-line wrapping */
+  white-space: nowrap;
 `;
 
 type DropdownProps = {
@@ -144,6 +147,7 @@ type DropdownProps = {
   menuFitContent?: boolean;
   placeholderColor?: 'lighter' | 'secondary';
   required?: boolean;
+  inputPadding?: string;
 };
 const Dropdown: React.FC<DropdownProps> = ({
   items,
@@ -155,6 +159,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   menuFitContent = false,
   placeholderColor = 'lighter',
   required = false,
+  inputPadding,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [alignRight, setAlignRight] = React.useState(false);
@@ -217,6 +222,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         <PlainInput
           placeholder={placeholder}
           $placeholderColor={placeholderColor}
+          $padding={inputPadding ?? ''}
           value={value}
           onChange={e => onChange(e.target.value)}
           aria-label={label || placeholder}
@@ -239,6 +245,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         )}
         <InputContainer
           $open={open}
+          $padding={inputPadding ?? ''}
           aria-expanded={open}
           aria-haspopup='listbox'
           aria-controls={open ? listId : undefined}

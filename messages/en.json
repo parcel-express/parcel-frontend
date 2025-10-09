@@ -414,5 +414,67 @@
     "title": "Password Successfully Sent",
     "description": "New password has been sent to the specified email, {email}",
     "button": "Main Page"
+  },
+  "Invoices": {
+    "title": "My Invoices",
+    "searchPlaceholder": "Search",
+    "table": {
+      "col1": "Tracking",
+      "col2": "Invoice Date",
+      "col3": "Invoice Amount",
+      "col4": "Amount Due",
+      "col5": "Status"
+    },
+    "mobileCard": {
+      "date": "Invoice Date",
+      "price": "Invoice Amount",
+      "amount": "Amount Due"
+    },
+    "statuses": {
+      "paid": "Paid",
+      "unpaid": "Unpaid"
+    },
+    "row1": {
+      "col1": "#26677",
+      "col2": "24 Jan 10:00",
+      "col3": "12 GEL",
+      "col4": "95 GEL",
+      "col5": "Paid"
+    },
+    "row2": {
+      "col1": "#26677",
+      "col2": "24 Jan 10:00",
+      "col3": "65 GEL",
+      "col4": "70 GEL",
+      "col5": "Unpaid"
+    }
+  },
+  "InvoiceDetails": {
+    "title": "Invoice Details",
+    "subtitle": "Invoice Number: #223394",
+    "invoiceDate": "Invoice Generation Date: 19.07.2025",
+    "buttons": {
+      "download": "Download Report",
+      "print": "Print"
+    },
+    "card1": {
+      "orderName": "Order Name",
+      "orderNameValue": "ShPS Amanati",
+      "id": "Order ID",
+      "name": "Name",
+      "nameValue": "ShPS Onei",
+      "code": "S/K",
+      "phone": "Phone",
+      "email": "Email",
+      "iBan": "IBAN"
+    },
+    "card2": {
+      "title": "Financial Details",
+      "code": "S/K",
+      "services": "Additional Services",
+      "total": "Total",
+      "paidAmount": "Paid Amount",
+      "dueAmount": "Due Amount"
+    }
   }
 }

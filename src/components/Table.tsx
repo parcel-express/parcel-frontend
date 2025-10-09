@@ -308,6 +308,20 @@ const Bullet = styled.span`
   opacity: 40%;
 `;
 
+const InvoiceOrderCard = styled(OrderCard)`
+  background: ${colors.background.light};
+  border-color: ${colors.border.secondary};
+  padding: 12px;
+`;
+
+const InvoiceOrderHeader = styled(OrderHeader)`
+  padding-bottom: 8px;
+`;
+
+const InvoiceOrderStatusWrap = styled(OrderStatusWrap)`
+  color: ${colors.brand.gradientStart};
+`;
+
 const CheckIcon = () => (
   <svg width='14' height='14' viewBox='0 0 14 14' fill='none'>
     <path
@@ -335,7 +349,7 @@ export type TableProps = {
   selectedRows?: number[];
   onRowSelect?: (rowIndex: number, selected: boolean) => void;
   cornerStyle?: 'all' | 'bottom';
-  mobileVariant?: 'default' | 'orders';
+  mobileVariant?: 'default' | 'orders' | 'invoices';
   onRightArrowClick?: (rowIndex: number) => void;
   onRowClick?: (rowIndex: number) => void;
 };
@@ -360,6 +374,7 @@ const Table: React.FC<TableProps> = ({
   const dataCols = Math.max(1, columns ?? (inferred > 0 ? inferred : 2));
   const displayData = rows != null ? details.slice(0, rows) : details;
   const tOrders = useTranslations('Orders');
+  const tInvoices = useTranslations('Invoices');
 
   const extraRight = showRightArrow ? 1 : 0;
   const totalCols = dataCols + extraRight;
@@ -635,6 +650,96 @@ const Table: React.FC<TableProps> = ({
                     </RouteItem>
                   </RouteList>
                 </OrderCard>
+              );
+            })}
+          </MobileOrdersList>
+        )}
+
+        {mobileVariant === 'invoices' && (
+          <MobileOrdersList>
+            {displayData.map((row, idx) => {
+              const title = row[0];
+              const col2 = row[1];
+              const col3 = row[2];
+              const col4 = row[3];
+              const status = row[4];
+              return (
+                <InvoiceOrderCard
+                  key={`inv-${idx}`}
+                  onClick={() => onRowClick?.(idx)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onRowClick?.(idx);
+                    }
+                  }}
+                >
+                  <InvoiceOrderHeader>
+                    <OrderId>
+                      <Typography variant='text-sm' weight='medium' color={colors.text.primary}>
+                        {title}
+                      </Typography>
+                    </OrderId>
+                    <InvoiceOrderStatusWrap>{status}</InvoiceOrderStatusWrap>
+                  </InvoiceOrderHeader>
+
+                  <RouteList>
+                    <RouteItem>
+                      <RouteTexts>
+                        <DateWrapper>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {tInvoices('mobileCard.date')}
+                          </Typography>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {col2}
+                          </Typography>
+                        </DateWrapper>
+
+                        <DateWrapper>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {tInvoices('mobileCard.price')}
+                          </Typography>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {col3}
+                          </Typography>
+                        </DateWrapper>
+
+                        <DateWrapper>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {tInvoices('mobileCard.amount')}
+                          </Typography>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {col4}
+                          </Typography>
+                        </DateWrapper>
+                      </RouteTexts>
+                    </RouteItem>
+                  </RouteList>
+                </InvoiceOrderCard>
               );
             })}
           </MobileOrdersList>
