@@ -161,6 +161,7 @@ const CardTitle = styled.div`
 
 interface InvoicesDetailPopupProps {
   onClose: () => void;
+  invoiceIndex: number;
   children?: React.ReactNode;
 }
 
