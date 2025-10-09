@@ -20,12 +20,11 @@ import Typography from './Typography';
 export const SidebarWrapper = styled.div`
   width: 292px;
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: 32px;
+  height: calc(100vh - 32px);
   background: ${colors.background.white};
   padding: 20px 16px 12px 16px;
   border: 1px solid ${colors.border.light};
-  border-bottom: 0;
   border-radius: 12px 12px 0 0;
   display: flex;
   flex-direction: column;

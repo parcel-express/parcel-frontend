@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button from '@/components/Button';
-import { DesktopContainer, MobileContainer } from '@/components/Responsive';
+import { DesktopContainer } from '@/components/Responsive';
 import BillingIcon from '@/icons/BillingIcon';
 import BoxIcon from '@/icons/BoxIcon';
 import CloseIcon from '@/icons/CloseIcon';
@@ -81,6 +81,20 @@ const StickyTitle = styled.div`
     z-index: 10;
     background-color: ${colors.background.lighter};
     padding: 20px 0 20px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+const MobileClose = styled(Button).attrs({
+  variant: 'transparent',
+  size: 'xs',
+  type: 'button',
+})`
+  display: none;
+  @media (max-width: 1080px) {
+    display: flex;
   }
 `;
 
@@ -90,7 +104,7 @@ const FrameBody = styled.div`
   gap: 24px;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
-  -ms-overflow-style: none; /* IE/Edge */
+  -ms-overflow-style: none;
   scrollbar-width: none;
   @media (max-width: 1080px) {
     gap: 8px;
@@ -240,16 +254,15 @@ const OrdersDetailPopup: React.FC<OrdersDetailPopupProps> = ({ onClose }) => {
             <CloseIcon />
           </CloseButton>
         </DesktopContainer>
-        <MobileContainer>
-          <CloseButton aria-label='Close' onClick={onClose}>
-            <CloseIcon />
-          </CloseButton>
-        </MobileContainer>
+
         <FrameBody>
           <StickyTitle>
             <Typography variant='text-md' weight='semibold' color={colors.text.black}>
               {tOrderDetails('title')}
             </Typography>
+            <MobileClose aria-label='Close' onClick={onClose} type='button'>
+              <CloseIcon />
+            </MobileClose>
           </StickyTitle>
           <Header>
             <IDWrapper>

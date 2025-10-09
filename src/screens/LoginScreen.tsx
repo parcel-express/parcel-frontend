@@ -1,5 +1,6 @@
 'use client';
-import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { useTranslations, useLocale } from 'next-intl';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -61,6 +62,7 @@ const ButtonWrapper = styled.div`
 
 const Registration = styled.div`
   margin-top: -12px;
+  cursor: pointer;
   @media (max-width: 1080px) {
     margin-top: -22px;
   }
@@ -68,6 +70,17 @@ const Registration = styled.div`
 
 const LoginScreen = () => {
   const tLogin = useTranslations('Login');
+  const router = useRouter();
+  const locale = useLocale();
+
+  const goToRegister = () => {
+    router.push(`/${locale}/auth/register`);
+  };
+
+  const goToPassword = () => {
+    router.push(`/${locale}/auth/password`);
+  };
+
   return (
     <PageBackground>
       <MobileContainer>
@@ -108,7 +121,14 @@ const LoginScreen = () => {
             items={[]}
             required={false}
           />
-          <ForgotPassword>
+          <ForgotPassword
+            role='button'
+            tabIndex={0}
+            onClick={goToPassword}
+            onKeyDown={e => {
+              if (e.key === 'Enter' || e.key === ' ') goToPassword();
+            }}
+          >
             <Typography variant='text-sm' weight='medium' color={colors.text.black}>
               {tLogin('forgot')}
             </Typography>
@@ -119,7 +139,14 @@ const LoginScreen = () => {
             {tLogin('button')}
           </Button>
         </ButtonWrapper>
-        <Registration>
+        <Registration
+          role='button'
+          tabIndex={0}
+          onClick={goToRegister}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') goToRegister();
+          }}
+        >
           <Typography variant='text-sm' weight='regular' color={colors.text.dark}>
             {tLogin.rich('noAccount', {
               bold: chunks => (

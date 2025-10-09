@@ -309,46 +309,6 @@
       "col4": "Гиорги ",
       "col5": "Гиорги ",
       "col6": "Отменен"
-    },
-    "Login": {
-      "title": "Авторизация",
-      "email": "Электронная почта",
-      "emailPlaceholder": "Введите ваш email",
-      "password": "Пароль",
-      "passwordPlaceholder": "Введите ваш пароль",
-      "button": "Войти",
-      "forgot": "Забыли пароль?",
-      "noAccount": "Нет аккаунта? <bold>Зарегистрируйтесь</bold>"
-    },
-    "Register": {
-      "title": "Регистрация",
-      "userType": "Тип пользователя",
-      "userTypePlaceholder": "Выберите тип",
-      "name": "Имя",
-      "namePlaceholder": "Имя",
-      "surname": "Фамилия",
-      "surnamePlaceholder": "Фамилия",
-      "email": "Электронная почта",
-      "emailPlaceholder": "Введите ваш email",
-      "phone": "Мобильный номер",
-      "phonePlaceholder": "Введите ваш мобильный номер",
-      "password": "Пароль",
-      "passwordPlaceholder": "Пароль",
-      "terms": "Я согласен с условиями",
-      "button": "Регистрация",
-      "haveAccount": "Уже есть аккаунт? <bold>Войти</bold>"
-    },
-    "Password": {
-      "title": "Восстановление пароля",
-      "description": "Для восстановления пароля укажите ваш адрес электронной почты",
-      "email": "Email",
-      "emailPlaceholder": "Введите ваш email",
-      "button": "Отправить"
-    },
-    "Successful": {
-      "title": "Пароль успешно отправлен",
-      "description": "Новый пароль был отправлен на указанный адрес электронной почты, {email}",
-      "button": "На главную страницу"
     }
   },
   "OrderDetails": {
@@ -414,5 +374,45 @@
       "type": "Тип расчета",
       "typeValue": "Счет"
     }
+  },
+  "Login": {
+    "title": "Авторизация",
+    "email": "Электронная почта",
+    "emailPlaceholder": "Введите ваш email",
+    "password": "Пароль",
+    "passwordPlaceholder": "Введите ваш пароль",
+    "button": "Войти",
+    "forgot": "Забыли пароль?",
+    "noAccount": "Нет аккаунта? <bold>Зарегистрируйтесь</bold>"
+  },
+  "Register": {
+    "title": "Регистрация",
+    "userType": "Тип пользователя",
+    "userTypePlaceholder": "Выберите тип",
+    "name": "Имя",
+    "namePlaceholder": "Имя",
+    "surname": "Фамилия",
+    "surnamePlaceholder": "Фамилия",
+    "email": "Электронная почта",
+    "emailPlaceholder": "Введите ваш email",
+    "phone": "Мобильный номер",
+    "phonePlaceholder": "Введите ваш мобильный номер",
+    "password": "Пароль",
+    "passwordPlaceholder": "Пароль",
+    "terms": "Я согласен с условиями",
+    "button": "Регистрация",
+    "haveAccount": "Уже есть аккаунт? <bold>Войти</bold>"
+  },
+  "Password": {
+    "title": "Восстановление пароля",
+    "description": "Для восстановления пароля укажите ваш адрес электронной почты",
+    "email": "Email",
+    "emailPlaceholder": "Введите ваш email",
+    "button": "Отправить"
+  },
+  "Successful": {
+    "title": "Пароль успешно отправлен",
+    "description": "Новый пароль был отправлен на указанный адрес электронной почты, {email}",
+    "button": "На главную страницу"
   }
 }

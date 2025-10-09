@@ -38,6 +38,9 @@ const Title = styled.span`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  z-index: 60;
+  background: ${colors.background.white};
+
   @media screen and (max-width: 1080px) {
     display: none;
   }
@@ -120,6 +123,10 @@ const ArrowHeader = styled.span`
   display: block;
   border-bottom: 1px solid ${colors.border.light};
   padding: 22px 0;
+  position: sticky;
+  top: var(--table-sticky-top, 0px);
+  z-index: 60;
+  background: ${colors.background.white};
 `;
 
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
