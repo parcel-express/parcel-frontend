@@ -5,12 +5,12 @@ import styled from 'styled-components';
 
 import Button from '@/components/Button';
 import { DesktopContainer } from '@/components/Responsive';
-import BillingIcon from '@/icons/BillingIcon';
 import CloseIcon from '@/icons/CloseIcon';
+import FileDownloadIcon from '@/icons/FileDownloadIcon';
 import PrinterIcon from '@/icons/PrinterIcon';
 import { colors } from '@/styles/colors';
 
-import Typography from './Typography';
+import { Typography } from './Typography';
 
 const Overlay = styled.div`
   position: fixed;
@@ -172,16 +172,17 @@ const InvoicesDetailPopup: React.FC<InvoicesDetailPopupProps> = ({ onClose }) =>
     if (e.target === e.currentTarget) onClose();
   };
 
-  function handleOverlayKeyDown(_event: React.KeyboardEvent<HTMLDivElement>): void {
-    throw new Error('Function not implemented.');
-  }
-
   return (
     <Overlay
       role='button'
       tabIndex={0}
+      aria-label='Close invoice details'
       onClick={handleOverlayClick}
-      onKeyDown={handleOverlayKeyDown}
+      onKeyDown={e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleOverlayClick(e as unknown as React.MouseEvent<HTMLDivElement>);
+        }
+      }}
     >
       <Popup>
         <DesktopContainer>
@@ -211,7 +212,7 @@ const InvoicesDetailPopup: React.FC<InvoicesDetailPopupProps> = ({ onClose }) =>
             <Buttons>
               <Button variant='secondary' size='mdSearch' onClick={onClose}>
                 <IconWrapper>
-                  <BillingIcon />
+                  <FileDownloadIcon />
                 </IconWrapper>
                 {tInvoiceDetails('buttons.download')}
               </Button>
@@ -291,7 +292,7 @@ const InvoicesDetailPopup: React.FC<InvoicesDetailPopupProps> = ({ onClose }) =>
           <MainCard>
             <Row>
               <Typography variant='text-sm' weight='medium' color={colors.text.black}>
-                {tInvoiceDetails('card1.orderName')}
+                {tInvoiceDetails('card2.code')}
               </Typography>
               <Typography variant='text-sm' weight='bold' color={colors.text.black}>
                 12.00₾
@@ -299,7 +300,7 @@ const InvoicesDetailPopup: React.FC<InvoicesDetailPopupProps> = ({ onClose }) =>
             </Row>
             <Row>
               <Typography variant='text-sm' weight='medium' color={colors.text.black}>
-                {tInvoiceDetails('card1.id')}
+                {tInvoiceDetails('card2.services')}
               </Typography>
               <Typography variant='text-sm' weight='bold' color={colors.text.black}>
                 12.00₾
@@ -307,7 +308,7 @@ const InvoicesDetailPopup: React.FC<InvoicesDetailPopupProps> = ({ onClose }) =>
             </Row>
             <Row>
               <Typography variant='text-sm' weight='medium' color={colors.text.black}>
-                {tInvoiceDetails('card1.name')}
+                {tInvoiceDetails('card2.total')}
               </Typography>
               <Typography variant='text-sm' weight='bold' color={colors.text.black}>
                 12.00₾
@@ -315,7 +316,7 @@ const InvoicesDetailPopup: React.FC<InvoicesDetailPopupProps> = ({ onClose }) =>
             </Row>
             <Row>
               <Typography variant='text-sm' weight='medium' color={colors.text.black}>
-                {tInvoiceDetails('card1.code')}
+                {tInvoiceDetails('card2.paidAmount')}
               </Typography>
               <Typography variant='text-sm' weight='bold' color={colors.text.black}>
                 0.00₾
@@ -323,7 +324,7 @@ const InvoicesDetailPopup: React.FC<InvoicesDetailPopupProps> = ({ onClose }) =>
             </Row>
             <Row>
               <Typography variant='text-sm' weight='medium' color={colors.text.black}>
-                {tInvoiceDetails('card1.phone')}
+                {tInvoiceDetails('card2.dueAmount')}
               </Typography>
               <Typography variant='text-sm' weight='bold' color={colors.text.black}>
                 64.00₾

@@ -18,7 +18,7 @@ import UserBadge from '@/components/UserBadge';
 import { colors } from '@/styles/colors';
 
 const MainContent = styled.div`
-  display: Flex;
+  display: flex;
   gap: 32px;
   height: calc(100vh - 32px);
   @media screen and (max-width: 1080px) {
