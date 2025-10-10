@@ -77,6 +77,7 @@ function DeliveryScreen() {
                 }}
                 placeholder={tDelivery('placeholder')}
                 label=''
+                inputPadding='16px 24px'
                 items={dropdownItems}
               />
             </DropdownContainer>

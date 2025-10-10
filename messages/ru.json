@@ -476,5 +476,42 @@
       "paidAmount": "Оплаченная сумма",
       "dueAmount": "Сумма к оплате"
     }
+  },
+  "Addresses": {
+    "title": "Мои адреса",
+    "button": "Новый адрес",
+    "table": {
+      "col1": "Название филиала",
+      "col2": "Контактное лицо",
+      "col3": "Компания",
+      "col4": "Город",
+      "col5": "Адрес",
+      "col6": "Телефон"
+    },
+    "mobileCard": {
+      "name": "Контактное лицо",
+      "nameValue": "Лука",
+      "city": "Компания",
+      "cityValue": "Amanati",
+      "address": "Город",
+      "addressValue": "Тбилиси",
+      "phone": "Телефон"
+    },
+    "row1": {
+      "col1": "Amanati - DIGMIS MASIVI",
+      "col2": "Лука",
+      "col3": "Amanati",
+      "col4": "Тбилиси",
+      "col5": "Акки Белиашвили 117",
+      "col6": "595531455"
+    },
+    "row2": {
+      "col1": "Amanati - DIGMIS MASIVI",
+      "col2": "Лука",
+      "col3": "Amanati",
+      "col4": "Тбилиси",
+      "col5": "Акки Белиашвили 117",
+      "col6": "595531455"
+    }
   }
 }
