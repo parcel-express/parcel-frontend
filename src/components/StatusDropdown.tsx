@@ -106,6 +106,7 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
       variant='dropdown'
       menuFitContent
       placeholderColor={placeholderColor}
+      inputPadding='8px 10px'
     />
   );
 };

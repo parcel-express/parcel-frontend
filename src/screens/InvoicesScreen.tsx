@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import DashboardContainer from '@/components/DashboardContainer';
 import DatePicker from '@/components/DatePicker';
 import Header from '@/components/Header';
-import OrdersDetailPopup from '@/components/OrdersDetailPopup';
+import InvoicesDetailPopup from '@/components/InvoicesDetailPopup';
 import PageTitle from '@/components/PageTitle';
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
 import SearchInput from '@/components/SearchInput';
@@ -90,6 +90,10 @@ const UserWrapper = styled.div`
   width: 296px;
 `;
 
+const FirstCol = styled.span`
+  font-weight: 500;
+`;
+
 const DateStatus = styled.div`
   display: flex;
   justify-content: space-between;
@@ -99,24 +103,24 @@ const DateStatus = styled.div`
     gap: 0;
   }
 `;
-const OrdersScreen = () => {
-  const tOrders = useTranslations('Orders');
+
+const InvoicesScreen = () => {
+  const tInvoices = useTranslations('Invoices');
   const rowKeys = ['row1', 'row2'];
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const [status, setStatus] = useState<StatusValue | ''>('');
-  const [openOrderDetail, setOpenOrderDetail] = useState<number | null>(null);
+  const [openInvoiceDetail, setOpenInvoiceDetail] = useState<number | null>(null);
 
-  const variants: StatusVariant[] = ['pending', 'cancelled', 'delivered', 'inProgress'];
+  const variants: StatusVariant[] = ['paid', 'unpaid'];
   const TOTAL_ROWS = 19;
 
   const buildBaseRow = (idx: number) => {
     const key = rowKeys[idx % rowKeys.length];
     return [
-      tOrders(`${key}.col1`),
-      tOrders(`${key}.col2`),
-      tOrders(`${key}.col3`),
-      tOrders(`${key}.col4`),
-      tOrders(`${key}.col5`),
+      <FirstCol key={`col1-${idx}`}>{tInvoices(`${key}.col1`)}</FirstCol>,
+      tInvoices(`${key}.col2`),
+      tInvoices(`${key}.col3`),
+      tInvoices(`${key}.col4`),
     ];
   };
 
@@ -127,11 +131,10 @@ const OrdersScreen = () => {
       <StatusBadge
         key={`status-${idx}`}
         variant={variant as StatusVariant}
-        label={tOrders(`statuses.${variant}`)}
+        label={tInvoices(`statuses.${variant}`)}
       />,
     ];
   });
-
   return (
     <>
       <MobileContainer>
@@ -144,7 +147,7 @@ const OrdersScreen = () => {
           </DesktopContainer>
           <RightContent>
             <ContentHeader>
-              <PageTitle title={tOrders('title')} desktopVariant='small' />
+              <PageTitle title={tInvoices('title')} desktopVariant='small' />
               <DesktopContainer>
                 <UserWrapper>
                   <UserBadge
@@ -170,7 +173,7 @@ const OrdersScreen = () => {
                     <SearchWrapper>
                       <SearchInput
                         size='md'
-                        placeholder={tOrders('searchPlaceholder')}
+                        placeholder={tInvoices('searchPlaceholder')}
                         mode='icon'
                         leftIcon={true}
                       />
@@ -182,7 +185,7 @@ const OrdersScreen = () => {
                 <SearchWrapper>
                   <SearchInput
                     size='md'
-                    placeholder={tOrders('searchPlaceholder')}
+                    placeholder={tInvoices('searchPlaceholder')}
                     mode='icon'
                     leftIcon={true}
                   />
@@ -201,34 +204,38 @@ const OrdersScreen = () => {
               <Table
                 cornerStyle='bottom'
                 rows={tableData.length}
-                columns={6}
+                columns={5}
                 details={tableData}
                 showArrowsIcon={true}
-                showCheckbox={true}
+                showCheckbox={false}
                 showRightArrow={true}
                 selectedRows={selectedRows}
                 onRowSelect={(i, sel) => {
                   setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
                 }}
                 columnTitles={[
-                  tOrders('table.col1'),
-                  tOrders('table.col2'),
-                  tOrders('table.col3'),
-                  tOrders('table.col4'),
-                  tOrders('table.col5'),
-                  tOrders('table.col6'),
+                  tInvoices('table.col1'),
+                  tInvoices('table.col2'),
+                  tInvoices('table.col3'),
+                  tInvoices('table.col4'),
+                  tInvoices('table.col5'),
                 ]}
-                mobileVariant='orders'
-                onRightArrowClick={(rowIndex: number) => setOpenOrderDetail(rowIndex)}
-                onRowClick={(rowIndex: number) => setOpenOrderDetail(rowIndex)}
+                mobileVariant='invoices'
+                onRightArrowClick={(rowIndex: number) => setOpenInvoiceDetail(rowIndex)}
+                onRowClick={(rowIndex: number) => setOpenInvoiceDetail(rowIndex)}
               />
             </TableWrapper>
           </RightContent>
         </MainContent>
       </DashboardContainer>
-      {openOrderDetail !== null && <OrdersDetailPopup onClose={() => setOpenOrderDetail(null)} />}
+      {openInvoiceDetail !== null && (
+        <InvoicesDetailPopup
+          onClose={() => setOpenInvoiceDetail(null)}
+          invoiceIndex={openInvoiceDetail}
+        />
+      )}
     </>
   );
 };
 
-export default OrdersScreen;
+export default InvoicesScreen;

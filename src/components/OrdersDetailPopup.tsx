@@ -16,7 +16,7 @@ import SenderIcon from '@/icons/SenderIcon';
 import { colors } from '@/styles/colors';
 
 import StatusBadge from './StatusBadge';
-import Typography from './Typography';
+import { Typography } from './Typography';
 
 const Overlay = styled.div`
   position: fixed;
