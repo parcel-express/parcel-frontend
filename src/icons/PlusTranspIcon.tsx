@@ -1,8 +1,9 @@
 import * as React from 'react';
-const PlusTranspIcon = () => (
-  <svg xmlns='http://www.w3.org/2000/svg' width={25} height={25} fill='none'>
+type Props = React.SVGProps<SVGSVGElement> & { color?: string };
+const PlusTranspIcon = ({ color = '#fff', ...props }: Props) => (
+  <svg xmlns='http://www.w3.org/2000/svg' width={25} height={25} fill='none' {...props}>
     <path
-      stroke='#fff'
+      stroke={color}
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth={2}

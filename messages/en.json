@@ -476,5 +476,42 @@
       "paidAmount": "Paid Amount",
       "dueAmount": "Due Amount"
     }
+  },
+  "Addresses": {
+    "title": "My Addresses",
+    "button": "New Branch",
+    "table": {
+      "col1": "Branch Name",
+      "col2": "Contact Name",
+      "col3": "Company",
+      "col4": "City",
+      "col5": "Address",
+      "col6": "Phone"
+    },
+    "mobileCard": {
+      "name": "Contact Name",
+      "nameValue": "ლუკა",
+      "city": "Company",
+      "cityValue": "Amanati",
+      "address": "City",
+      "addressValue": "Tbilisi",
+      "phone": "Phone"
+    },
+    "row1": {
+      "col1": "Amanati - DIGMIS MASIVI",
+      "col2": "Luka",
+      "col3": "Amanati",
+      "col4": "Tbilisi",
+      "col5": "Akaki Beliashvili 117",
+      "col6": "595531455"
+    },
+    "row2": {
+      "col1": "Amanati - DIGMIS MASIVI",
+      "col2": "Luka",
+      "col3": "Amanati",
+      "col4": "Tbilisi",
+      "col5": "Akaki Beliashvili 117",
+      "col6": "595531455"
+    }
   }
 }

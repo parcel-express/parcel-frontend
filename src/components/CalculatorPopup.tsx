@@ -277,6 +277,7 @@ const CalculatorPopup = ({ onClose }: { onClose: () => void }) => {
                 items={[]}
                 value={formik.values.input1}
                 onChange={val => formik.setFieldValue('input1', val)}
+                inputPadding='12px 16px'
               />
             </DropdownWrapper>
             <DropdownWrapper>
@@ -290,6 +291,7 @@ const CalculatorPopup = ({ onClose }: { onClose: () => void }) => {
                 items={[]}
                 value={formik.values.input2}
                 onChange={val => formik.setFieldValue('input2', val)}
+                inputPadding='12px 16px'
               />
             </DropdownWrapper>
 
@@ -371,6 +373,7 @@ const CalculatorPopup = ({ onClose }: { onClose: () => void }) => {
                 value={formik.values.input5}
                 onChange={val => formik.setFieldValue('input5', val)}
                 placeholder={tCalculator('placeholder5')}
+                inputPadding='12px 16px'
               />
             </DropdownWrapper>
             <LastSection>

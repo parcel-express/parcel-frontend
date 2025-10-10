@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import styled from 'styled-components';
@@ -70,30 +71,36 @@ const Sidebar = () => {
         <LogoIcon />
       </LogoWrapper>
       <ItemsWrapper>
-        <MenuItem>
-          <HomeIcon />
-          <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
-            {tSidebar('home')}
-          </Typography>
-        </MenuItem>
-        <MenuItem>
-          <PackageIcon width={22} height={21} />
-          <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
-            {tSidebar('orders')}
-          </Typography>
-        </MenuItem>
+        <Link href='/'>
+          <MenuItem>
+            <HomeIcon />
+            <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
+              {tSidebar('home')}
+            </Typography>
+          </MenuItem>
+        </Link>
+        <Link href='/orders'>
+          <MenuItem>
+            <PackageIcon width={22} height={21} />
+            <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
+              {tSidebar('orders')}
+            </Typography>
+          </MenuItem>
+        </Link>
         <MenuItem>
           <TermsIcon />
           <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
             {tSidebar('terms')}
           </Typography>
         </MenuItem>
-        <MenuItem>
-          <InvoiceIcon />
-          <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
-            {tSidebar('invoice')}
-          </Typography>
-        </MenuItem>
+        <Link href='/invoices'>
+          <MenuItem>
+            <InvoiceIcon />
+            <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
+              {tSidebar('invoice')}
+            </Typography>
+          </MenuItem>
+        </Link>
       </ItemsWrapper>
       <ButtonWrapper>
         <Button variant='primary' size='lg'>
@@ -102,18 +109,22 @@ const Sidebar = () => {
         </Button>
       </ButtonWrapper>
       <ItemsWrapper>
-        <MenuItem>
-          <TariffsIcon />
-          <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
-            {tSidebar('tariffs')}
-          </Typography>
-        </MenuItem>
-        <MenuItem>
-          <AddressIcon />
-          <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
-            {tSidebar('addresses')}
-          </Typography>
-        </MenuItem>
+        <Link href='/price'>
+          <MenuItem>
+            <TariffsIcon />
+            <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
+              {tSidebar('tariffs')}
+            </Typography>
+          </MenuItem>
+        </Link>
+        <Link href='/addresses'>
+          <MenuItem>
+            <AddressIcon />
+            <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
+              {tSidebar('addresses')}
+            </Typography>
+          </MenuItem>
+        </Link>
         <MenuItem>
           <SettingsIcon />
           <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>

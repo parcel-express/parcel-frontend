@@ -5,10 +5,14 @@ import styled from 'styled-components';
 
 import ArrowsIcon from '@/icons/ArrowsIcon';
 import ClockIcon from '@/icons/ClockIcon';
+import EditIcon from '@/icons/EditIcon';
 import LocationIcon from '@/icons/LocationIcon';
+import PlusTranspIcon from '@/icons/PlusTranspIcon';
 import RightArrowIcon from '@/icons/RightArrowIcon';
+import TrashIcon from '@/icons/TrashIcon';
 import { colors } from '@/styles/colors';
 
+import Button from './Button';
 import { DesktopContainer, MobileContainer } from './Responsive';
 import { Typography } from './Typography';
 
@@ -178,7 +182,8 @@ const CenterCellArrow = styled.button`
   all: unset;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 12px;
   border-bottom: 1px solid ${colors.border.light};
   min-height: 56px;
   cursor: pointer;
@@ -322,6 +327,85 @@ const InvoiceOrderStatusWrap = styled(OrderStatusWrap)`
   color: ${colors.brand.gradientStart};
 `;
 
+const ActionButton = styled.button`
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  cursor: pointer;
+  margin-right: 12px;
+`;
+
+const MobileActions = styled.div`
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+`;
+
+const StyledButton = styled(Button)`
+  position: relative;
+  overflow: hidden;
+  color: ${colors.brand.gradientStart};
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+  background: transparent !important;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      93.55deg,
+      ${colors.brand.primary} 21.82%,
+      ${colors.brand.secondary} 110.55%
+    );
+    opacity: 0.1;
+    z-index: 0;
+    pointer-events: none;
+  }
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+  & svg {
+    color: ${colors.brand.primary};
+    stroke: ${colors.brand.primary};
+    fill: ${colors.brand.primary};
+  }
+`;
+
+const AddressWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+`;
+
+const TitleMobileAddress = styled.div`
+  display: flex;
+  height: 32px;
+  align-items: center;
+`;
+
+const BodyList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+`;
+
+const BodyRow = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4px 0;
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
 const CheckIcon = () => (
   <svg width='14' height='14' viewBox='0 0 14 14' fill='none'>
     <path
@@ -346,12 +430,16 @@ export type TableProps = {
   showArrowsIcon?: boolean;
   showCheckbox?: boolean;
   showRightArrow?: boolean;
+  showEditIcon?: boolean;
+  showTrashIcon?: boolean;
   selectedRows?: number[];
   onRowSelect?: (rowIndex: number, selected: boolean) => void;
   cornerStyle?: 'all' | 'bottom';
-  mobileVariant?: 'default' | 'orders' | 'invoices';
+  mobileVariant?: 'default' | 'orders' | 'invoices' | 'addresses';
   onRightArrowClick?: (rowIndex: number) => void;
   onRowClick?: (rowIndex: number) => void;
+  onEditClick?: (rowIndex: number) => void;
+  onTrashClick?: (rowIndex: number) => void;
 };
 
 const Table: React.FC<TableProps> = ({
@@ -363,20 +451,25 @@ const Table: React.FC<TableProps> = ({
   showArrowsIcon = true,
   showCheckbox = false,
   showRightArrow = false,
+  showEditIcon = false,
+  showTrashIcon = false,
   selectedRows,
   onRowSelect,
   cornerStyle = 'all',
   mobileVariant = 'default',
   onRightArrowClick,
   onRowClick,
+  onEditClick,
+  onTrashClick,
 }) => {
   const inferred = columnTitles?.length ?? 0;
   const dataCols = Math.max(1, columns ?? (inferred > 0 ? inferred : 2));
   const displayData = rows != null ? details.slice(0, rows) : details;
   const tOrders = useTranslations('Orders');
   const tInvoices = useTranslations('Invoices');
-
-  const extraRight = showRightArrow ? 1 : 0;
+  const tAddresses = useTranslations('Addresses');
+  const extraRight = showRightArrow || showEditIcon || showTrashIcon ? 1 : 0;
+  const hasActionsColumn = extraRight === 1;
   const totalCols = dataCols + extraRight;
 
   const isRowSelected = (i: number) => selectedRows?.includes(i) ?? false;
@@ -388,7 +481,7 @@ const Table: React.FC<TableProps> = ({
   return (
     <>
       <DesktopContainer>
-        <DesktopGrid $columns={totalCols} $arrow={showRightArrow} $cornerStyle={cornerStyle}>
+        <DesktopGrid $columns={totalCols} $arrow={hasActionsColumn} $cornerStyle={cornerStyle}>
           {/* Header */}
           {Array.from({ length: dataCols }).map((_, ci) => (
             <Typography
@@ -403,7 +496,7 @@ const Table: React.FC<TableProps> = ({
               </Title>
             </Typography>
           ))}
-          {showRightArrow && (
+          {hasActionsColumn && (
             <Typography variant='text-xs' weight='semibold' color={colors.text.tertiary}>
               <ArrowHeader />
             </Typography>
@@ -440,13 +533,38 @@ const Table: React.FC<TableProps> = ({
                   </Typography>
                 );
               })}
-              {showRightArrow && (
+              {hasActionsColumn && (
                 <CenterCellArrow
                   type='button'
-                  aria-label='Open details'
-                  onClick={() => onRightArrowClick?.(rIndex)}
+                  aria-label='Row actions'
+                  onClick={() => {
+                    if (showRightArrow && !showEditIcon && !showTrashIcon)
+                      onRightArrowClick?.(rIndex);
+                  }}
                 >
-                  <RightArrowIcon />
+                  {showEditIcon && (
+                    <ActionButton
+                      aria-label='Edit'
+                      onClick={e => {
+                        e.stopPropagation();
+                        onEditClick?.(rIndex);
+                      }}
+                    >
+                      <EditIcon />
+                    </ActionButton>
+                  )}
+                  {showTrashIcon && (
+                    <ActionButton
+                      aria-label='Delete'
+                      onClick={e => {
+                        e.stopPropagation();
+                        onTrashClick?.(rIndex);
+                      }}
+                    >
+                      <TrashIcon />
+                    </ActionButton>
+                  )}
+                  {showRightArrow && !showEditIcon && !showTrashIcon && <RightArrowIcon />}
                 </CenterCellArrow>
               )}
             </React.Fragment>
@@ -503,9 +621,31 @@ const Table: React.FC<TableProps> = ({
                           {value}
                         </Typography>
                       </DescriptionWrapper>
-                      {ci === 0 && showRightArrow && (
+                      {ci === 0 && (showRightArrow || showEditIcon || showTrashIcon) && (
                         <RightArrowWrapper>
-                          <RightArrowIcon />
+                          {showEditIcon && (
+                            <ActionButton
+                              aria-label='Edit'
+                              onClick={e => {
+                                e.stopPropagation();
+                                onEditClick?.(idx);
+                              }}
+                            >
+                              <EditIcon />
+                            </ActionButton>
+                          )}
+                          {showTrashIcon && (
+                            <ActionButton
+                              aria-label='Delete'
+                              onClick={e => {
+                                e.stopPropagation();
+                                onTrashClick?.(idx);
+                              }}
+                            >
+                              <TrashIcon />
+                            </ActionButton>
+                          )}
+                          {showRightArrow && !showEditIcon && !showTrashIcon && <RightArrowIcon />}
                         </RightArrowWrapper>
                       )}
                     </Section>
@@ -743,6 +883,110 @@ const Table: React.FC<TableProps> = ({
               );
             })}
           </MobileOrdersList>
+        )}
+
+        {mobileVariant === 'addresses' && (
+          <MobileList>
+            <StyledButton
+              variant='primary'
+              size='xsSearch'
+              leftIcon={<PlusTranspIcon color='#662D91' />}
+            >
+              {tAddresses('button')}
+            </StyledButton>
+            {displayData.map((row, idx) => {
+              const title = row[0] ?? '';
+              const address = row[4] ?? ''; // column 5 (index 4)
+              const otherCols = row
+                .filter((_, i) => i !== 0 && i !== 4)
+                .map((c, i) => <span key={`addr-${idx}-other-${i}`}>{c}</span>);
+              return (
+                <Card key={`addr-${idx}`}>
+                  <CardTop>
+                    <DescriptionWrapper style={{ flex: 1 }}>
+                      <TitleMobileAddress>
+                        <Typography variant='text-sm' weight='semibold' color={colors.text.primary}>
+                          {title}
+                        </Typography>
+                        <MobileActions>
+                          {showEditIcon && (
+                            <ActionButton
+                              aria-label='Edit'
+                              onClick={e => {
+                                e.stopPropagation();
+                                onEditClick?.(idx);
+                              }}
+                            >
+                              <EditIcon />
+                            </ActionButton>
+                          )}
+                          {showTrashIcon && (
+                            <ActionButton
+                              aria-label='Delete'
+                              onClick={e => {
+                                e.stopPropagation();
+                                onTrashClick?.(idx);
+                              }}
+                            >
+                              <TrashIcon />
+                            </ActionButton>
+                          )}
+                          {showRightArrow && !showEditIcon && !showTrashIcon && (
+                            <ActionButton
+                              aria-label='Open'
+                              onClick={() => onRightArrowClick?.(idx)}
+                            >
+                              <RightArrowIcon />
+                            </ActionButton>
+                          )}
+                        </MobileActions>
+                      </TitleMobileAddress>
+                      <AddressWrapper>
+                        <Typography variant='text-xs' weight='medium' color={colors.text.tertiary}>
+                          <TitleMobile>{columnTitles[4] ?? tAddresses('table.col5')}</TitleMobile>
+                        </Typography>
+                        {address && (
+                          <Typography variant='text-sm' weight='bold' color={colors.text.black}>
+                            {address}
+                          </Typography>
+                        )}
+                      </AddressWrapper>
+                    </DescriptionWrapper>
+                  </CardTop>
+
+                  <CardBody>
+                    <BodyList>
+                      {otherCols.map((c, ci) => {
+                        const titleIndex = row.map((_, i) => i).filter(i => i !== 0 && i !== 4)[ci];
+                        return (
+                          <BodyRow key={`addr-${idx}-c-${ci}`}>
+                            <Typography
+                              as='span'
+                              variant='text-xs'
+                              weight='medium'
+                              color={colors.text.tertiary}
+                            >
+                              {typeof titleIndex === 'number' && titleIndex >= 0
+                                ? (columnTitles[titleIndex] ?? '')
+                                : ''}
+                            </Typography>
+                            <Typography
+                              as='span'
+                              variant='text-sm'
+                              weight='regular'
+                              color={colors.text.tertiary}
+                            >
+                              {c}
+                            </Typography>
+                          </BodyRow>
+                        );
+                      })}
+                    </BodyList>
+                  </CardBody>
+                </Card>
+              );
+            })}
+          </MobileList>
         )}
       </MobileContainer>
     </>
