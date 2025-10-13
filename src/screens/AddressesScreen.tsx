@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Button } from '@/components';
 import DashboardContainer from '@/components/DashboardContainer';
 import Header from '@/components/Header';
+import NewBranchPopup from '@/components/NewBranchPopup';
 import PageTitle from '@/components/PageTitle';
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
 import Sidebar from '@/components/Sidebar';
@@ -109,10 +110,19 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const MobileButtonWrapper = styled.div`
+  width: 100%;
+  margin: 8px 0 20px 0;
+  & > button {
+    width: 100%;
+  }
+`;
+
 const AddressesScreen = () => {
   const tAddresses = useTranslations('Addresses');
   const rowKeys = ['row1', 'row2'];
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const TOTAL_ROWS = 6;
 
@@ -161,12 +171,25 @@ const AddressesScreen = () => {
                     variant='primary'
                     size='xsSearch'
                     leftIcon={<PlusTranspIcon color='#662D91' />}
+                    onClick={() => setIsPopupOpen(true)}
                   >
                     {tAddresses('button')}
                   </StyledButton>
                 </TableHeader>
               </DesktopContainer>
 
+              <MobileContainer>
+                <MobileButtonWrapper>
+                  <StyledButton
+                    variant='primary'
+                    size='xsSearch'
+                    leftIcon={<PlusTranspIcon color='#662D91' />}
+                    onClick={() => setIsPopupOpen(true)}
+                  >
+                    {tAddresses('button')}
+                  </StyledButton>
+                </MobileButtonWrapper>
+              </MobileContainer>
               <Table
                 cornerStyle='bottom'
                 rows={tableData.length}
@@ -195,6 +218,7 @@ const AddressesScreen = () => {
           </RightContent>
         </MainContent>
       </DashboardContainer>
+      <NewBranchPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </>
   );
 };

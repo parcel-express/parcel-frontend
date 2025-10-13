@@ -512,6 +512,25 @@
       "col4": "Tbilisi",
       "col5": "Akaki Beliashvili 117",
       "col6": "595531455"
+    },
+    "Popup": {
+      "title": "New Branch",
+      "subtitle": "Add your branch address",
+      "button": "Add Branch",
+      "form": {
+        "branchName": "Branch Name",
+        "branchNamePlaceholder": "Enter branch name",
+        "firstName": "Customer Name",
+        "firstNamePlaceholder": "Enter customer name",
+        "company": "Company",
+        "companyPlaceholder": "Enter company name",
+        "city": "City",
+        "cityPlaceholder": "Select city",
+        "address": "Address",
+        "addressPlaceholder": "Enter address",
+        "phone": "Phone",
+        "phonePlaceholder": "Enter phone number"
+      }
     }
   }
 }

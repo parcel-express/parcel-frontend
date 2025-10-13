@@ -88,6 +88,7 @@ const PasswordScreen = () => {
             onChange={() => {}}
             items={[]}
             required={false}
+            inputPadding='12px 16px'
           />
         </InputsWrapper>
         <ButtonWrapper>
