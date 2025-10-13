@@ -887,13 +887,15 @@ const Table: React.FC<TableProps> = ({
 
         {mobileVariant === 'addresses' && (
           <MobileList>
-            <StyledButton
-              variant='primary'
-              size='xsSearch'
-              leftIcon={<PlusTranspIcon color='#662D91' />}
-            >
-              {tAddresses('button')}
-            </StyledButton>
+            <DesktopContainer>
+              <StyledButton
+                variant='primary'
+                size='xsSearch'
+                leftIcon={<PlusTranspIcon color='#662D91' />}
+              >
+                {tAddresses('button')}
+              </StyledButton>
+            </DesktopContainer>
             {displayData.map((row, idx) => {
               const title = row[0] ?? '';
               const address = row[4] ?? ''; // column 5 (index 4)

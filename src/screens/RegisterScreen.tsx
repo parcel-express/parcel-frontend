@@ -136,6 +136,7 @@ const RegisterPage = () => {
             onChange={() => {}}
             items={[]}
             required={false}
+            inputPadding='12px 16px'
           />
           <Dropdown
             variant='input'
@@ -145,6 +146,7 @@ const RegisterPage = () => {
             onChange={() => {}}
             items={[]}
             required={false}
+            inputPadding='12px 16px'
           />
           <Dropdown
             variant='input'
@@ -154,6 +156,7 @@ const RegisterPage = () => {
             onChange={() => {}}
             items={[]}
             required={false}
+            inputPadding='12px 16px'
           />
           <Dropdown
             variant='input'
@@ -163,6 +166,7 @@ const RegisterPage = () => {
             onChange={() => {}}
             items={[]}
             required={false}
+            inputPadding='12px 16px'
           />
           <Dropdown
             variant='input'
@@ -172,6 +176,7 @@ const RegisterPage = () => {
             onChange={() => {}}
             items={[]}
             required={false}
+            inputPadding='12px 16px'
           />
           <Dropdown
             variant='input'
@@ -181,6 +186,7 @@ const RegisterPage = () => {
             onChange={() => {}}
             items={[]}
             required={false}
+            inputPadding='12px 16px'
           />
           <CheckboxWrapper as='label'>
             <HiddenCheckbox

@@ -512,6 +512,25 @@
       "col4": "Тбилиси",
       "col5": "Акки Белиашвили 117",
       "col6": "595531455"
+    },
+    "Popup": {
+      "title": "Новый филиал",
+      "subtitle": "Добавьте адрес вашего филиала",
+      "button": "Добавить филиал",
+      "form": {
+        "branchName": "Название филиала",
+        "branchNamePlaceholder": "Введите название филиала",
+        "firstName": "Имя клиента",
+        "firstNamePlaceholder": "Введите имя клиента",
+        "company": "Компания",
+        "companyPlaceholder": "Введите название компании",
+        "city": "Город",
+        "cityPlaceholder": "Выберите город",
+        "address": "Адрес",
+        "addressPlaceholder": "Введите адрес",
+        "phone": "Телефон",
+        "phonePlaceholder": "Введите номер телефона"
+      }
     }
   }
 }

@@ -45,6 +45,7 @@ const TableHeader = styled.div`
   border-radius: 24px 24px 0 0;
   background: ${colors.background.light};
   border: 1px solid ${colors.border.light};
+  flex-shrink: 0;
 `;
 
 const RightHeader = styled.div`
@@ -69,6 +70,11 @@ const TableWrapper = styled.div`
   @media screen and (max-width: 1080px) {
     height: auto;
   }
+`;
+
+const TableScrollContainer = styled.div`
+  overflow: auto;
+  flex: 1;
 `;
 
 const StatusWrapper = styled.div`
@@ -201,29 +207,31 @@ const InvoicesScreen = () => {
                   </StatusWrapper>
                 </DateStatus>
               </MobileContainer>
-              <Table
-                cornerStyle='bottom'
-                rows={tableData.length}
-                columns={5}
-                details={tableData}
-                showArrowsIcon={true}
-                showCheckbox={false}
-                showRightArrow={true}
-                selectedRows={selectedRows}
-                onRowSelect={(i, sel) => {
-                  setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
-                }}
-                columnTitles={[
-                  tInvoices('table.col1'),
-                  tInvoices('table.col2'),
-                  tInvoices('table.col3'),
-                  tInvoices('table.col4'),
-                  tInvoices('table.col5'),
-                ]}
-                mobileVariant='invoices'
-                onRightArrowClick={(rowIndex: number) => setOpenInvoiceDetail(rowIndex)}
-                onRowClick={(rowIndex: number) => setOpenInvoiceDetail(rowIndex)}
-              />
+              <TableScrollContainer>
+                <Table
+                  cornerStyle='bottom'
+                  rows={tableData.length}
+                  columns={5}
+                  details={tableData}
+                  showArrowsIcon={true}
+                  showCheckbox={false}
+                  showRightArrow={true}
+                  selectedRows={selectedRows}
+                  onRowSelect={(i, sel) => {
+                    setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
+                  }}
+                  columnTitles={[
+                    tInvoices('table.col1'),
+                    tInvoices('table.col2'),
+                    tInvoices('table.col3'),
+                    tInvoices('table.col4'),
+                    tInvoices('table.col5'),
+                  ]}
+                  mobileVariant='invoices'
+                  onRightArrowClick={(rowIndex: number) => setOpenInvoiceDetail(rowIndex)}
+                  onRowClick={(rowIndex: number) => setOpenInvoiceDetail(rowIndex)}
+                />
+              </TableScrollContainer>
             </TableWrapper>
           </RightContent>
         </MainContent>
