@@ -45,6 +45,10 @@ const InputContainer = styled.button.attrs({ type: 'button' })<{
   color: inherit;
   width: 100%;
   background: white;
+  box-shadow:
+    0px 1px 2px 0px rgba(16, 24, 40, 0.05),
+    0px -2px 0px 0px rgba(16, 24, 40, 0.05) inset,
+    0px 0px 0px 1px rgba(16, 24, 40, 0.18) inset;
   &:focus {
     outline: none;
     border: 1px solid transparent;
@@ -115,6 +119,10 @@ const PlainInput = styled.input<{ $placeholderColor?: 'lighter' | 'secondary'; $
   width: 100%;
   font-size: 14px;
   color: ${colors.text.primary};
+  box-shadow:
+    0px 1px 2px 0px rgba(16, 24, 40, 0.05),
+    0px -2px 0px 0px rgba(16, 24, 40, 0.05) inset,
+    0px 0px 0px 1px rgba(16, 24, 40, 0.18) inset;
   &::placeholder {
     color: ${p =>
       p.$placeholderColor === 'secondary' ? colors.text.secondary : colors.text.lighter};

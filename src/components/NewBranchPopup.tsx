@@ -46,9 +46,10 @@ const CloseButton = styled(Button).attrs({ variant: 'default', size: 'xs', type:
   position: absolute;
   top: 0;
   right: -60px;
-  background-color: ${colors.background.white};
-  border: none;
-  box-shadow: none;
+  background-color: ${colors.background.white} !important;
+  border: none !important;
+  box-shadow: none !important;
+
   &:hover,
   &:focus,
   &:active {

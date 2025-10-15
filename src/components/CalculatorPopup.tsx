@@ -46,7 +46,7 @@ const Popup = styled.div`
   }
 `;
 
-const CloseButton = styled(Button).attrs({ variant: 'default', size: 'xs' })`
+const CloseButton = styled(Button).attrs({ variant: 'default', size: 'xs', type: 'button' })`
   position: absolute;
   top: 0;
   right: -60px;
@@ -61,6 +61,11 @@ const CloseButton = styled(Button).attrs({ variant: 'default', size: 'xs' })`
     box-shadow: none !important;
     filter: none !important;
     opacity: 1 !important;
+  }
+
+  @media (max-width: 640px) {
+    right: 0;
+    top: -48px;
   }
 `;
 

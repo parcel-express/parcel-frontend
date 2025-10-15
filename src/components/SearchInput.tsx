@@ -54,6 +54,10 @@ const Input = styled.div<{ $size?: InputSize; $hasLeftIcon?: boolean }>`
   background-color: ${colors.background.white};
   border: 1px solid ${colors.border.primary};
   border-radius: 8px;
+  box-shadow:
+    0px 1px 2px 0px rgba(16, 24, 40, 0.05),
+    0px -2px 0px 0px rgba(16, 24, 40, 0.05) inset,
+    0px 0px 0px 1px rgba(16, 24, 40, 0.18) inset;
 `;
 
 const SearchInput: React.FC<{

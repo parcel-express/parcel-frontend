@@ -532,5 +532,73 @@
         "phonePlaceholder": "Enter phone number"
       }
     }
+  },
+  "Support": {
+    "title": "Support",
+    "dropdownPlaceholder": "Select Status",
+    "downloadButton": "Download",
+    "button": "New Request",
+    "searchPlaceholder": "Search",
+    "table": {
+      "col1": "Fixed Date",
+      "col2": "Expected Completion Date",
+      "col3": "Completion Date",
+      "col4": "Tracking",
+      "col5": "Status",
+      "col6": "Name, Surname",
+      "col7": "Request Number"
+    },
+    "mobileCard": {
+      "date": "Fixed Date",
+      "endDate": "Expected Completion Date",
+      "name": "Name, Surname",
+      "phone": "Phone",
+      "requestNumber": "Request Number"
+    },
+    "row1": {
+      "col1": "24 Jan 10:00",
+      "col2": "24 Jan 10:00",
+      "col3": "24 Jan 10:00",
+      "col4": "#26677",
+      "col5": "Paid",
+      "col6": "Nata Jghenti",
+      "col7": "15558"
+    },
+    "row2": {
+      "col1": "24 Jan 10:00",
+      "col2": "24 Jan 13:00",
+      "col3": "24 Jan 13:00",
+      "col4": "#26677",
+      "col5": "Unpaid",
+      "col6": "Nata Jghenti",
+      "col7": "15558"
+    },
+    "Popup": {
+      "title": "Support Details",
+      "id": "Support Ticket Number: #223394",
+      "card1": {
+        "row1": "Creation Date: 17/07/2025 12:12",
+        "row2": "Expected Completion Date: 17/07/2025",
+        "row3": "Completion Date: 17/07/2025 12:27"
+      },
+      "card2": {
+        "topic": "Topic",
+        "topicValue": "Delivery Date Confirmation",
+        "userComment": "User Comment:",
+        "userCommentValue": "When will the package be delivered?",
+        "companyComment": "Onvei Comment",
+        "companyCommentValue": "The recipient did not answer the courier's call today, a repeat visit will take place tomorrow."
+      },
+      "card3": {
+        "title": "Card Information",
+        "tracking": "Tracking",
+        "company": "Sender Company",
+        "companyValue": "Onway LLC",
+        "name": "Name, Surname",
+        "nameValue": "Giorgi Metreveli",
+        "phone": "Mobile",
+        "email": "Email"
+      }
+    }
   }
 }

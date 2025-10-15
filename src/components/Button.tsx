@@ -32,8 +32,10 @@ const sizeStyles = {
   xs: css`
     padding: 12px 13px;
     font-size: 12px;
+    font-weight: 500;
     line-height: 100%;
     border-radius: 8px;
+    display: flex;
     gap: 4px;
 
     .icon {
