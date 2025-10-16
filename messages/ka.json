@@ -597,6 +597,22 @@
         "phone": "მობილური",
         "email": "ელ.ფოსტა"
       }
+    },
+    "NewRequestPopup": {
+      "title": "დაგვიტოვეთ შეტყობინება",
+      "subtitle": "აირჩიეთ საკითხი და მოგვწერეთ",
+      "button": "გაგზავნა",
+      "form": {
+        "topicPlaceholder": "აირჩიე თემა",
+        "tracking": "თრექინგი",
+        "trackingPlaceholder": "ჩაწერე თრექინგის კოდი",
+        "name": "სახელი, გვარი",
+        "namePlaceholder": "სახელი და გვარი",
+        "phone": "ტელეფონი",
+        "phonePlaceholder": "ჩაწერე ტელეფონი",
+        "message": "შეტყობინება",
+        "messagePlaceholder": "დაგვიტოვეთ შეტყობინება"
+      }
     }
   }
 }

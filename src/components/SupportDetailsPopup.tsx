@@ -3,13 +3,12 @@ import { useTranslations } from 'next-intl';
 import React from 'react';
 import styled from 'styled-components';
 
-import Button from '@/components/Button';
+import { Button, Typography } from '@/components';
 import { DesktopContainer } from '@/components/Responsive';
 import CloseIcon from '@/icons/CloseIcon';
 import { colors } from '@/styles/colors';
 
 import StatusBadge from './StatusBadge';
-import { Typography } from './Typography';
 
 const Overlay = styled.div`
   position: fixed;

@@ -586,7 +586,7 @@
         "topicValue": "Delivery Date Confirmation",
         "userComment": "User Comment:",
         "userCommentValue": "When will the package be delivered?",
-        "companyComment": "Onvei Comment",
+        "companyComment": "Onway Comment",
         "companyCommentValue": "The recipient did not answer the courier's call today, a repeat visit will take place tomorrow."
       },
       "card3": {
@@ -598,6 +598,22 @@
         "nameValue": "Giorgi Metreveli",
         "phone": "Mobile",
         "email": "Email"
+      }
+    },
+    "NewRequestPopup": {
+      "title": "New Request",
+      "subtitle": "Select an issue and write to us",
+      "button": "Send",
+      "form": {
+        "topicPlaceholder": "Select topic",
+        "tracking": "Tracking",
+        "trackingPlaceholder": "Enter tracking code",
+        "name": "Name, Surname",
+        "namePlaceholder": "Enter name and surname",
+        "phone": "Phone",
+        "phonePlaceholder": "Enter phone number",
+        "message": "Message",
+        "messagePlaceholder": "Leave a message"
       }
     }
   }

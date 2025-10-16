@@ -8,7 +8,7 @@ import DashboardContainer from '@/components/DashboardContainer';
 import DatePicker from '@/components/DatePicker';
 import Dropdown from '@/components/Dropdown';
 import Header from '@/components/Header';
-import NewBranchPopup from '@/components/NewBranchPopup';
+import NewRequestPopup from '@/components/NewRequestPopup';
 import PageTitle from '@/components/PageTitle';
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
 import SearchInput from '@/components/SearchInput';
@@ -183,7 +183,7 @@ const DownloadStatus = styled.div`
 const DownloadWrapper = styled.div`
   & button {
     display: flex;
-    gap: 4px;
+    gap: 4px !important;
     width: 160px;
     align-self: center;
     box-shadow:
@@ -193,12 +193,10 @@ const DownloadWrapper = styled.div`
     border-radius: 8px;
     font-weight: 500;
     z-index: 0;
-    @media screen and (max-width: 1080px) {
-      & > button {
-        width: 100%;
-        display: flex;
-        gap: 4px;
-      }
+  }
+  @media screen and (max-width: 1080px) {
+    & button {
+      width: 100%;
     }
   }
 `;
@@ -383,7 +381,7 @@ const SupportScreen = () => {
           </RightContent>
         </MainContent>
       </DashboardContainer>
-      <NewBranchPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+      <NewRequestPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
       <SupportDetailsPopup
         isOpen={isDetailsPopupOpen}
         onClose={() => setIsDetailsPopupOpen(false)}

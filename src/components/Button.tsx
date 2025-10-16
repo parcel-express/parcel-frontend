@@ -403,6 +403,7 @@ const TextWrapper = styled.span`
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  gap: 4px;
 `;
 
 export const Button: React.FC<ButtonProps> = ({

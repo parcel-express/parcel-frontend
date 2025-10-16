@@ -58,7 +58,37 @@ const InputContainer = styled.button.attrs({ type: 'button' })<{
         border-box;
   }
 `;
-
+const PlainTextArea = styled.textarea<{
+  $placeholderColor?: 'lighter' | 'secondary';
+  $padding?: string;
+}>`
+  padding: ${p => p.$padding ?? '8px 12px'};
+  border-radius: 8px;
+  border: 1px solid ${colors.border.primary};
+  background: white;
+  width: 100%;
+  font-size: 14px;
+  color: ${colors.text.primary};
+  font-family: inherit;
+  resize: vertical;
+  min-height: 109px;
+  box-shadow:
+    0px 1px 2px 0px rgba(16, 24, 40, 0.05),
+    0px -2px 0px 0px rgba(16, 24, 40, 0.05) inset,
+    0px 0px 0px 1px rgba(16, 24, 40, 0.18) inset;
+  &::placeholder {
+    color: ${p =>
+      p.$placeholderColor === 'secondary' ? colors.text.secondary : colors.text.lighter};
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(${colors.background.light}, ${colors.background.light}) padding-box,
+      linear-gradient(93.55deg, ${colors.brand.primary} 21.82%, ${colors.brand.secondary} 110.55%)
+        border-box;
+  }
+`;
 const DropdownContainer = styled.div<{ $fitContent?: boolean; $alignRight?: boolean }>`
   position: absolute;
   top: 100%;
@@ -151,7 +181,7 @@ type DropdownProps = {
   value: string;
   placeholder: string;
   label: string;
-  variant?: 'dropdown' | 'input';
+  variant?: 'dropdown' | 'input' | 'textarea';
   menuFitContent?: boolean;
   placeholderColor?: 'lighter' | 'secondary';
   required?: boolean;
@@ -228,6 +258,30 @@ const Dropdown: React.FC<DropdownProps> = ({
           </Title>
         )}
         <PlainInput
+          placeholder={placeholder}
+          $placeholderColor={placeholderColor}
+          $padding={inputPadding ?? ''}
+          value={value}
+          onChange={e => onChange(e.target.value)}
+          aria-label={label || placeholder}
+          required={required}
+        />
+      </Container>
+    );
+  }
+
+  if (variant === 'textarea') {
+    return (
+      <Container>
+        {label && (
+          <Title>
+            {required && <AsteriskIcon />}
+            <Typography variant='text-xs' weight='medium' color={colors.text.primary}>
+              {label}
+            </Typography>
+          </Title>
+        )}
+        <PlainTextArea
           placeholder={placeholder}
           $placeholderColor={placeholderColor}
           $padding={inputPadding ?? ''}
