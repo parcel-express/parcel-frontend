@@ -1,6 +1,6 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '@/components/Button';
@@ -115,9 +115,22 @@ const FrameBody = styled.div`
 `;
 
 const InputsBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  @media (max-width: 1080px) {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+`;
+
+const MessageWrapper = styled.div`
+  & input {
+    height: 109px;
+    display: flex;
+    align-items: flex-start;
+    text-align: start;
+    padding-top: 12px;
+  }
 `;
 
 const ButtonWrapper = styled.div`
@@ -131,15 +144,19 @@ const DropdownContainer = styled.div`
   width: 100%;
 `;
 
-interface NewBranchPopupProps {
+interface NewRequestPopupProps {
   isOpen: boolean;
   onClose: () => void;
   children?: React.ReactNode;
 }
 
-const NewBranchPopup: React.FC<NewBranchPopupProps> = ({ isOpen, onClose }) => {
-  const tAddresses = useTranslations('Addresses');
-
+const NewRequestPopup: React.FC<NewRequestPopupProps> = ({ isOpen, onClose }) => {
+  const tSupport = useTranslations('Support');
+  const [topic, setTopic] = useState('');
+  const [tracking, setTracking] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) onClose();
   };
@@ -170,87 +187,70 @@ const NewBranchPopup: React.FC<NewBranchPopupProps> = ({ isOpen, onClose }) => {
           <StickyTitle>
             <TitleContent>
               <Typography variant='text-md' weight='semibold' color={colors.text.black}>
-                {tAddresses('Popup.title')}
+                {tSupport('NewRequestPopup.title')}
               </Typography>
               <Typography variant='text-xs' weight='regular' color={colors.text.black}>
-                {tAddresses('Popup.subtitle')}
+                {tSupport('NewRequestPopup.subtitle')}
               </Typography>
             </TitleContent>
             <MobileClose aria-label='Close' onClick={onClose} type='button'>
               <CloseIcon />
             </MobileClose>
           </StickyTitle>
+          <DropdownContainer>
+            <Dropdown
+              value={topic}
+              variant='dropdown'
+              onChange={setTopic}
+              placeholder={tSupport('NewRequestPopup.form.topicPlaceholder')}
+              label={''}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+          </DropdownContainer>
           <InputsBox>
-            <DropdownContainer>
-              <Dropdown
-                value=''
-                variant='input'
-                onChange={() => {}}
-                placeholder={tAddresses('Popup.form.branchNamePlaceholder')}
-                label={tAddresses('Popup.form.branchName')}
-                inputPadding='12px 16px'
-                items={[]}
-              />
-            </DropdownContainer>
-            <DropdownContainer>
-              <Dropdown
-                value=''
-                variant='input'
-                onChange={() => {}}
-                placeholder={tAddresses('Popup.form.firstNamePlaceholder')}
-                label={tAddresses('Popup.form.firstName')}
-                inputPadding='12px 16px'
-                items={[]}
-              />
-            </DropdownContainer>
-            <DropdownContainer>
-              <Dropdown
-                value=''
-                variant='input'
-                onChange={() => {}}
-                placeholder={tAddresses('Popup.form.companyPlaceholder')}
-                label={tAddresses('Popup.form.company')}
-                inputPadding='12px 16px'
-                items={[]}
-              />
-            </DropdownContainer>
-            <DropdownContainer>
-              <Dropdown
-                value=''
-                variant='dropdown'
-                onChange={() => {}}
-                placeholder={tAddresses('Popup.form.cityPlaceholder')}
-                label={tAddresses('Popup.form.city')}
-                inputPadding='12px 16px'
-                items={[]}
-              />
-            </DropdownContainer>
-            <DropdownContainer>
-              <Dropdown
-                value=''
-                variant='input'
-                onChange={() => {}}
-                placeholder={tAddresses('Popup.form.address')}
-                label={tAddresses('Popup.form.addressPlaceholder')}
-                inputPadding='12px 16px'
-                items={[]}
-              />
-            </DropdownContainer>
-            <DropdownContainer>
-              <Dropdown
-                value=''
-                variant='input'
-                onChange={() => {}}
-                placeholder={tAddresses('Popup.form.phone')}
-                label={tAddresses('Popup.form.phonePlaceholder')}
-                inputPadding='12px 16px'
-                items={[]}
-              />
-            </DropdownContainer>
+            <Dropdown
+              value={tracking}
+              variant='input'
+              onChange={setTracking}
+              placeholder={tSupport('NewRequestPopup.form.trackingPlaceholder')}
+              label={tSupport('NewRequestPopup.form.tracking')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={name}
+              variant='input'
+              onChange={setName}
+              placeholder={tSupport('NewRequestPopup.form.namePlaceholder')}
+              label={tSupport('NewRequestPopup.form.name')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={phone}
+              variant='input'
+              onChange={setPhone}
+              placeholder={tSupport('NewRequestPopup.form.phonePlaceholder')}
+              label={tSupport('NewRequestPopup.form.phone')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
           </InputsBox>
+          <MessageWrapper>
+            <Dropdown
+              value={message}
+              variant='textarea'
+              onChange={setMessage}
+              placeholder={tSupport('NewRequestPopup.form.messagePlaceholder')}
+              label={tSupport('NewRequestPopup.form.message')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+          </MessageWrapper>
           <ButtonWrapper>
             <Button variant='primary' size='lg' onClick={onClose}>
-              {tAddresses('Popup.button')}
+              {tSupport('NewRequestPopup.button')}
             </Button>
           </ButtonWrapper>
         </FrameBody>
@@ -259,4 +259,4 @@ const NewBranchPopup: React.FC<NewBranchPopupProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default NewBranchPopup;
+export default NewRequestPopup;

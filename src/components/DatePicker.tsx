@@ -30,6 +30,10 @@ const Wrapper = styled.div`
     align-items: center;
     cursor: pointer;
     gap: 2px;
+    box-shadow:
+      0px 1px 2px 0px rgba(16, 24, 40, 0.05),
+      0px -2px 0px 0px rgba(16, 24, 40, 0.05) inset,
+      0px 0px 0px 1px rgba(16, 24, 40, 0.18) inset;
   }
   @media (max-width: 1080px) {
     width: 238px;

@@ -63,6 +63,7 @@ const Cell = styled.span.withConfig({
       return p.withCheckbox ? '16px' : '20px';
     }};
   white-space: normal;
+  cursor: pointer;
 `;
 
 const MobileList = styled.div`
@@ -435,7 +436,7 @@ export type TableProps = {
   selectedRows?: number[];
   onRowSelect?: (rowIndex: number, selected: boolean) => void;
   cornerStyle?: 'all' | 'bottom';
-  mobileVariant?: 'default' | 'orders' | 'invoices' | 'addresses';
+  mobileVariant?: 'default' | 'orders' | 'invoices' | 'addresses' | 'support';
   onRightArrowClick?: (rowIndex: number) => void;
   onRowClick?: (rowIndex: number) => void;
   onEditClick?: (rowIndex: number) => void;
@@ -468,6 +469,7 @@ const Table: React.FC<TableProps> = ({
   const tOrders = useTranslations('Orders');
   const tInvoices = useTranslations('Invoices');
   const tAddresses = useTranslations('Addresses');
+  const tSupport = useTranslations('Support');
   const extraRight = showRightArrow || showEditIcon || showTrashIcon ? 1 : 0;
   const hasActionsColumn = extraRight === 1;
   const totalCols = dataCols + extraRight;
@@ -476,6 +478,13 @@ const Table: React.FC<TableProps> = ({
 
   const handleSelect = (rowIndex: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
     onRowSelect?.(rowIndex, e.target.checked);
+  };
+
+  const handleCellClick = (rowIndex: number) => (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('input[type="checkbox"]')) {
+      return;
+    }
+    onRowClick?.(rowIndex);
   };
 
   return (
@@ -515,7 +524,11 @@ const Table: React.FC<TableProps> = ({
                     weight='regular'
                     color={colors.text.tertiary}
                   >
-                    <Cell first={isFirst} withCheckbox={isFirst && showCheckbox}>
+                    <Cell
+                      first={isFirst}
+                      withCheckbox={isFirst && showCheckbox}
+                      onClick={handleCellClick(rIndex)}
+                    >
                       {isFirst && showCheckbox ? (
                         <FirstCellInner>
                           <CheckboxWrapper>
@@ -874,6 +887,120 @@ const Table: React.FC<TableProps> = ({
                             color={colors.text.tertiary}
                           >
                             {col4}
+                          </Typography>
+                        </DateWrapper>
+                      </RouteTexts>
+                    </RouteItem>
+                  </RouteList>
+                </InvoiceOrderCard>
+              );
+            })}
+          </MobileOrdersList>
+        )}
+
+        {mobileVariant === 'support' && (
+          <MobileOrdersList>
+            {displayData.map((row, idx) => {
+              const trackingId = row[3];
+              const date = row[1];
+              const enddate = row[2];
+              const status = row[4];
+              const name = row[5];
+              const id = row[6];
+
+              return (
+                <InvoiceOrderCard
+                  key={`sup-${idx}`}
+                  onClick={() => onRowClick?.(idx)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onRowClick?.(idx);
+                    }
+                  }}
+                >
+                  <InvoiceOrderHeader>
+                    <OrderId>
+                      <Typography variant='text-sm' weight='medium' color={colors.text.primary}>
+                        {trackingId}
+                      </Typography>
+                    </OrderId>
+                    <InvoiceOrderStatusWrap>{status}</InvoiceOrderStatusWrap>
+                  </InvoiceOrderHeader>
+
+                  <RouteList>
+                    <RouteItem>
+                      <RouteTexts style={{ borderTop: 'none', paddingTop: 0 }}>
+                        <DateWrapper>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {tSupport('mobileCard.date')}
+                          </Typography>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {date}
+                          </Typography>
+                        </DateWrapper>
+
+                        <DateWrapper
+                          style={{
+                            paddingBottom: '16px',
+                            borderBottom: `1px solid ${colors.border.light}`,
+                          }}
+                        >
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {tSupport('mobileCard.endDate')}
+                          </Typography>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {enddate}
+                          </Typography>
+                        </DateWrapper>
+
+                        <DateWrapper>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {tSupport('mobileCard.name')}
+                          </Typography>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {name}
+                          </Typography>
+                        </DateWrapper>
+
+                        <DateWrapper>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {tSupport('mobileCard.requestNumber')}
+                          </Typography>
+                          <Typography
+                            variant='text-xs'
+                            weight='regular'
+                            color={colors.text.tertiary}
+                          >
+                            {id}
                           </Typography>
                         </DateWrapper>
                       </RouteTexts>
