@@ -530,5 +530,52 @@
         "phonePlaceholder": "შეიყვანეთ ტელეფონის ნომერი"
       }
     }
+  },
+
+  "Settings": {
+    "title": "პარამეტრები",
+    "AvatarCard": {
+      "description": "ატვირთე კომპანიის ლოგო"
+    },
+    "Form": {
+      "companyName": "კომპანიის იურიდიული დასახელება",
+      "companyNamePlaceholder": "შეიყვანეთ კომპანიის სახელი",
+      "company2": "კომპანიის საფირმო დასახელება",
+      "company2Placeholder": "შეიყვანეთ კომპანიის საფირმო დასახელება",
+      "person": "საკონტაქტო პირი",
+      "personPlaceholder": "სახელი, გვარი",
+      "phone": "საკონტაქტო პირის ტელეფონი",
+      "phonePlaceholder": "შეიყვანეთ მობილურის ნომერი",
+      "email": "E-Mail (ჩაბარების სტატუსებისთვის)",
+      "email2": "საკონტაქტო E-Mail (წერილებისა და ინვოისისთვის)",
+      "emailPlaceholder": "შეიყვანეთ ელ.ფოსტა",
+      "address": "ორგანიზაციის ფაქტობრივი მისამართი",
+      "addressPlaceholder": "შეიყვანეთ მისამართი",
+      "city": "ქალაქი (ფაქტობრივი)",
+      "cityPlaceholder": "აირჩიეთ ქალაქი",
+      "address2": "ორგანიზაციის იურიდიული მისამართი",
+      "address2Placeholder": "შეიყვანეთ მისამართი",
+      "phone2": "ორგანიზაციის ტელეფონი",
+      "phone2Placeholder": "შეიყვანეთ ტელეფონის ნომერი",
+      "iBan": "საბანკო რეკვიზიტები",
+      "iBanPlaceholder": "GE29NB000000000123456789012",
+      "code": "საიდენტიფიკაციო ნომერი",
+      "codePlaceholder": "123456789",
+      "ceo": "დირექტორი",
+      "ceoPlaceholder": "სახელი, გვარი",
+      "field": "საქმიანობის სფერო",
+      "fieldPlaceholder": "აირჩიეთ სფერო",
+      "button": "დამახსოვრება"
+    },
+    "PasswordCard": {
+      "title": "პაროლის შეცვლა",
+      "old": "ძველი პაროლი",
+      "oldPlaceholder": "პაროლი",
+      "new": "ახალი პაროლი",
+      "newPlaceholder": "********",
+      "confirm": "გაიმეორეთ ახალი პაროლი",
+      "confirmPlaceholder": "********",
+      "button": "პაროლის შეცვლა"
+    }
   }
 }
