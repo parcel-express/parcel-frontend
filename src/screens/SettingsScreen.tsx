@@ -330,7 +330,7 @@ const SettingsScreen = () => {
                 />
                 <SaveButtonWrapper>
                   <Button variant='primary' size='md'>
-                    {tSettings('PasswordCard.button')}
+                    {tSettings('Form.button')}
                   </Button>
                 </SaveButtonWrapper>
               </FormField>
