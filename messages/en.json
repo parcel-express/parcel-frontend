@@ -533,6 +533,52 @@
       }
     }
   },
+  "Settings": {
+    "title": "Settings",
+    "AvatarCard": {
+      "description": "Upload company logo"
+    },
+    "Form": {
+      "companyName": "Legal Company Name",
+      "companyNamePlaceholder": "Enter company name",
+      "company2": "Company Trade Name",
+      "company2Placeholder": "Enter company trade name",
+      "person": "Contact Person",
+      "personPlaceholder": "First name, Last name",
+      "phone": "Contact Person Phone",
+      "phonePlaceholder": "Enter mobile number",
+      "email": "E-Mail (for delivery status)",
+      "email2": "Contact E-Mail ",
+      "emailPlaceholder": "Enter email",
+      "address": "Organization's Actual Address",
+      "addressPlaceholder": "Enter address",
+      "city": "City (Actual)",
+      "cityPlaceholder": "Select city",
+      "address2": "Organization's Legal Address",
+      "address2Placeholder": "Enter address",
+      "phone2": "Organization's Phone",
+      "phone2Placeholder": "Enter phone number",
+      "iBan": "Banking Details",
+      "iBanPlaceholder": "GE29NB000000000123456789012",
+      "code": "Identification Number",
+      "codePlaceholder": "123456789",
+      "ceo": "Director",
+      "ceoPlaceholder": "First name, Last name",
+      "field": "Business Field",
+      "fieldPlaceholder": "Select field",
+      "button": "Save"
+    },
+    "PasswordCard": {
+      "title": "Change Password",
+      "old": "Old Password",
+      "oldPlaceholder": "Password",
+      "new": "New Password",
+      "newPlaceholder": "********",
+      "confirm": "Repeat New Password",
+      "confirmPlaceholder": "********",
+      "button": "Change Password"
+    }
+  },
   "Support": {
     "title": "Support",
     "dropdownPlaceholder": "Select Status",

@@ -533,6 +533,52 @@
       }
     }
   },
+  "Settings": {
+    "title": "Настройки",
+    "AvatarCard": {
+      "description": "Загрузите логотип компании"
+    },
+    "Form": {
+      "companyName": "Юридическое название компании",
+      "companyNamePlaceholder": "Введите юридическое название компании",
+      "company2": "Краткое название компании",
+      "company2Placeholder": "Введите краткое название компании",
+      "person": "Контактное лицо",
+      "personPlaceholder": "Имя, Фамилия",
+      "phone": "Телефон контактного лица",
+      "phonePlaceholder": "Введите номер мобильного телефона",
+      "email": "E-Mail (для статусов доставки)",
+      "email2": "Контактный E-Mail ",
+      "emailPlaceholder": "Введите электронную почту",
+      "address": "Фактический адрес организации",
+      "addressPlaceholder": "Введите адрес",
+      "city": "Город (фактический)",
+      "cityPlaceholder": "Выберите город",
+      "address2": "Юридический адрес организации",
+      "address2Placeholder": "Введите адрес",
+      "phone2": "Телефон организации",
+      "phone2Placeholder": "Введите номер телефона",
+      "iBan": "Банковские реквизиты",
+      "iBanPlaceholder": "GE29NB000000000123456789012",
+      "code": "С/К",
+      "codePlaceholder": "123456789",
+      "ceo": "Директор",
+      "ceoPlaceholder": "Имя, Фамилия",
+      "field": "Сфера деятельности",
+      "fieldPlaceholder": "Выберите сферу",
+      "button": "Сохранить"
+    },
+    "PasswordCard": {
+      "title": "Смена пароля",
+      "old": "Старый пароль",
+      "oldPlaceholder": "Пароль",
+      "new": "Новый пароль",
+      "newPlaceholder": "********",
+      "confirm": "Повторите новый пароль",
+      "confirmPlaceholder": "********",
+      "button": "Сменить пароль"
+    }
+  },
   "Support": {
     "title": "Поддержка",
     "dropdownPlaceholder": "Выбрать статус",

@@ -125,20 +125,20 @@ const Sidebar = () => {
             </Typography>
           </MenuItem>
         </Link>
-        <MenuItem>
-          <SettingsIcon />
-          <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
-            {tSidebar('settings')}
-          </Typography>
-        </MenuItem>
-        <Link href='/support'>
+        <Link href='/settings'>
           <MenuItem>
-            <ContactIcon />
+            <SettingsIcon />
             <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
-              {tSidebar('contact')}
+              {tSidebar('settings')}
             </Typography>
           </MenuItem>
         </Link>
+        <MenuItem>
+          <ContactIcon />
+          <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
+            {tSidebar('contact')}
+          </Typography>
+        </MenuItem>
       </ItemsWrapper>
     </SidebarWrapper>
   );
