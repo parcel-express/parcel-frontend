@@ -548,7 +548,7 @@
       "phone": "Contact Person Phone",
       "phonePlaceholder": "Enter mobile number",
       "email": "E-Mail (for delivery status)",
-      "email2": "Contact E-Mail (for correspondence and invoices)",
+      "email2": "Contact E-Mail ",
       "emailPlaceholder": "Enter email",
       "address": "Organization's Actual Address",
       "addressPlaceholder": "Enter address",
@@ -577,6 +577,90 @@
       "confirm": "Repeat New Password",
       "confirmPlaceholder": "********",
       "button": "Change Password"
+    }
+  },
+  "Support": {
+    "title": "Support",
+    "dropdownPlaceholder": "Select Status",
+    "downloadButton": "Download",
+    "button": "New Request",
+    "searchPlaceholder": "Search",
+    "table": {
+      "col1": "Fixed Date",
+      "col2": "Expected Completion Date",
+      "col3": "Completion Date",
+      "col4": "Tracking",
+      "col5": "Status",
+      "col6": "Name, Surname",
+      "col7": "Request Number"
+    },
+    "mobileCard": {
+      "date": "Fixed Date",
+      "endDate": "Expected Completion Date",
+      "name": "Name, Surname",
+      "phone": "Phone",
+      "requestNumber": "Request Number"
+    },
+    "row1": {
+      "col1": "24 Jan 10:00",
+      "col2": "24 Jan 10:00",
+      "col3": "24 Jan 10:00",
+      "col4": "#26677",
+      "col5": "Paid",
+      "col6": "Nata Jghenti",
+      "col7": "15558"
+    },
+    "row2": {
+      "col1": "24 Jan 10:00",
+      "col2": "24 Jan 13:00",
+      "col3": "24 Jan 13:00",
+      "col4": "#26677",
+      "col5": "Unpaid",
+      "col6": "Nata Jghenti",
+      "col7": "15558"
+    },
+    "Popup": {
+      "title": "Support Details",
+      "id": "Support Ticket Number: #223394",
+      "card1": {
+        "row1": "Creation Date: 17/07/2025 12:12",
+        "row2": "Expected Completion Date: 17/07/2025",
+        "row3": "Completion Date: 17/07/2025 12:27"
+      },
+      "card2": {
+        "topic": "Topic",
+        "topicValue": "Delivery Date Confirmation",
+        "userComment": "User Comment:",
+        "userCommentValue": "When will the package be delivered?",
+        "companyComment": "Onway Comment",
+        "companyCommentValue": "The recipient did not answer the courier's call today, a repeat visit will take place tomorrow."
+      },
+      "card3": {
+        "title": "Card Information",
+        "tracking": "Tracking",
+        "company": "Sender Company",
+        "companyValue": "Onway LLC",
+        "name": "Name, Surname",
+        "nameValue": "Giorgi Metreveli",
+        "phone": "Mobile",
+        "email": "Email"
+      }
+    },
+    "NewRequestPopup": {
+      "title": "New Request",
+      "subtitle": "Select an issue and write to us",
+      "button": "Send",
+      "form": {
+        "topicPlaceholder": "Select topic",
+        "tracking": "Tracking",
+        "trackingPlaceholder": "Enter tracking code",
+        "name": "Name, Surname",
+        "namePlaceholder": "Enter name and surname",
+        "phone": "Phone",
+        "phonePlaceholder": "Enter phone number",
+        "message": "Message",
+        "messagePlaceholder": "Leave a message"
+      }
     }
   }
 }
