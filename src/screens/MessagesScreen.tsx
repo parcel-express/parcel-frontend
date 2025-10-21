@@ -151,7 +151,7 @@ const MessagesScreen = () => {
           <StyledButton
             variant='primary'
             size='xs'
-            leftIcon={<PlusTranspIcon color='#662D91' />}
+            leftIcon={<PlusTranspIcon color={colors.brand.primary} />}
             onClick={() => setIsPopupOpen(true)}
           >
             {tMessages('button')}

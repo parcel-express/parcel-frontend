@@ -200,7 +200,17 @@ const MobileUserBadgeWrapper = styled.div`
   margin-top: -8px;
 `;
 
-const Header = () => {
+type UserData = {
+  name: string;
+  email: string;
+  avatarUrl?: string;
+  presence?: 'online' | 'offline' | 'away';
+};
+
+const Header = ({
+  user,
+  showUserBadge = false,
+}: { user?: UserData; showUserBadge?: boolean } = {}) => {
   const tHeader = useTranslations('Header');
   const tNavigation = useTranslations('Navigation');
   const tSidebar = useTranslations('Sidebar');
@@ -445,13 +455,14 @@ const Header = () => {
               ))}
             </MobileNavList>
           )}
-          {isDashboardPage && (
+          {isDashboardPage && showUserBadge && user && (
             <SidebarMenuWrapper style={{ width: '100%', border: 'none', borderRadius: 0 }}>
               <MobileUserBadgeWrapper>
                 <UserBadge
-                  name='Gagi Murjikneli'
-                  email='gagi.murjikneli@gmail.com'
-                  presence='online'
+                  name={user.name}
+                  email={user.email}
+                  avatarUrl={user.avatarUrl ?? ''}
+                  presence={user.presence || 'online'}
                 />
               </MobileUserBadgeWrapper>
               <SidebarItemsWrapper>

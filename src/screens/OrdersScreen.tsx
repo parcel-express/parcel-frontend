@@ -90,6 +90,12 @@ const OrdersScreen = () => {
     ];
   };
 
+  const user = {
+    name: 'Gagi Murjikneli',
+    email: 'gagi.murjikneli@gmail.com',
+    presence: 'online' as const,
+  };
+
   const tableData: React.ReactNode[][] = Array.from({ length: TOTAL_ROWS }, (_, idx) => {
     const variant = variants[idx % variants.length];
     return [
@@ -105,9 +111,9 @@ const OrdersScreen = () => {
   return (
     <>
       <MobileContainer>
-        <Header />
+        <Header user={user} showUserBadge={true} />
       </MobileContainer>
-      <DashboardContainer title={tOrders('title')}>
+      <DashboardContainer title={tOrders('title')} user={user}>
         <TableWrapper>
           <DesktopContainer>
             <TableHeader>

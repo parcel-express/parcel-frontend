@@ -95,6 +95,12 @@ const InvoicesScreen = () => {
     ];
   };
 
+  const user = {
+    name: 'Gagi Murjikneli',
+    email: 'gagi.murjikneli@gmail.com',
+    presence: 'online' as const,
+  };
+
   const tableData: React.ReactNode[][] = Array.from({ length: TOTAL_ROWS }, (_, idx) => {
     const variant = variants[idx % variants.length];
     return [
@@ -109,9 +115,9 @@ const InvoicesScreen = () => {
   return (
     <>
       <MobileContainer>
-        <Header />
+        <Header user={user} showUserBadge={true} />
       </MobileContainer>
-      <DashboardContainer title={tInvoices('title')}>
+      <DashboardContainer title={tInvoices('title')} user={user}>
         <TableWrapper>
           <DesktopContainer>
             <TableHeader>

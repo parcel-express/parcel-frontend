@@ -91,6 +91,12 @@ const AddressesScreen = () => {
 
   const TOTAL_ROWS = 6;
 
+  const user = {
+    name: 'Gagi Murjikneli',
+    email: 'gagi.murjikneli@gmail.com',
+    presence: 'online' as const,
+  };
+
   const buildBaseRow = (idx: number) => {
     const key = rowKeys[idx % rowKeys.length];
     return [
@@ -109,9 +115,9 @@ const AddressesScreen = () => {
   return (
     <>
       <MobileContainer>
-        <Header />
+        <Header user={user} showUserBadge={true} />
       </MobileContainer>
-      <DashboardContainer title={tAddresses('title')}>
+      <DashboardContainer title={tAddresses('title')} user={user}>
         <TableWrapper>
           <DesktopContainer>
             <TableHeader>

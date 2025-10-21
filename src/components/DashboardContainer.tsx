@@ -6,11 +6,19 @@ import { DesktopContainer } from './Responsive';
 import Sidebar from './Sidebar';
 import UserBadge from './UserBadge';
 
+type UserData = {
+  name: string;
+  email: string;
+  avatarUrl?: string;
+  presence?: 'online' | 'offline' | 'away';
+};
+
 type Props = {
   children: React.ReactNode;
   title?: string;
   desktopVariant?: 'small' | 'large';
   showUserBadge?: boolean;
+  user?: UserData;
 };
 
 const StyledContainer = styled.div`
@@ -58,6 +66,7 @@ const DashboardContainer: React.FC<Props> = ({
   title,
   desktopVariant = 'small',
   showUserBadge = true,
+  user,
 }) => {
   return (
     <StyledContainer>
@@ -69,13 +78,14 @@ const DashboardContainer: React.FC<Props> = ({
           {title && (
             <ContentHeader>
               <PageTitle title={title} desktopVariant={desktopVariant} />
-              {showUserBadge && (
+              {showUserBadge && user && (
                 <DesktopContainer>
                   <UserWrapper>
                     <UserBadge
-                      name='Gagi Murjikneli'
-                      email='gagi.murjikneli@gmail.com'
-                      presence='online'
+                      name={user.name}
+                      email={user.email}
+                      avatarUrl={user.avatarUrl ?? ''}
+                      presence={user.presence || 'online'}
                     />
                   </UserWrapper>
                 </DesktopContainer>

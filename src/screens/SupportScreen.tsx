@@ -208,18 +208,24 @@ const SupportScreen = () => {
     setIsDetailsPopupOpen(true);
   };
 
+  const user = {
+    name: 'Gagi Murjikneli',
+    email: 'gagi.murjikneli@gmail.com',
+    presence: 'online' as const,
+  };
+
   return (
     <>
       <MobileContainer>
-        <Header />
+        <Header user={user} showUserBadge={true} />
       </MobileContainer>
-      <DashboardContainer title={tSupport('title')}>
+      <DashboardContainer title={tSupport('title')} user={user}>
         <MobileContainer>
           <MobileButtonWrapper>
             <StyledButton
               variant='primary'
               size='xs'
-              leftIcon={<PlusTranspIcon color='#662D91' />}
+              leftIcon={<PlusTranspIcon color={colors.brand.primary} />}
               onClick={() => setIsPopupOpen(true)}
             >
               {tSupport('button')}

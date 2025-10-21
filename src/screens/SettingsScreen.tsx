@@ -133,12 +133,18 @@ const SaveButtonWrapper = styled.div`
 const SettingsScreen = () => {
   const tSettings = useTranslations('Settings');
 
+  const user = {
+    name: 'Gagi Murjikneli',
+    email: 'gagi.murjikneli@gmail.com',
+    presence: 'online' as const,
+  };
+
   return (
     <>
       <MobileContainer>
-        <Header />
+        <Header user={user} showUserBadge={true} />
       </MobileContainer>
-      <DashboardContainer title={tSettings('title')}>
+      <DashboardContainer title={tSettings('title')} user={user}>
         <MainCard>
           <Avatar>
             <AvatarWrapper></AvatarWrapper>
