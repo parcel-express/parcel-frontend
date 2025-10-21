@@ -7,35 +7,12 @@ import DashboardContainer from '@/components/DashboardContainer';
 import DatePicker from '@/components/DatePicker';
 import Header from '@/components/Header';
 import OrdersDetailPopup from '@/components/OrdersDetailPopup';
-import PageTitle from '@/components/PageTitle';
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
 import SearchInput from '@/components/SearchInput';
-import Sidebar from '@/components/Sidebar';
 import StatusBadge, { StatusVariant } from '@/components/StatusBadge';
 import StatusDropdown, { StatusValue } from '@/components/StatusDropdown';
 import Table from '@/components/Table';
-import UserBadge from '@/components/UserBadge';
 import { colors } from '@/styles/colors';
-
-const MainContent = styled.div`
-  display: flex;
-  gap: 32px;
-  height: calc(100vh - 32px);
-  @media screen and (max-width: 1080px) {
-    padding: 16px 0 0 0;
-    height: auto;
-  }
-`;
-
-const ContentHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  top: 32px;
-  @media screen and (min-width: 1081px) {
-    position: sticky;
-  }
-`;
 
 const TableHeader = styled.div`
   display: flex;
@@ -51,13 +28,6 @@ const TableHeader = styled.div`
 const RightHeader = styled.div`
   display: flex;
   gap: 12px;
-`;
-
-const RightContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
 `;
 
 const TableWrapper = styled.div`
@@ -88,11 +58,6 @@ const SearchWrapper = styled.div`
     width: 100%;
     margin: 8px 0 12px 0;
   }
-`;
-
-const UserWrapper = styled.div`
-  margin-left: auto;
-  width: 296px;
 `;
 
 const DateStatus = styled.div`
@@ -142,48 +107,19 @@ const OrdersScreen = () => {
       <MobileContainer>
         <Header />
       </MobileContainer>
-      <DashboardContainer>
-        <MainContent>
+      <DashboardContainer title={tOrders('title')}>
+        <TableWrapper>
           <DesktopContainer>
-            <Sidebar />
-          </DesktopContainer>
-          <RightContent>
-            <ContentHeader>
-              <PageTitle title={tOrders('title')} desktopVariant='small' />
-              <DesktopContainer>
-                <UserWrapper>
-                  <UserBadge
-                    name='Gagi Murjikneli'
-                    email='gagi.murjikneli@gmail.com'
-                    presence='online'
+            <TableHeader>
+              <DatePicker />
+              <RightHeader>
+                <StatusWrapper>
+                  <StatusDropdown
+                    value={status}
+                    onChange={v => setStatus(v)}
+                    placeholderColor='secondary'
                   />
-                </UserWrapper>
-              </DesktopContainer>
-            </ContentHeader>
-            <TableWrapper>
-              <DesktopContainer>
-                <TableHeader>
-                  <DatePicker />
-                  <RightHeader>
-                    <StatusWrapper>
-                      <StatusDropdown
-                        value={status}
-                        onChange={v => setStatus(v)}
-                        placeholderColor='secondary'
-                      />
-                    </StatusWrapper>
-                    <SearchWrapper>
-                      <SearchInput
-                        size='md'
-                        placeholder={tOrders('searchPlaceholder')}
-                        mode='icon'
-                        leftIcon={true}
-                      />
-                    </SearchWrapper>
-                  </RightHeader>
-                </TableHeader>
-              </DesktopContainer>
-              <MobileContainer>
+                </StatusWrapper>
                 <SearchWrapper>
                   <SearchInput
                     size='md'
@@ -192,46 +128,56 @@ const OrdersScreen = () => {
                     leftIcon={true}
                   />
                 </SearchWrapper>
-                <DateStatus>
-                  <DatePicker />
-                  <StatusWrapper>
-                    <StatusDropdown
-                      value={status}
-                      onChange={v => setStatus(v)}
-                      placeholderColor='secondary'
-                    />
-                  </StatusWrapper>
-                </DateStatus>
-              </MobileContainer>
-              <TableScrollContainer>
-                <Table
-                  cornerStyle='bottom'
-                  rows={tableData.length}
-                  columns={6}
-                  details={tableData}
-                  showArrowsIcon={true}
-                  showCheckbox={true}
-                  showRightArrow={true}
-                  selectedRows={selectedRows}
-                  onRowSelect={(i, sel) => {
-                    setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
-                  }}
-                  columnTitles={[
-                    tOrders('table.col1'),
-                    tOrders('table.col2'),
-                    tOrders('table.col3'),
-                    tOrders('table.col4'),
-                    tOrders('table.col5'),
-                    tOrders('table.col6'),
-                  ]}
-                  mobileVariant='orders'
-                  onRightArrowClick={(rowIndex: number) => setOpenOrderDetail(rowIndex)}
-                  onRowClick={(rowIndex: number) => setOpenOrderDetail(rowIndex)}
+              </RightHeader>
+            </TableHeader>
+          </DesktopContainer>
+          <MobileContainer>
+            <SearchWrapper>
+              <SearchInput
+                size='md'
+                placeholder={tOrders('searchPlaceholder')}
+                mode='icon'
+                leftIcon={true}
+              />
+            </SearchWrapper>
+            <DateStatus>
+              <DatePicker />
+              <StatusWrapper>
+                <StatusDropdown
+                  value={status}
+                  onChange={v => setStatus(v)}
+                  placeholderColor='secondary'
                 />
-              </TableScrollContainer>
-            </TableWrapper>
-          </RightContent>
-        </MainContent>
+              </StatusWrapper>
+            </DateStatus>
+          </MobileContainer>
+          <TableScrollContainer>
+            <Table
+              cornerStyle='bottom'
+              rows={tableData.length}
+              columns={6}
+              details={tableData}
+              showArrowsIcon={true}
+              showCheckbox={true}
+              showRightArrow={true}
+              selectedRows={selectedRows}
+              onRowSelect={(i, sel) => {
+                setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
+              }}
+              columnTitles={[
+                tOrders('table.col1'),
+                tOrders('table.col2'),
+                tOrders('table.col3'),
+                tOrders('table.col4'),
+                tOrders('table.col5'),
+                tOrders('table.col6'),
+              ]}
+              mobileVariant='orders'
+              onRightArrowClick={(rowIndex: number) => setOpenOrderDetail(rowIndex)}
+              onRowClick={(rowIndex: number) => setOpenOrderDetail(rowIndex)}
+            />
+          </TableScrollContainer>
+        </TableWrapper>
       </DashboardContainer>
       {openOrderDetail !== null && <OrdersDetailPopup onClose={() => setOpenOrderDetail(null)} />}
     </>

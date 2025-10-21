@@ -133,12 +133,14 @@ const Sidebar = () => {
             </Typography>
           </MenuItem>
         </Link>
-        <MenuItem>
-          <ContactIcon />
-          <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
-            {tSidebar('contact')}
-          </Typography>
-        </MenuItem>
+        <Link href='/support'>
+          <MenuItem>
+            <ContactIcon />
+            <Typography variant='text-sm' color={colors.text.secondary} weight='regular'>
+              {tSidebar('contact')}
+            </Typography>
+          </MenuItem>
+        </Link>
       </ItemsWrapper>
     </SidebarWrapper>
   );

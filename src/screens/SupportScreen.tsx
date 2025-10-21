@@ -9,49 +9,19 @@ import DatePicker from '@/components/DatePicker';
 import Dropdown from '@/components/Dropdown';
 import Header from '@/components/Header';
 import NewRequestPopup from '@/components/NewRequestPopup';
-import PageTitle from '@/components/PageTitle';
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
 import SearchInput from '@/components/SearchInput';
-import Sidebar from '@/components/Sidebar';
 import StatusBadge from '@/components/StatusBadge';
 import StatusDropdown from '@/components/StatusDropdown';
 import SupportDetailsPopup from '@/components/SupportDetailsPopup';
 import Table from '@/components/Table';
-import UserBadge from '@/components/UserBadge';
 import DownloadIcon from '@/icons/DownloadIcon';
 import PlusTranspIcon from '@/icons/PlusTranspIcon';
 import { colors } from '@/styles/colors';
 
-const MainContent = styled.div`
-  display: flex;
-  gap: 32px;
-  height: calc(100vh - 32px);
-  @media screen and (max-width: 1080px) {
-    padding: 16px 0 0 0;
-    height: auto;
-  }
-`;
-
-const ContentHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  top: 32px;
-  @media screen and (min-width: 1081px) {
-    position: sticky;
-  }
-`;
-
 const RightHeader = styled.div`
   display: flex;
   gap: 12px;
-`;
-
-const RightContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
 `;
 
 const StatusWrapper = styled.div`
@@ -96,11 +66,6 @@ const TableHeader = styled.div`
   & > button {
     margin-left: auto;
   }
-`;
-
-const UserWrapper = styled.div`
-  margin-left: auto;
-  width: 296px;
 `;
 
 const FirstCol = styled.span`
@@ -248,138 +213,118 @@ const SupportScreen = () => {
       <MobileContainer>
         <Header />
       </MobileContainer>
-      <DashboardContainer>
-        <MainContent>
-          <DesktopContainer>
-            <Sidebar />
-          </DesktopContainer>
-          <RightContent>
-            <ContentHeader>
-              <PageTitle title={tSupport('title')} desktopVariant='small' />
-              <DesktopContainer>
-                <UserWrapper>
-                  <UserBadge
-                    name='Gagi Murjikneli'
-                    email='gagi.murjikneli@gmail.com'
-                    presence='online'
-                  />
-                </UserWrapper>
-              </DesktopContainer>
-            </ContentHeader>
+      <DashboardContainer title={tSupport('title')}>
+        <MobileContainer>
+          <MobileButtonWrapper>
+            <StyledButton
+              variant='primary'
+              size='xs'
+              leftIcon={<PlusTranspIcon color='#662D91' />}
+              onClick={() => setIsPopupOpen(true)}
+            >
+              {tSupport('button')}
+            </StyledButton>
+          </MobileButtonWrapper>
+          <MobileHeader>
+            <SearchWrapper>
+              <SearchInput size='md' placeholder={''} mode='icon' leftIcon={true} />
+            </SearchWrapper>
+            <DateStatus>
+              <DatePicker />
+              <StatusWrapper>
+                <StatusDropdown value={''} onChange={v => v} placeholderColor='secondary' />
+              </StatusWrapper>
+            </DateStatus>
+          </MobileHeader>
+          <DownloadStatus>
+            <DownloadWrapper>
+              <Dropdown
+                value={''}
+                onChange={v => v}
+                placeholder={tSupport('dropdownPlaceholder')}
+                items={[]}
+                inputPadding='12px 16px'
+                label={''}
+              />
+            </DownloadWrapper>
+            <DownloadWrapper>
+              <Button variant='tertiary' size='xs'>
+                <DownloadIcon />
+                {tSupport('downloadButton')}
+              </Button>
+            </DownloadWrapper>
+          </DownloadStatus>
+        </MobileContainer>
 
-            <MobileContainer>
-              <MobileButtonWrapper>
+        <TableWrapper>
+          <DesktopContainer>
+            <TableHeader>
+              <DatePicker />
+              <RightHeader>
+                <StatusWrapper>
+                  <Dropdown
+                    value={''}
+                    onChange={v => v}
+                    placeholderColor='secondary'
+                    items={[]}
+                    placeholder={tSupport('dropdownPlaceholder')}
+                    label={''}
+                    inputPadding='12px 16px'
+                  />
+                </StatusWrapper>
+                <Button variant='tertiary' size='xs'>
+                  <DownloadIcon />
+                  {tSupport('downloadButton')}
+                </Button>
+                <SearchWrapper>
+                  <SearchInput
+                    size='xs'
+                    placeholder={tSupport('searchPlaceholder')}
+                    mode='icon'
+                    leftIcon={true}
+                  />
+                </SearchWrapper>
                 <StyledButton
                   variant='primary'
-                  size='xs'
+                  size='xsSearch'
                   leftIcon={<PlusTranspIcon color='#662D91' />}
                   onClick={() => setIsPopupOpen(true)}
                 >
                   {tSupport('button')}
                 </StyledButton>
-              </MobileButtonWrapper>
-              <MobileHeader>
-                <SearchWrapper>
-                  <SearchInput size='md' placeholder={''} mode='icon' leftIcon={true} />
-                </SearchWrapper>
-                <DateStatus>
-                  <DatePicker />
-                  <StatusWrapper>
-                    <StatusDropdown value={''} onChange={v => v} placeholderColor='secondary' />
-                  </StatusWrapper>
-                </DateStatus>
-              </MobileHeader>
-              <DownloadStatus>
-                <DownloadWrapper>
-                  <Dropdown
-                    value={''}
-                    onChange={v => v}
-                    placeholder={tSupport('dropdownPlaceholder')}
-                    items={[]}
-                    inputPadding='12px 16px'
-                    label={''}
-                  />
-                </DownloadWrapper>
-                <DownloadWrapper>
-                  <Button variant='tertiary' size='xs'>
-                    <DownloadIcon />
-                    {tSupport('downloadButton')}
-                  </Button>
-                </DownloadWrapper>
-              </DownloadStatus>
-            </MobileContainer>
+              </RightHeader>
+            </TableHeader>
+          </DesktopContainer>
 
-            <TableWrapper>
-              <DesktopContainer>
-                <TableHeader>
-                  <DatePicker />
-                  <RightHeader>
-                    <StatusWrapper>
-                      <Dropdown
-                        value={''}
-                        onChange={v => v}
-                        placeholderColor='secondary'
-                        items={[]}
-                        placeholder={tSupport('dropdownPlaceholder')}
-                        label={''}
-                        inputPadding='12px 16px'
-                      />
-                    </StatusWrapper>
-                    <Button variant='tertiary' size='xs'>
-                      <DownloadIcon />
-                      {tSupport('downloadButton')}
-                    </Button>
-                    <SearchWrapper>
-                      <SearchInput
-                        size='xs'
-                        placeholder={tSupport('searchPlaceholder')}
-                        mode='icon'
-                        leftIcon={true}
-                      />
-                    </SearchWrapper>
-                    <StyledButton
-                      variant='primary'
-                      size='xsSearch'
-                      leftIcon={<PlusTranspIcon color='#662D91' />}
-                      onClick={() => setIsPopupOpen(true)}
-                    >
-                      {tSupport('button')}
-                    </StyledButton>
-                  </RightHeader>
-                </TableHeader>
-              </DesktopContainer>
-
-              <TableScrollContainer>
-                <Table
-                  cornerStyle='bottom'
-                  rows={tableData.length}
-                  columns={7}
-                  details={tableData}
-                  showArrowsIcon={true}
-                  showCheckbox={false}
-                  showRightArrow={false}
-                  showEditIcon={false}
-                  showTrashIcon={false}
-                  selectedRows={selectedRows}
-                  onRowSelect={(i, sel) => {
-                    setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
-                  }}
-                  onRowClick={handleRowClick}
-                  columnTitles={[
-                    tSupport('table.col1'),
-                    tSupport('table.col2'),
-                    tSupport('table.col3'),
-                    tSupport('table.col4'),
-                    tSupport('table.col5'),
-                    tSupport('table.col6'),
-                    tSupport('table.col7'),
-                  ]}
-                  mobileVariant='support'
-                />
-              </TableScrollContainer>
-            </TableWrapper>
-          </RightContent>
-        </MainContent>
+          <TableScrollContainer>
+            <Table
+              cornerStyle='bottom'
+              rows={tableData.length}
+              columns={7}
+              details={tableData}
+              showArrowsIcon={true}
+              showCheckbox={false}
+              showRightArrow={false}
+              showEditIcon={false}
+              showTrashIcon={false}
+              selectedRows={selectedRows}
+              onRowSelect={(i, sel) => {
+                setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
+              }}
+              onRowClick={handleRowClick}
+              columnTitles={[
+                tSupport('table.col1'),
+                tSupport('table.col2'),
+                tSupport('table.col3'),
+                tSupport('table.col4'),
+                tSupport('table.col5'),
+                tSupport('table.col6'),
+                tSupport('table.col7'),
+              ]}
+              mobileVariant='support'
+            />
+          </TableScrollContainer>
+        </TableWrapper>
       </DashboardContainer>
       <NewRequestPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
       <SupportDetailsPopup

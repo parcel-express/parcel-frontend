@@ -223,6 +223,12 @@ const Header = () => {
   const hasLocale = Object.keys(localeLabels).includes(possibleLocale ?? '');
   const pageSegment = hasLocale ? pathParts[1] || '' : possibleLocale || '';
   const isOrdersPage = pageSegment === 'orders';
+  const isInvoicesPage = pageSegment === 'invoices';
+  const isAddressesPage = pageSegment === 'addresses';
+  const isSupportPage = pageSegment === 'support';
+  const isSettingsPage = pageSegment === 'settings';
+  const isDashboardPage =
+    isOrdersPage || isInvoicesPage || isAddressesPage || isSupportPage || isSettingsPage;
 
   function handleLanguageChange(locale: string) {
     router.push(`/${locale}`);
@@ -426,7 +432,7 @@ const Header = () => {
               <CloseIcon />
             </Button>
           </MobileMenuHeader>
-          {!isOrdersPage && (
+          {!isDashboardPage && (
             <MobileNavList>
               {mobileMenuItemsHome.map(item => (
                 <li key={item.key}>
@@ -439,7 +445,7 @@ const Header = () => {
               ))}
             </MobileNavList>
           )}
-          {isOrdersPage && (
+          {isDashboardPage && (
             <SidebarMenuWrapper style={{ width: '100%', border: 'none', borderRadius: 0 }}>
               <MobileUserBadgeWrapper>
                 <UserBadge
@@ -490,7 +496,7 @@ const Header = () => {
               </SidebarItemsWrapper>
             </SidebarMenuWrapper>
           )}
-          {!isOrdersPage && (
+          {!isDashboardPage && (
             <Login>
               <Button
                 size='lg'
