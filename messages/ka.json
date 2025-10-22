@@ -660,5 +660,30 @@
         "messagePlaceholder": "დაგვიტოვეთ შეტყობინება"
       }
     }
+  },
+  "Contact": {
+    "title": "კონტაქტი",
+    "subtitle": "დაგვიკავშირდით",
+    "description": "დაგვიტოვე თქვენი საკონტაქტო და ჩვენ დაგიკავშირდებით",
+    "Form": {
+      "name": "სახელი, გვარი",
+      "namePlaceholder": "First name",
+      "surname": "გვარი",
+      "surnamePlaceholder": "Last name",
+      "email": "ელ.ფოსტა",
+      "emailPlaceholder": "you@company.com",
+      "phone": "მობილურის ნომერი",
+      "phonePlaceholder": "000 000 000",
+      "message": "შეტყობინება",
+      "messagePlaceholder": "ჩაწერეთ აქ"
+    },
+    "button": "გაგზავნა",
+    "MapCard": {
+      "city": "თბილისი",
+      "street": "ქუჩის სახელწოდება #11",
+      "phone": "0322 00 00 00",
+      "weekdays": "ორშაბათი პარასკევი 10:00 - 19:00",
+      "weekend": "შაბათი - 10:00 - 14:00"
+    }
   }
 }

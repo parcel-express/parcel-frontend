@@ -17,7 +17,7 @@ const PageTitle: React.FC<PageTitleProps> = ({
   desktopVariant = 'large',
   mobileVariant = 'text-lg',
 }) => {
-  const desktopTypographyVariant = desktopVariant === 'small' ? 'title-md' : 'display-lg';
+  const desktopTypographyVariant = desktopVariant === 'small' ? 'display-xs' : 'display-lg';
   return (
     <TitleContainer>
       <DesktopContainer>
