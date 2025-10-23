@@ -144,11 +144,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
         </Label>
       )}
       <PhoneContainer>
-        <PrefixButton
-          type='button'
-          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          onBlur={() => setTimeout(() => setIsDropdownOpen(false), 200)}
-        >
+        <PrefixButton type='button' onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
           <Typography variant='text-md' color={colors.text.black} weight='medium'>
             {selectedCountry.code}
           </Typography>
