@@ -662,5 +662,30 @@
         "messagePlaceholder": "Leave a message"
       }
     }
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "subtitle": "We are here to help",
+    "description": "Leave your contact information and we will get back to you",
+    "form": {
+      "name": "Name, Surname",
+      "namePlaceholder": "First name",
+      "surname": "Surname",
+      "surnamePlaceholder": "Last name",
+      "email": "Email",
+      "emailPlaceholder": "you@company.com",
+      "phone": "Phone",
+      "phonePlaceholder": "000 000 000",
+      "message": "Message",
+      "messagePlaceholder": "Enter your message here"
+    },
+    "button": "Send",
+    "MapCard": {
+      "city": "Tbilisi",
+      "street": "Street Name #11",
+      "phone": "0322 00 00 00",
+      "weekdays": "Monday - Friday 10:00 - 19:00",
+      "weekend": "Saturday - 10:00 - 14:00"
+    }
   }
 }
