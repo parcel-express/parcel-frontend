@@ -662,5 +662,23 @@
         "messagePlaceholder": "Leave a message"
       }
     }
+  },
+  "Messages": {
+    "title": "Messages",
+    "button": "Send Message",
+    "Card": {
+      "bio": "Hello, we would like to inform you that the delivery time for Gudauri and Kazbegi has changed, and packages will be delivered on Friday instead of Thursday. The delivery dates for villages related to these regions will also change. Please take this into account and inform the customers.",
+      "button": "Read More"
+    },
+    "Popup": {
+      "title": "New Message",
+      "subtitle": "Select an issue and write to us",
+      "button": "Send",
+      "input1Placeholder": "Subject",
+      "tracking": "Tracking",
+      "trackingPlaceholder": "Enter tracking code",
+      "message": "Message",
+      "messagePlaceholder": "Leave a message"
+    }
   }
 }

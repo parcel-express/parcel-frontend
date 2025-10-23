@@ -200,7 +200,17 @@ const MobileUserBadgeWrapper = styled.div`
   margin-top: -8px;
 `;
 
-const Header = () => {
+type UserData = {
+  name: string;
+  email: string;
+  avatarUrl?: string;
+  presence?: 'online' | 'offline' | 'away';
+};
+
+const Header = ({
+  user,
+  showUserBadge = false,
+}: { user?: UserData; showUserBadge?: boolean } = {}) => {
   const tHeader = useTranslations('Header');
   const tNavigation = useTranslations('Navigation');
   const tSidebar = useTranslations('Sidebar');
@@ -223,6 +233,12 @@ const Header = () => {
   const hasLocale = Object.keys(localeLabels).includes(possibleLocale ?? '');
   const pageSegment = hasLocale ? pathParts[1] || '' : possibleLocale || '';
   const isOrdersPage = pageSegment === 'orders';
+  const isInvoicesPage = pageSegment === 'invoices';
+  const isAddressesPage = pageSegment === 'addresses';
+  const isSupportPage = pageSegment === 'support';
+  const isSettingsPage = pageSegment === 'settings';
+  const isDashboardPage =
+    isOrdersPage || isInvoicesPage || isAddressesPage || isSupportPage || isSettingsPage;
 
   function handleLanguageChange(locale: string) {
     router.push(`/${locale}`);
@@ -426,7 +442,7 @@ const Header = () => {
               <CloseIcon />
             </Button>
           </MobileMenuHeader>
-          {!isOrdersPage && (
+          {!isDashboardPage && (
             <MobileNavList>
               {mobileMenuItemsHome.map(item => (
                 <li key={item.key}>
@@ -439,13 +455,14 @@ const Header = () => {
               ))}
             </MobileNavList>
           )}
-          {isOrdersPage && (
+          {isDashboardPage && showUserBadge && user && (
             <SidebarMenuWrapper style={{ width: '100%', border: 'none', borderRadius: 0 }}>
               <MobileUserBadgeWrapper>
                 <UserBadge
-                  name='Gagi Murjikneli'
-                  email='gagi.murjikneli@gmail.com'
-                  presence='online'
+                  name={user.name}
+                  email={user.email}
+                  avatarUrl={user.avatarUrl ?? ''}
+                  presence={user.presence || 'online'}
                 />
               </MobileUserBadgeWrapper>
               <SidebarItemsWrapper>
@@ -490,7 +507,7 @@ const Header = () => {
               </SidebarItemsWrapper>
             </SidebarMenuWrapper>
           )}
-          {!isOrdersPage && (
+          {!isDashboardPage && (
             <Login>
               <Button
                 size='lg'

@@ -7,33 +7,10 @@ import { Button } from '@/components';
 import DashboardContainer from '@/components/DashboardContainer';
 import Header from '@/components/Header';
 import NewBranchPopup from '@/components/NewBranchPopup';
-import PageTitle from '@/components/PageTitle';
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
-import Sidebar from '@/components/Sidebar';
 import Table from '@/components/Table';
-import UserBadge from '@/components/UserBadge';
 import PlusTranspIcon from '@/icons/PlusTranspIcon';
 import { colors } from '@/styles/colors';
-
-const MainContent = styled.div`
-  display: flex;
-  gap: 32px;
-  height: calc(100vh - 32px);
-  @media screen and (max-width: 1080px) {
-    padding: 16px 0 0 0;
-    height: auto;
-  }
-`;
-
-const ContentHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  top: 32px;
-  @media screen and (min-width: 1081px) {
-    position: sticky;
-  }
-`;
 
 const TableHeader = styled.div`
   display: flex;
@@ -48,13 +25,6 @@ const TableHeader = styled.div`
   }
 `;
 
-const RightContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-`;
-
 const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -65,11 +35,6 @@ const TableWrapper = styled.div`
   @media screen and (max-width: 1080px) {
     height: auto;
   }
-`;
-
-const UserWrapper = styled.div`
-  margin-left: auto;
-  width: 296px;
 `;
 
 const FirstCol = styled.span`
@@ -126,6 +91,12 @@ const AddressesScreen = () => {
 
   const TOTAL_ROWS = 6;
 
+  const user = {
+    name: 'Gagi Murjikneli',
+    email: 'gagi.murjikneli@gmail.com',
+    presence: 'online' as const,
+  };
+
   const buildBaseRow = (idx: number) => {
     const key = rowKeys[idx % rowKeys.length];
     return [
@@ -144,79 +115,60 @@ const AddressesScreen = () => {
   return (
     <>
       <MobileContainer>
-        <Header />
+        <Header user={user} showUserBadge={true} />
       </MobileContainer>
-      <DashboardContainer>
-        <MainContent>
+      <DashboardContainer title={tAddresses('title')} user={user}>
+        <TableWrapper>
           <DesktopContainer>
-            <Sidebar />
+            <TableHeader>
+              <StyledButton
+                variant='primary'
+                size='xsSearch'
+                leftIcon={<PlusTranspIcon color='#662D91' />}
+                onClick={() => setIsPopupOpen(true)}
+              >
+                {tAddresses('button')}
+              </StyledButton>
+            </TableHeader>
           </DesktopContainer>
-          <RightContent>
-            <ContentHeader>
-              <PageTitle title={tAddresses('title')} desktopVariant='small' />
-              <DesktopContainer>
-                <UserWrapper>
-                  <UserBadge
-                    name='Gagi Murjikneli'
-                    email='gagi.murjikneli@gmail.com'
-                    presence='online'
-                  />
-                </UserWrapper>
-              </DesktopContainer>
-            </ContentHeader>
-            <TableWrapper>
-              <DesktopContainer>
-                <TableHeader>
-                  <StyledButton
-                    variant='primary'
-                    size='xsSearch'
-                    leftIcon={<PlusTranspIcon color='#662D91' />}
-                    onClick={() => setIsPopupOpen(true)}
-                  >
-                    {tAddresses('button')}
-                  </StyledButton>
-                </TableHeader>
-              </DesktopContainer>
 
-              <MobileContainer>
-                <MobileButtonWrapper>
-                  <StyledButton
-                    variant='primary'
-                    size='xsSearch'
-                    leftIcon={<PlusTranspIcon color='#662D91' />}
-                    onClick={() => setIsPopupOpen(true)}
-                  >
-                    {tAddresses('button')}
-                  </StyledButton>
-                </MobileButtonWrapper>
-              </MobileContainer>
-              <Table
-                cornerStyle='bottom'
-                rows={tableData.length}
-                columns={6}
-                details={tableData}
-                showArrowsIcon={true}
-                showCheckbox={false}
-                showRightArrow={false}
-                showEditIcon={true}
-                showTrashIcon={true}
-                selectedRows={selectedRows}
-                onRowSelect={(i, sel) => {
-                  setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
-                }}
-                columnTitles={[
-                  tAddresses('table.col1'),
-                  tAddresses('table.col2'),
-                  tAddresses('table.col3'),
-                  tAddresses('table.col4'),
-                  tAddresses('table.col5'),
-                  tAddresses('table.col6'),
-                ]}
-                mobileVariant='addresses'
-              />
-            </TableWrapper>
-          </RightContent>
-        </MainContent>
+          <MobileContainer>
+            <MobileButtonWrapper>
+              <StyledButton
+                variant='primary'
+                size='xsSearch'
+                leftIcon={<PlusTranspIcon color='#662D91' />}
+                onClick={() => setIsPopupOpen(true)}
+              >
+                {tAddresses('button')}
+              </StyledButton>
+            </MobileButtonWrapper>
+          </MobileContainer>
+          <Table
+            cornerStyle='bottom'
+            rows={tableData.length}
+            columns={6}
+            details={tableData}
+            showArrowsIcon={true}
+            showCheckbox={false}
+            showRightArrow={false}
+            showEditIcon={true}
+            showTrashIcon={true}
+            selectedRows={selectedRows}
+            onRowSelect={(i, sel) => {
+              setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
+            }}
+            columnTitles={[
+              tAddresses('table.col1'),
+              tAddresses('table.col2'),
+              tAddresses('table.col3'),
+              tAddresses('table.col4'),
+              tAddresses('table.col5'),
+              tAddresses('table.col6'),
+            ]}
+            mobileVariant='addresses'
+          />
+        </TableWrapper>
       </DashboardContainer>
       <NewBranchPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </>

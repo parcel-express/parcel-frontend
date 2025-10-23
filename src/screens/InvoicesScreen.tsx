@@ -7,35 +7,12 @@ import DashboardContainer from '@/components/DashboardContainer';
 import DatePicker from '@/components/DatePicker';
 import Header from '@/components/Header';
 import InvoicesDetailPopup from '@/components/InvoicesDetailPopup';
-import PageTitle from '@/components/PageTitle';
 import { DesktopContainer, MobileContainer } from '@/components/Responsive';
 import SearchInput from '@/components/SearchInput';
-import Sidebar from '@/components/Sidebar';
 import StatusBadge, { StatusVariant } from '@/components/StatusBadge';
 import StatusDropdown, { StatusValue } from '@/components/StatusDropdown';
 import Table from '@/components/Table';
-import UserBadge from '@/components/UserBadge';
 import { colors } from '@/styles/colors';
-
-const MainContent = styled.div`
-  display: flex;
-  gap: 32px;
-  height: calc(100vh - 32px);
-  @media screen and (max-width: 1080px) {
-    padding: 16px 0 0 0;
-    height: auto;
-  }
-`;
-
-const ContentHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  top: 32px;
-  @media screen and (min-width: 1081px) {
-    position: sticky;
-  }
-`;
 
 const TableHeader = styled.div`
   display: flex;
@@ -51,13 +28,6 @@ const TableHeader = styled.div`
 const RightHeader = styled.div`
   display: flex;
   gap: 12px;
-`;
-
-const RightContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
 `;
 
 const TableWrapper = styled.div`
@@ -89,11 +59,6 @@ const SearchWrapper = styled.div`
     width: 100%;
     margin: 8px 0 12px 0;
   }
-`;
-
-const UserWrapper = styled.div`
-  margin-left: auto;
-  width: 296px;
 `;
 
 const FirstCol = styled.span`
@@ -130,6 +95,12 @@ const InvoicesScreen = () => {
     ];
   };
 
+  const user = {
+    name: 'Gagi Murjikneli',
+    email: 'gagi.murjikneli@gmail.com',
+    presence: 'online' as const,
+  };
+
   const tableData: React.ReactNode[][] = Array.from({ length: TOTAL_ROWS }, (_, idx) => {
     const variant = variants[idx % variants.length];
     return [
@@ -144,50 +115,21 @@ const InvoicesScreen = () => {
   return (
     <>
       <MobileContainer>
-        <Header />
+        <Header user={user} showUserBadge={true} />
       </MobileContainer>
-      <DashboardContainer>
-        <MainContent>
+      <DashboardContainer title={tInvoices('title')} user={user}>
+        <TableWrapper>
           <DesktopContainer>
-            <Sidebar />
-          </DesktopContainer>
-          <RightContent>
-            <ContentHeader>
-              <PageTitle title={tInvoices('title')} desktopVariant='small' />
-              <DesktopContainer>
-                <UserWrapper>
-                  <UserBadge
-                    name='Gagi Murjikneli'
-                    email='gagi.murjikneli@gmail.com'
-                    presence='online'
+            <TableHeader>
+              <DatePicker />
+              <RightHeader>
+                <StatusWrapper>
+                  <StatusDropdown
+                    value={status}
+                    onChange={v => setStatus(v)}
+                    placeholderColor='secondary'
                   />
-                </UserWrapper>
-              </DesktopContainer>
-            </ContentHeader>
-            <TableWrapper>
-              <DesktopContainer>
-                <TableHeader>
-                  <DatePicker />
-                  <RightHeader>
-                    <StatusWrapper>
-                      <StatusDropdown
-                        value={status}
-                        onChange={v => setStatus(v)}
-                        placeholderColor='secondary'
-                      />
-                    </StatusWrapper>
-                    <SearchWrapper>
-                      <SearchInput
-                        size='md'
-                        placeholder={tInvoices('searchPlaceholder')}
-                        mode='icon'
-                        leftIcon={true}
-                      />
-                    </SearchWrapper>
-                  </RightHeader>
-                </TableHeader>
-              </DesktopContainer>
-              <MobileContainer>
+                </StatusWrapper>
                 <SearchWrapper>
                   <SearchInput
                     size='md'
@@ -196,45 +138,55 @@ const InvoicesScreen = () => {
                     leftIcon={true}
                   />
                 </SearchWrapper>
-                <DateStatus>
-                  <DatePicker />
-                  <StatusWrapper>
-                    <StatusDropdown
-                      value={status}
-                      onChange={v => setStatus(v)}
-                      placeholderColor='secondary'
-                    />
-                  </StatusWrapper>
-                </DateStatus>
-              </MobileContainer>
-              <TableScrollContainer>
-                <Table
-                  cornerStyle='bottom'
-                  rows={tableData.length}
-                  columns={5}
-                  details={tableData}
-                  showArrowsIcon={true}
-                  showCheckbox={false}
-                  showRightArrow={true}
-                  selectedRows={selectedRows}
-                  onRowSelect={(i, sel) => {
-                    setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
-                  }}
-                  columnTitles={[
-                    tInvoices('table.col1'),
-                    tInvoices('table.col2'),
-                    tInvoices('table.col3'),
-                    tInvoices('table.col4'),
-                    tInvoices('table.col5'),
-                  ]}
-                  mobileVariant='invoices'
-                  onRightArrowClick={(rowIndex: number) => setOpenInvoiceDetail(rowIndex)}
-                  onRowClick={(rowIndex: number) => setOpenInvoiceDetail(rowIndex)}
+              </RightHeader>
+            </TableHeader>
+          </DesktopContainer>
+          <MobileContainer>
+            <SearchWrapper>
+              <SearchInput
+                size='md'
+                placeholder={tInvoices('searchPlaceholder')}
+                mode='icon'
+                leftIcon={true}
+              />
+            </SearchWrapper>
+            <DateStatus>
+              <DatePicker />
+              <StatusWrapper>
+                <StatusDropdown
+                  value={status}
+                  onChange={v => setStatus(v)}
+                  placeholderColor='secondary'
                 />
-              </TableScrollContainer>
-            </TableWrapper>
-          </RightContent>
-        </MainContent>
+              </StatusWrapper>
+            </DateStatus>
+          </MobileContainer>
+          <TableScrollContainer>
+            <Table
+              cornerStyle='bottom'
+              rows={tableData.length}
+              columns={5}
+              details={tableData}
+              showArrowsIcon={true}
+              showCheckbox={false}
+              showRightArrow={true}
+              selectedRows={selectedRows}
+              onRowSelect={(i, sel) => {
+                setSelectedRows(prev => (sel ? [...prev, i] : prev.filter(r => r !== i)));
+              }}
+              columnTitles={[
+                tInvoices('table.col1'),
+                tInvoices('table.col2'),
+                tInvoices('table.col3'),
+                tInvoices('table.col4'),
+                tInvoices('table.col5'),
+              ]}
+              mobileVariant='invoices'
+              onRightArrowClick={(rowIndex: number) => setOpenInvoiceDetail(rowIndex)}
+              onRowClick={(rowIndex: number) => setOpenInvoiceDetail(rowIndex)}
+            />
+          </TableScrollContainer>
+        </TableWrapper>
       </DashboardContainer>
       {openInvoiceDetail !== null && (
         <InvoicesDetailPopup

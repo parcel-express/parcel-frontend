@@ -7,44 +7,9 @@ import { Button, Typography } from '@/components';
 import DashboardContainer from '@/components/DashboardContainer';
 import Dropdown from '@/components/Dropdown';
 import Header from '@/components/Header';
-import PageTitle from '@/components/PageTitle';
-import { DesktopContainer, MobileContainer } from '@/components/Responsive';
-import Sidebar from '@/components/Sidebar';
-import UserBadge from '@/components/UserBadge';
+import { MobileContainer } from '@/components/Responsive';
 import UploadIcon from '@/icons/UploadIcon';
 import { colors } from '@/styles/colors';
-
-const MainContent = styled.div`
-  display: flex;
-  gap: 32px;
-  min-height: 100vh;
-  @media screen and (max-width: 1080px) {
-    padding: 16px 0 0 0;
-    height: auto;
-  }
-`;
-
-const ContentHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  top: 32px;
-`;
-
-const RightContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  @media screen and (max-width: 1080px) {
-    gap: 36px;
-  }
-`;
-
-const UserWrapper = styled.div`
-  margin-left: auto;
-  width: 296px;
-`;
 
 const MainCard = styled.div`
   background: ${colors.background.white};
@@ -168,216 +133,203 @@ const SaveButtonWrapper = styled.div`
 const SettingsScreen = () => {
   const tSettings = useTranslations('Settings');
 
+  const user = {
+    name: 'Gagi Murjikneli',
+    email: 'gagi.murjikneli@gmail.com',
+    presence: 'online' as const,
+  };
+
   return (
     <>
       <MobileContainer>
-        <Header />
+        <Header user={user} showUserBadge={true} />
       </MobileContainer>
-      <DashboardContainer>
-        <MainContent>
-          <DesktopContainer>
-            <Sidebar />
-          </DesktopContainer>
-          <RightContent>
-            <ContentHeader>
-              <PageTitle title={tSettings('title')} desktopVariant='small' />
-              <DesktopContainer>
-                <UserWrapper>
-                  <UserBadge
-                    name='Gagi Murjikneli'
-                    email='gagi.murjikneli@gmail.com'
-                    presence='online'
-                  />
-                </UserWrapper>
-              </DesktopContainer>
-            </ContentHeader>
-            <MainCard>
-              <Avatar>
-                <AvatarWrapper></AvatarWrapper>
-                <UploadWrapper>
-                  <UploadIcon />
-                  <Typography variant='text-sm' color={colors.text.secondary}>
-                    {tSettings('AvatarCard.description')}
-                  </Typography>
-                </UploadWrapper>
-              </Avatar>
-              <FormField>
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.companyNamePlaceholder')}
-                  label={tSettings('Form.companyName')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.company2Placeholder')}
-                  label={tSettings('Form.company2')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.personPlaceholder')}
-                  label={tSettings('Form.person')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.phonePlaceholder')}
-                  label={tSettings('Form.phone')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.emailPlaceholder')}
-                  label={tSettings('Form.email')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.emailPlaceholder')}
-                  label={tSettings('Form.email2')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.addressPlaceholder')}
-                  label={tSettings('Form.address')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.cityPlaceholder')}
-                  label={tSettings('Form.city')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.address2Placeholder')}
-                  label={tSettings('Form.address2')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.phone2Placeholder')}
-                  label={tSettings('Form.phone2')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.iBanPlaceholder')}
-                  label={tSettings('Form.iBan')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.codePlaceholder')}
-                  label={tSettings('Form.code')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.ceoPlaceholder')}
-                  label={tSettings('Form.ceo')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <Dropdown
-                  value={''}
-                  variant='dropdown'
-                  onChange={() => {}}
-                  placeholder={tSettings('Form.fieldPlaceholder')}
-                  label={tSettings('Form.field')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <SaveButtonWrapper>
-                  <Button variant='primary' size='md'>
-                    {tSettings('Form.button')}
-                  </Button>
-                </SaveButtonWrapper>
-              </FormField>
-            </MainCard>
-            <PasswordCard>
-              <Typography variant='text-md' color={colors.text.black} weight='bold'>
-                {tSettings('PasswordCard.title')}
+      <DashboardContainer title={tSettings('title')} user={user}>
+        <MainCard>
+          <Avatar>
+            <AvatarWrapper></AvatarWrapper>
+            <UploadWrapper>
+              <UploadIcon />
+              <Typography variant='text-sm' color={colors.text.secondary}>
+                {tSettings('AvatarCard.description')}
               </Typography>
-              <PasswordInputs>
-                <Dropdown
-                  value={''}
-                  variant='input'
-                  onChange={() => {}}
-                  placeholder={tSettings('PasswordCard.oldPlaceholder')}
-                  label={tSettings('PasswordCard.old')}
-                  inputPadding='12px 16px'
-                  items={[]}
-                />
-                <NewPassInputs>
-                  <Dropdown
-                    value={''}
-                    variant='input'
-                    onChange={() => {}}
-                    placeholder={tSettings('PasswordCard.newPlaceholder')}
-                    label={tSettings('PasswordCard.new')}
-                    inputPadding='12px 16px'
-                    items={[]}
-                  />
-                  <Dropdown
-                    value={''}
-                    variant='input'
-                    onChange={() => {}}
-                    placeholder={tSettings('PasswordCard.confirmPlaceholder')}
-                    label={tSettings('PasswordCard.confirm')}
-                    inputPadding='12px 16px'
-                    items={[]}
-                  />
-                </NewPassInputs>
-                <SaveButtonWrapper>
-                  <Button variant='primary' size='md'>
-                    {tSettings('PasswordCard.button')}
-                  </Button>
-                </SaveButtonWrapper>
-              </PasswordInputs>
-            </PasswordCard>
-          </RightContent>
-        </MainContent>
+            </UploadWrapper>
+          </Avatar>
+          <FormField>
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.companyNamePlaceholder')}
+              label={tSettings('Form.companyName')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.company2Placeholder')}
+              label={tSettings('Form.company2')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.personPlaceholder')}
+              label={tSettings('Form.person')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.phonePlaceholder')}
+              label={tSettings('Form.phone')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.emailPlaceholder')}
+              label={tSettings('Form.email')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.emailPlaceholder')}
+              label={tSettings('Form.email2')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.addressPlaceholder')}
+              label={tSettings('Form.address')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.cityPlaceholder')}
+              label={tSettings('Form.city')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.address2Placeholder')}
+              label={tSettings('Form.address2')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.phone2Placeholder')}
+              label={tSettings('Form.phone2')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.iBanPlaceholder')}
+              label={tSettings('Form.iBan')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.codePlaceholder')}
+              label={tSettings('Form.code')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('Form.ceoPlaceholder')}
+              label={tSettings('Form.ceo')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <Dropdown
+              value={''}
+              variant='dropdown'
+              onChange={() => {}}
+              placeholder={tSettings('Form.fieldPlaceholder')}
+              label={tSettings('Form.field')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <SaveButtonWrapper>
+              <Button variant='primary' size='md'>
+                {tSettings('Form.button')}
+              </Button>
+            </SaveButtonWrapper>
+          </FormField>
+        </MainCard>
+        <PasswordCard>
+          <Typography variant='text-md' color={colors.text.black} weight='bold'>
+            {tSettings('PasswordCard.title')}
+          </Typography>
+          <PasswordInputs>
+            <Dropdown
+              value={''}
+              variant='input'
+              onChange={() => {}}
+              placeholder={tSettings('PasswordCard.oldPlaceholder')}
+              label={tSettings('PasswordCard.old')}
+              inputPadding='12px 16px'
+              items={[]}
+            />
+            <NewPassInputs>
+              <Dropdown
+                value={''}
+                variant='input'
+                onChange={() => {}}
+                placeholder={tSettings('PasswordCard.newPlaceholder')}
+                label={tSettings('PasswordCard.new')}
+                inputPadding='12px 16px'
+                items={[]}
+              />
+              <Dropdown
+                value={''}
+                variant='input'
+                onChange={() => {}}
+                placeholder={tSettings('PasswordCard.confirmPlaceholder')}
+                label={tSettings('PasswordCard.confirm')}
+                inputPadding='12px 16px'
+                items={[]}
+              />
+            </NewPassInputs>
+            <SaveButtonWrapper>
+              <Button variant='primary' size='md'>
+                {tSettings('PasswordCard.button')}
+              </Button>
+            </SaveButtonWrapper>
+          </PasswordInputs>
+        </PasswordCard>
       </DashboardContainer>
     </>
   );
